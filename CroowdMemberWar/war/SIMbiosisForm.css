@@ -1,0 +1,728 @@
+.background {
+	background-color: #dfdfdf !important;
+    margin: 0;
+    padding: 11px;
+    vertical-align: top;
+    width: 98%;
+    min-height: 100%;
+}
+
+.fullbox {
+	vertical-align: top;
+	width: 100%;
+}
+
+.fullboxwithpadding {
+	vertical-align: top;
+	width: 100%;
+	padding: 10px;
+}
+
+.halfbox {
+	vertical-align: top;
+	width: 50%;
+}
+
+.header1 {
+	font: bold 11pt "UbuntuRegular";
+	color: #555555;
+	background: #ffffff;
+	padding: 10px;
+	padding-left: 15px;
+}
+
+.headerspacer {
+	background: #dfdfdf;
+	height: 3px;
+}
+
+.widgetboxspacer {
+	background: #dfdfdf;
+	height: 10px;
+}
+
+.widgetbox {
+	background: #ffffff;
+	padding: 10px 15px 15px 15px;
+	width: 100%;
+}
+
+.compositebox {
+	padding-bottom: 8px;
+}
+
+.fieldspacer {
+	width: 10px;
+}
+
+.fieldwrapper {
+	width: 100%;
+}
+
+.fieldtitle {
+	font: bold 10pt "UbuntuRegular";
+	color: #555555;
+	padding-bottom: 3px;
+}
+
+.fieldlabel {
+	font: 10pt "UbuntuLight";
+	color: #555555;
+}
+
+.fieldsymbol {
+	color: #bbbbbb;
+	background: none repeat scroll 0 0 #d9d9d9;
+	height: 22px;
+	padding: 3px 0 0 3px;
+	vertical-align: middle;
+	-webkit-appearance: none;
+}
+
+.fieldtextbox {
+	height: 25px;
+	font: 12px "UbuntuRegular";
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.fieldtextbox:hover {
+	border: 1px solid #b9b9b9;
+}
+
+.fieldtextarea {
+	font: 12px "UbuntuRegular";
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.fieldtextarea:hover {
+	border: 1px solid #b9b9b9;
+}
+
+.fieldbutton {
+	text-align: center;
+	font: 700 12px "UbuntuRegular";
+	height: 25px;
+	display: block;
+	margin-bottom: 10px;
+	border: 0px;
+	color: #fff;
+	background-color: #4d90fe;
+	outline: none;
+}
+
+.fieldbutton:hover {
+	border: 0px;
+	background-color: #357ae8;
+	outline: none;
+}
+
+.fieldbutton::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+	outline: none;
+}
+
+.fieldbigsymbol {
+	font-size: 18px;
+	color: #bbbbbb;
+	background: none repeat scroll 0 0 #d9d9d9;
+	height: 28px;
+	padding: 7px 0 0 7px;
+	vertical-align: middle;
+	-webkit-appearance: none;
+}
+
+.fieldbigtextbox {
+	height: 35px;
+	font: 14px "UbuntuRegular";
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.fieldbigtextbox:hover {
+	border: 1px solid #b9b9b9;
+}
+
+.fieldbigbutton {
+	text-align: center;
+	font: 700 14px "UbuntuRegular";
+	height: 35px;
+	display: block;
+	margin-bottom: 10px;
+	border: 0px;
+	color: #fff;
+	background-color: #4d90fe;
+	padding-left: 20px;
+	padding-right: 20px;
+	outline: none;
+}
+
+.fieldbigbutton:hover {
+	border: 0px;
+	background-color: #357ae8;
+	outline: none;
+}
+
+.fieldbigbutton::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+	outline: none;
+}
+
+.itemline {
+	font: 10pt "UbuntuLight";
+	color: #555555;
+	padding: 2px 0 2px 0;
+}
+
+.project-card.project-card-tall, .project-card.project-card-tall-big {
+	background-color: white;
+	border: 1px solid #d9d9de;
+	border-radius: 6px;
+	color: #828587;
+	font-size: 12px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+	position: relative;
+	font: 12px "UbuntuRegular";
+}
+
+.btn, .user-menu-tab .tab-expand, .nav-livesearch, .project-card.project-card-tall,
+	.project-card.project-card-tall-big, .project-card.project-card-tall .project-card-footer,
+	.project-card.project-card-tall-big .project-card-footer,
+	.content-carousel__content {
+	box-sizing: border-box;
+}
+
+.project-card-tall {
+	height: 418px;
+}
+
+.project-card.project-card-tall .project-thumbnail-img, .project-card.project-card-tall-big .project-thumbnail-img
+	{
+	display: block;
+}
+
+.project-card.project-card-tall .project-card-content, .project-card.project-card-tall .project-card-footer,
+	.project-card.project-card-tall-big .project-card-content,
+	.project-card.project-card-tall-big .project-card-footer {
+	padding: 10px;
+}
+
+.project-card.project-card-tall .project-card-footer, .project-card.project-card-tall-big .project-card-footer
+	{
+	padding-top: 45px;
+	position: absolute;
+}
+
+.project-card.project-card-tall .project-card-footer, .project-card.project-card-tall-big .project-card-footer
+	{
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff
+		26%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border-radius: 0 0 6px 6px;
+	bottom: 0;
+	width: 100%;
+}
+
+.project-card.project-card-tall .project-title, .project-card.project-card-tall-big .project-title
+	{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.project-card.project-card-tall .project-byline, .project-card.project-card-tall-big .project-byline
+	{
+	margin-bottom: 10px;
+}
+
+.launch-banner__link, .user-menu .dropdown-menu .project-title,
+	.project-card.project-card-tall .project-byline, .project-card.project-card-tall-big .project-byline,
+	.project-card.project-card-tall .project-location, .project-card.project-card-tall-big .project-location
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.project-card.project-card-tall .project-progress-bar, .project-card.project-card-tall-big .project-progress-bar
+	{
+	border-radius: 3px;
+	height: 6px;
+}
+
+.project-card.project-card-tall .project-progress-bar, .project-card.project-card-tall-big .project-progress-bar
+	{
+	background-color: #d9d9de;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.project-card.project-card-tall .project-stats, .project-card.project-card-tall-big .project-stats
+	{
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+
+ul, ol {
+	list-style: outside none none;
+	padding-left: 0;
+}
+
+.project-card.project-card-tall .project-stats-value, .project-card.project-card-tall-big .project-stats-value
+	{
+	color: #0f2105;
+	font-weight: bold;
+}
+
+.project-value-right {
+	color: #0f2105;
+	font-weight: bold;
+	text-align: right;
+}
+
+.project-value {
+	color: #0f2105;
+	font-weight: bold;
+}
+
+.project-card.project-card-tall .project-stats li, .project-card.project-card-tall-big .project-stats li
+	{
+	display: inline-block;
+	margin-left: 0;
+}
+
+.project-card
+
+
+
+
+
+ 
+
+
+
+
+
+.project-card-tall
+
+
+
+
+
+ 
+
+
+
+
+
+.project-stats
+
+
+
+
+
+ 
+
+
+
+
+
+li
+
+
+
+
+
+ 
+
+
+
+
+
+:first-child
+,
+.project-card
+
+
+
+
+
+ 
+
+
+
+
+
+.project-card-tall
+
+
+
+
+
+ 
+
+
+
+
+
+.project-stats
+
+
+
+
+
+ 
+
+
+
+
+
+li
+
+
+
+
+
+ 
+
+
+
+
+
+:nth-child
+
+
+
+
+
+ 
+
+
+
+
+
+(2),
+.project-card
+
+
+
+
+
+ 
+
+
+
+
+
+.project-card-tall-big
+
+
+
+
+
+ 
+
+
+
+
+
+.project-stats
+
+
+
+
+
+ 
+
+
+
+
+
+li
+
+
+
+
+
+ 
+
+
+
+
+
+:first-child
+,
+.project-card
+
+
+
+
+
+ 
+
+
+
+
+
+.project-card-tall-big
+
+
+
+
+
+ 
+
+
+
+
+
+.project-stats
+
+
+
+
+
+ 
+
+
+
+
+
+li
+
+
+
+
+
+
+
+
+
+
+:nth-child
+
+
+
+
+
+ 
+
+
+
+
+
+(2)
+{
+margin-right
+
+
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+ 
+
+
+
+
+
+8
+px
+
+
+
+
+
+
+
+
+
+
+;
+}
+.clearfix::before, .row::before, .clearfix::after, .row::after {
+	content: " ";
+	display: table;
+}
+
+.clearfix::before, .spotlight-project__more_projects .header::before,
+	.clearfix::after, .spotlight-project__more_projects .header::after {
+	content: " ";
+	display: table;
+}
+
+.clearfix::before, .edit-icon--multiple-options::before, .clearfix::after,
+	.edit-icon--multiple-options::after {
+	content: " ";
+	display: table;
+}
+
+.clearfix::before, .clearfix::after {
+	content: " ";
+	display: table;
+}
+
+.clearfix::after, .row::after {
+	clear: both;
+}
+
+.clearfix::after, .spotlight-project__more_projects .header::after {
+	clear: both;
+}
+
+.clearfix::after, .edit-icon--multiple-options::after {
+	clear: both;
+}
+
+.mb2, .mb3, .mb4, .mb6 {
+	margin-bottom: 20px;
+}
+
+.mb2, body#backer_rewards_index.tablet .NS_backer_rewards__reward h5,
+	.mb3, .mb4, .mb6 {
+	
+}
+
+.grey-field {
+	background-color: #f7fafa;
+	border-radius: 6px;
+	display: block;
+	line-height: 30px;
+	padding: 4px;
+	position: relative;
+}
+
+.no-margin {
+	margin: 0px;
+	border: none;
+	padding: 10px;
+}
+
+body label {
+	position: relative;
+}
+
+body .grey-field label {
+	vertical-align: top;
+	width: 163px;
+	word-wrap: break-word;
+}
+
+.grey-field label, .grey-field .label {
+	-moz-box-orient: vertical;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 10px 5px 10px 10px;
+	vertical-align: middle;
+	font-family: "UbuntuRegular";
+}
+
+body .grey-field .field-wrapper {
+	-moz-box-orient: vertical;
+	display: inline-block;
+	vertical-align: middle;
+	width: 449px;
+}
+
+body .field-wrapper {
+	color: #0f2105;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+body .grey-field p {
+	line-height: 16px;
+	margin-bottom: 10px;
+}
+
+body .field-help-2 p {
+	color: #0f2105;
+	line-height: 18px;
+	margin-bottom: 10px;
+	font-family: "UbuntuRegular";
+}
+
+fieldset ol li {
+	overflow: hidden;
+}
+
+fieldset ol li {
+	list-style-image: none;
+	list-style-type: none;
+	margin-left: 0;
+}
+
+.fieldcombobox {
+	height: 25px;
+	font: 12px "UbuntuRegular";
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.fielddatepicker {
+	width: 264px;
+	font: 12px "UbuntuRegular";
+	-webkit-appearance: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	padding: 0 8px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.fieldbackbutton {
+	text-align: center;
+	font: 700 12px "UbuntuRegular";
+	height: 25px;
+	display: block;
+	margin-bottom: 10px;
+	border: 0px;
+	color: #fff;
+	background-color: #4d90fe;
+	outline: none;
+}
+
+.fieldbackbutton:hover {
+	border: 0px;
+	background-color: #357ae8;
+	outline: none;
+}
+
+.posbackbutton {
+	padding-top: 10px;
+	padding-right: 20px;
+}
+
+.poscrudbutton {
+	padding-left: 15px;
+}
