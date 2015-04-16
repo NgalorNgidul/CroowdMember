@@ -9,6 +9,8 @@ gwt-unitCache-*
 */war/WEB-INF/classes/*
 */war/WEB-INF/deploy/*
 *.symbolMap
+*/war/croowdmember
+*/war/croowdvalidation
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

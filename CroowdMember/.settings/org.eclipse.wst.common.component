@@ -5,5 +5,9 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="CroowdValidation.war" deploy-path="/" handle="module:/resource/CroowdValidation/CroowdValidation">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

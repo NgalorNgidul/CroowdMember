@@ -4,7 +4,13 @@
   <module>
     <web>
       <web-uri>CroowdMemberWar.war</web-uri>
-      <context-root>CroowdMemberWar</context-root>
+      <context-root>member</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>CroowdValidation.war</web-uri>
+      <context-root>validation</context-root>
     </web>
   </module>
 </application>
