@@ -4,15 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.simbiosis.ui.croowd.member.client.AppFactory;
+import org.simbiosis.ui.croowd.member.client.json.SimpleProjectJso;
 import org.simbiosis.ui.croowd.member.client.places.ProjectPlace;
 import org.simbiosis.ui.croowd.member.client.project.IProject.Activity;
 import org.simbiosis.ui.croowd.member.client.project.input.IProjectInput;
 import org.simbiosis.ui.croowd.member.client.project.input.ProjectInputActivity;
 import org.simbiosis.ui.croowd.member.shared.ProjectDv;
 
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.DefaultDateTimeFormatInfo;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class ProjectActivity extends Activity {
@@ -49,37 +58,42 @@ public class ProjectActivity extends Activity {
 		IProject myForm = appFactory.getProject();
 		myForm.setActivity(this);
 		//
-		loadProjectData(myForm);
+		listProject(myForm);
 		//
 
 		this.panel.setWidget(myForm.getWidget());
 	}
 
-	private void loadProjectData(IProject myForm) {
-		List<ProjectDv> list = new ArrayList<ProjectDv>();
-		ProjectDv data = new ProjectDv();
-		data.setTitle("This is Title");
-		data.setShortBlurb("this is shortblub");
-		data.setLocation("tangerang");
-		data.setPledged("Rp.1000");
-		data.setFunded("10%");
-		data.setUserName("Nanang Hendro Sucahyo");
-		data.setDuration(dtf.parse("09-04-2015"));
-		data.setStrDuration(dtf.format(data.getDuration()));
-		data.setGoal("RP 10.000,00");
-		data.setCategory("category1");
-		data.setSubCategory("category child1 0");
-		list.add(data);
+	public void listProject(final IProject myform) {
+		String url = Window.Location.getProtocol() + "//"
+				+ Window.Location.getHost() + "/sampleapi/sample/projects/";
 
-		data = new ProjectDv();
-		data.setTitle("This is Title 2");
-		data.setShortBlurb("this is shortblub");
-		data.setLocation("tangerang");
-		data.setPledged("Rp.1000");
-		data.setFunded("10%");
-		data.setUserName("Nanang Hendro Sucahyo");
-		list.add(data);
-		myForm.setProjectData(list);
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		try {
+			builder.sendRequest(null, new RequestCallback() {
+				public void onError(Request request, Throwable e) {
+					Window.alert(e.getMessage());
+				}
+
+				public void onResponseReceived(Request request,
+						Response response) {
+					if (200 == response.getStatusCode()) {
+						JsArray<SimpleProjectJso> projects = JsonUtils
+								.<JsArray<SimpleProjectJso>> safeEval(response
+										.getText());
+						List<ProjectDv> list = generateListDv(projects);
+						Window.alert("size dv : " + list.size());
+						myform.setProjectData(list);
+					} else {
+						Window.alert("Received HTTP status code other than 200 : "
+								+ response.getStatusText());
+					}
+				}
+			});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
 	}
 
 	@Override
@@ -89,6 +103,30 @@ public class ProjectActivity extends Activity {
 		inputForm.setData(dv);
 		inputForm.viewer();
 		panel.setWidget(inputForm.getWidget());
+	}
+
+	public List<ProjectDv> generateListDv(JsArray<SimpleProjectJso> jso) {
+		List<ProjectDv> list = new ArrayList<ProjectDv>();
+		for (int i = 0; i < jso.length(); i++) {
+			ProjectDv dv = new ProjectDv();
+			dv.setId(jso.get(i).getId());
+			dv.setTitle(jso.get(i).getTitle());
+			dv.setUserName(jso.get(i).getUserName());
+			dv.setShortBlurb(jso.get(i).getShortBlurb());
+			dv.setLocation(jso.get(i).getLocation());
+			dv.setFunded(jso.get(i).getFunded());
+			dv.setPledged(jso.get(i).getPledged());
+			dv.setCategory(jso.get(i).getCategory());
+			dv.setSubCategory(jso.get(i).getSubCategory());
+			dv.setStrSubCategory(jso.get(i).getStrSubCategory());
+			dv.setDuration(dtf.parse(jso.get(i).getStrDuration()));
+			dv.setGoal(jso.get(i).getGoal());
+			dv.setStrCategory(jso.get(i).getStrCategory());
+			dv.setStrDuration(jso.get(i).getStrDuration());
+			dv.setStrLocation(jso.get(i).getStrLocation());
+			list.add(dv);
+		}
+		return list;
 	}
 
 }

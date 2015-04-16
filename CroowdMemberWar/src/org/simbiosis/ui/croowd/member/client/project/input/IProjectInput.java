@@ -33,5 +33,7 @@ public interface IProjectInput {
 		public abstract void changeSubCategory(String value);
 
 		public abstract void onEdit(ProjectDv dv);
+
+		public abstract void onSave(ProjectDv dv);
 	}
 }

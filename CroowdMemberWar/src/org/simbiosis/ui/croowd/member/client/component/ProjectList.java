@@ -44,7 +44,7 @@ public class ProjectList extends Composite implements Editor<ProjectDv> {
 	@UiField
 	Label shortBlurb;
 	@UiField
-	Label location;
+	Label strLocation;
 	@UiField
 	Label funded;
 	@UiField
@@ -52,13 +52,16 @@ public class ProjectList extends Composite implements Editor<ProjectDv> {
 	@UiField
 	Button btnChange;
 
+	ProjectDv dv;
+
 	public void setData(ProjectDv data) {
+		dv = data;
 		driver.edit(data);
 	}
 
 	@UiHandler("btnChange")
 	public void onChange(ClickEvent e) {
-		activity.editProject(driver.flush());
+		activity.editProject(dv);
 	}
 
 	public void setActivity(Activity activity) {

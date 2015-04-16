@@ -15,12 +15,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.datepicker.client.DateBox;
 
 public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 		Editor<ProjectDv> {
@@ -50,9 +50,13 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	@UiField
 	ListBox location;
 	@UiField
+	DateBox duration;
+	@UiField
 	Button btnSave;
 	@UiField
 	Button btnCancel;
+
+	ProjectDv dv;
 
 	public ProjectFormEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -66,7 +70,12 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 
 	@UiHandler("btnSave")
 	void onSave(ClickEvent event) {
-		Window.alert("simpan");
+		dv = driver.flush();
+		dv.setCategory(new Long(category.getValue(category.getSelectedIndex())));
+		dv.setSubCategory(new Long(subCategory.getValue(subCategory
+				.getSelectedIndex())));
+		dv.setLocation(new Long(location.getValue(location.getSelectedIndex())));
+		activity.onSave(driver.flush());
 	}
 
 	@UiHandler("btnCancel")
@@ -76,27 +85,40 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 
 	@Override
 	public void edit(ProjectDv data) {
+		dv = data;
 		driver.edit(data);
 	}
 
 	public void setCategorys(List<CategoryDv> categorys) {
-		category.clear();
+		int index = 0;
 		for (CategoryDv dv : categorys) {
 			category.addItem(dv.getName(), dv.getId().toString());
+			if (this.dv.getCategory() == dv.getId()) {
+				category.setSelectedIndex(index);
+			}
+			index++;
 		}
 	}
 
 	public void setSubCategorys(List<CategoryDv> subCategorys) {
-		subCategory.clear();
+		int index = 0;
 		for (CategoryDv dv : subCategorys) {
 			subCategory.addItem(dv.getName(), dv.getId().toString());
+			if (this.dv.getSubCategory() == dv.getId()) {
+				subCategory.setSelectedIndex(index);
+			}
+			index++;
 		}
 	}
 
 	public void setLocations(List<LocationDv> locations) {
-		location.clear();
+		int index = 0;
 		for (LocationDv dv : locations) {
 			location.addItem(dv.getName(), dv.getId().toString());
+			if (this.dv.getLocation() == dv.getId()) {
+				location.setSelectedIndex(index);
+			}
+			index++;
 		}
 	}
 }

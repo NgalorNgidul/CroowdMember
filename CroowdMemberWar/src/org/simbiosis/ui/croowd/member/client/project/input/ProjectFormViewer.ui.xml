@@ -28,12 +28,12 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Category</div>
-										<g:Label styleName="fieldlabel" ui:field="category"></g:Label>
-										<g:Label styleName="fieldlabel" ui:field="subCategory"></g:Label>
+										<g:Label styleName="fieldlabel" ui:field="strCategory"></g:Label>
+										<g:Label styleName="fieldlabel" ui:field="strSubCategory"></g:Label>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Project Location</div>
-										<g:Label styleName="fieldlabel" ui:field="location"></g:Label>
+										<g:Label styleName="fieldlabel" ui:field="strLocation"></g:Label>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Funding Duration </div>

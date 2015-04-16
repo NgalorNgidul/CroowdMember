@@ -23,4 +23,9 @@ public class CategoryDv implements IsSerializable {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+
 }
