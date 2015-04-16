@@ -37,11 +37,11 @@ public class ProjectFormViewer extends ViewerForm<ProjectDv> implements
 	@UiField
 	Label shortBlurb;
 	@UiField
-	Label category;
+	Label strCategory;
 	@UiField
-	Label subCategory;
+	Label strSubCategory;
 	@UiField
-	Label location;
+	Label strLocation;
 	@UiField
 	Label strDuration;
 	@UiField

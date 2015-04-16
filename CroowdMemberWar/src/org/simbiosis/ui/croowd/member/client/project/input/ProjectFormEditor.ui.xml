@@ -20,32 +20,38 @@
 								<td class="halfbox">
 									<div class="compositebox">
 										<div class="fieldtitle">Project Title</div>
-										<g:TextBox styleName="fieldtextbox" ui:field="title" width="300"></g:TextBox>
+										<g:TextBox styleName="fieldtextbox" ui:field="title"
+											width="300px"></g:TextBox>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Short Blurb</div>
 										<g:TextArea styleName="fieldtextarea" ui:field="shortBlurb"
-											height="4">
+											height="50px" width="300px">
 										</g:TextArea>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Category</div>
 										<g:VerticalPanel>
-										<g:ListBox styleName="fieldcombobox" ui:field="category"></g:ListBox>
-										<g:ListBox styleName="fieldcombobox" ui:field="subCategory"></g:ListBox>
+											<g:ListBox styleName="fieldcombobox" ui:field="category"
+												width="300px"></g:ListBox>
+											<g:ListBox styleName="fieldcombobox" ui:field="subCategory"
+												width="300px"></g:ListBox>
 										</g:VerticalPanel>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Project Location</div>
-										<g:ListBox styleName="fieldtextbox" ui:field="location"></g:ListBox>
+										<g:ListBox styleName="fieldcombobox" ui:field="location"
+											width="300px"></g:ListBox>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Funding Duration </div>
-										<g:TextBox styleName="fieldtextbox" ui:field="strDuration"></g:TextBox>
+										<d:DateBox styleName="fielddatepicker" ui:field="duration"
+											width="300px"></d:DateBox>
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Funding Goal</div>
-										<g:TextBox styleName="fieldtextbox" ui:field="goal"></g:TextBox>
+										<g:TextBox styleName="fieldtextbox" ui:field="goal"
+											width="300px"></g:TextBox>
 									</div>
 								</td>
 							</tr>

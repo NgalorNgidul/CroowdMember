@@ -27,7 +27,7 @@
 					<div class="project-location">
 						<span class="ksr-icon__location" aria-hidden="true"></span>
 						<span class="location-name">
-							<g:Label ui:field="location"></g:Label>
+							<g:Label ui:field="strLocation"></g:Label>
 						</span>
 						<div class="project-stats-container">
 							<div class="project-progress-bar">

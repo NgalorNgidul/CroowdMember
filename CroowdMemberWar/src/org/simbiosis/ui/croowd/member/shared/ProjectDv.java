@@ -10,30 +10,69 @@ public class ProjectDv implements IsSerializable {
 	String strImage;
 	String title;
 	String shortBlurb;
-	String location;
+	Long location;
+	String strLocation;
 	String funded;
 	String pledged;
 	String userName;
-	String category;
-	String subCategory;
+	Long category;
+	String strCategory;
+	Long subCategory;
+	String strSubCategory;
 	Date duration;
 	String strDuration;
 	String goal;
 
-	public String getCategory() {
-		return category;
+	public ProjectDv() {
+		category = 0L;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public Long getLocation() {
+		return location;
 	}
 
-	public String getSubCategory() {
+	public void setLocation(Long location) {
+		this.location = location;
+	}
+
+	public String getStrLocation() {
+		return strLocation;
+	}
+
+	public void setStrLocation(String strLocation) {
+		this.strLocation = strLocation;
+	}
+
+	public Long getSubCategory() {
 		return subCategory;
 	}
 
-	public void setSubCategory(String subCategory) {
+	public void setSubCategory(Long subCategory) {
 		this.subCategory = subCategory;
+	}
+
+	public String getStrSubCategory() {
+		return strSubCategory;
+	}
+
+	public void setStrSubCategory(String strSubCategory) {
+		this.strSubCategory = strSubCategory;
+	}
+
+	public Long getCategory() {
+		return category;
+	}
+
+	public void setCategory(Long category) {
+		this.category = category;
+	}
+
+	public String getStrCategory() {
+		return strCategory;
+	}
+
+	public void setStrCategory(String strCategory) {
+		this.strCategory = strCategory;
 	}
 
 	public Date getDuration() {
@@ -90,14 +129,6 @@ public class ProjectDv implements IsSerializable {
 
 	public void setShortBlurb(String shortBlurb) {
 		this.shortBlurb = shortBlurb;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
 	}
 
 	public String getFunded() {
