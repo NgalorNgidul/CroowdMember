@@ -1,0 +1,13 @@
+package com.croowd.ui.member.client;
+
+import com.google.gwt.core.client.EntryPoint;
+
+/**
+ * Entry point classes define <code>onModuleLoad()</code>.
+ */
+public class CroowdMemberWar implements EntryPoint {
+
+	public void onModuleLoad() {
+		new AppEntryPoint(getClass().getSimpleName()).start();
+	}
+}
