@@ -17,37 +17,37 @@
 						<g:Label ui:field="title"></g:Label>
 					</h7>
 					<p class="project-byline">
-						<g:Label ui:field="userName"></g:Label>
+						<g:Label ui:field="ownerName"></g:Label>
 					</p>
 					<p class="project-blurb">
-						<g:Label ui:field="shortBlurb"></g:Label>
+						<g:Label ui:field="description"></g:Label>
 					</p>
 				</div>
 				<div class="project-card-footer">
 					<div class="project-location">
 						<span class="ksr-icon__location" aria-hidden="true"></span>
 						<span class="location-name">
-							<g:Label ui:field="strLocation"></g:Label>
+							<g:Label ui:field="location"></g:Label>
 						</span>
 						<div class="project-stats-container">
 							<div class="project-progress-bar">
 								<div class="project-percent-pledged" style="width: 0%"></div>
 							</div>
 							<ul class="project-stats">
-								<li>
-									<div class="project-stats-value">
-										<g:Label ui:field="funded"></g:Label>
-									</div>
-									<span class="project-stats-label">funded</span>
-								</li>
-								<li>
-									<div class="project-stats-value">
-										<span class="money aud no-code">
-											<g:Label ui:field="pledged"></g:Label>
-										</span>
-									</div>
-									<span class="project-stats-label">pledged</span>
-								</li>
+<!-- 								<li> -->
+<!-- 									<div class="project-stats-value"> -->
+<!-- 										<g:Label ui:field="funded"></g:Label> -->
+<!-- 									</div> -->
+<!-- 									<span class="project-stats-label">funded</span> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<div class="project-stats-value"> -->
+<!-- 										<span class="money aud no-code"> -->
+<!-- 											<g:Label ui:field="pledged"></g:Label> -->
+<!-- 										</span> -->
+<!-- 									</div> -->
+<!-- 									<span class="project-stats-label">pledged</span> -->
+<!-- 								</li> -->
 							</ul>
 							<div align="right">
 								<g:Button styleName="fieldbigbutton" ui:field="btnChange">Rubah</g:Button>

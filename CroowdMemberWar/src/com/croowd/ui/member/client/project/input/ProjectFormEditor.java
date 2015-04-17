@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.EditorForm;
 
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.project.input.IProjectInput.Activity;
 import com.croowd.ui.member.shared.CategoryDv;
 import com.croowd.ui.member.shared.LocationDv;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class ProjectFormEditor extends EditorForm<ProjectDv> implements
-		Editor<ProjectDv> {
+public class ProjectFormEditor extends EditorForm<ProspectJso> implements
+		Editor<ProspectJso> {
 
 	private static ProjectFormUiBinder uiBinder = GWT
 			.create(ProjectFormUiBinder.class);
@@ -32,7 +32,7 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	}
 
 	interface Driver extends
-			SimpleBeanEditorDriver<ProjectDv, ProjectFormEditor> {
+			SimpleBeanEditorDriver<ProspectJso, ProjectFormEditor> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
@@ -42,26 +42,21 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	@UiField
 	TextBox title;
 	@UiField
-	TextArea shortBlurb;
+	TextArea description;
 	@UiField
 	ListBox category;
 	@UiField
-	ListBox subCategory;
-	@UiField
 	ListBox location;
-	@UiField
-	DateBox duration;
 	@UiField
 	Button btnSave;
 	@UiField
 	Button btnCancel;
 
-	ProjectDv dv;
+	ProspectJso dv;
 
 	public ProjectFormEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
-		driver.edit(new ProjectDv());
 	}
 
 	public void setActivity(Activity activity) {
@@ -71,10 +66,12 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	@UiHandler("btnSave")
 	void onSave(ClickEvent event) {
 		dv = driver.flush();
-		dv.setCategory(new Long(category.getValue(category.getSelectedIndex())));
-		dv.setSubCategory(new Long(subCategory.getValue(subCategory
-				.getSelectedIndex())));
-		dv.setLocation(new Long(location.getValue(location.getSelectedIndex())));
+		// dv.setCategory(new
+		// Long(category.getValue(category.getSelectedIndex())));
+		// dv.setSubCategory(new Long(subCategory.getValue(subCategory
+		// .getSelectedIndex())));
+		// dv.setLocation(new
+		// Long(location.getValue(location.getSelectedIndex())));
 		activity.onSave(driver.flush());
 	}
 
@@ -84,7 +81,7 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	}
 
 	@Override
-	public void edit(ProjectDv data) {
+	public void edit(ProspectJso data) {
 		dv = data;
 		driver.edit(data);
 	}
@@ -93,9 +90,9 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 		int index = 0;
 		for (CategoryDv dv : categorys) {
 			category.addItem(dv.getName(), dv.getId().toString());
-			if (this.dv.getCategory() == dv.getId()) {
-				category.setSelectedIndex(index);
-			}
+			// if (this.dv.getCategory() == dv.getId()) {
+			// category.setSelectedIndex(index);
+			// }
 			index++;
 		}
 	}
@@ -103,10 +100,10 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 	public void setSubCategorys(List<CategoryDv> subCategorys) {
 		int index = 0;
 		for (CategoryDv dv : subCategorys) {
-			subCategory.addItem(dv.getName(), dv.getId().toString());
-			if (this.dv.getSubCategory() == dv.getId()) {
-				subCategory.setSelectedIndex(index);
-			}
+			//subCategory.addItem(dv.getName(), dv.getId().toString());
+			// if (this.dv.getSubCategory() == dv.getId()) {
+			// subCategory.setSelectedIndex(index);
+			// }
 			index++;
 		}
 	}
@@ -115,9 +112,9 @@ public class ProjectFormEditor extends EditorForm<ProjectDv> implements
 		int index = 0;
 		for (LocationDv dv : locations) {
 			location.addItem(dv.getName(), dv.getId().toString());
-			if (this.dv.getLocation() == dv.getId()) {
-				location.setSelectedIndex(index);
-			}
+			// if (this.dv.getLocation() == dv.getId()) {
+			// location.setSelectedIndex(index);
+			// }
 			index++;
 		}
 	}

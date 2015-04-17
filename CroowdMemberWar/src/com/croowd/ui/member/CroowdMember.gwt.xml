@@ -20,7 +20,7 @@
 	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="org.simbiosis.ui.gwt.SIMbiosisUiGwt" />
 	<!-- Specify the app entry point class. -->
-	<entry-point class='com.croowd.ui.member.client.CroowdMemberWar' />
+	<entry-point class='com.croowd.ui.member.client.CroowdMember' />
 	<replace-with class="com.croowd.ui.member.client.AppFactoryImpl">
 		<when-type-is class="com.croowd.ui.member.client.AppFactory" />
 	</replace-with>

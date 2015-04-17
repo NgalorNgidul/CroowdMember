@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.mvp.SIMbiosisActivity;
 
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.shared.CategoryDv;
 import com.croowd.ui.member.shared.LocationDv;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.user.client.ui.Widget;
 
 public interface IProjectInput {
@@ -19,7 +19,7 @@ public interface IProjectInput {
 
 	public void editor();
 
-	public void setData(ProjectDv dv);
+	public void setData(ProspectJso dv);
 
 	public void setListCategory(List<CategoryDv> categorys);
 
@@ -32,8 +32,8 @@ public interface IProjectInput {
 
 		public abstract void changeSubCategory(String value);
 
-		public abstract void onEdit(ProjectDv dv);
+		public abstract void onEdit(ProspectJso dv);
 
-		public abstract void onSave(ProjectDv dv);
+		public abstract void onSave(ProspectJso dv);
 	}
 }

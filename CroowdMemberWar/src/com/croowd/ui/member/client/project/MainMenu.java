@@ -1,10 +1,9 @@
 package com.croowd.ui.member.client.project;
 
-import java.util.List;
-
 import com.croowd.ui.member.client.component.ProjectList;
-import com.croowd.ui.member.shared.ProjectDv;
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -35,10 +34,10 @@ public class MainMenu extends Composite implements IProject {
 	}
 
 	@Override
-	public void setProjectData(List<ProjectDv> data) {
+	public void setProjectData(JsArray<ProspectJso> data) {
 		scrollPanel.clear();
 		Grid grid = new Grid(1, 4);
-		for (int i = 0; i < data.size(); i++) {
+		for (int i = 0; i < data.length(); i++) {
 			ProjectList projectList = new ProjectList();
 			projectList.setActivity(activitiy);
 			projectList.setData(data.get(i));

@@ -1,15 +1,11 @@
 package com.croowd.ui.member.client.project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.croowd.ui.member.client.AppFactory;
-import com.croowd.ui.member.client.json.SimpleProjectJso;
-import com.croowd.ui.member.client.places.ProjectPlace;
+import com.croowd.ui.member.client.json.ProspectJso;
+import com.croowd.ui.member.client.places.Project;
 import com.croowd.ui.member.client.project.IProject.Activity;
 import com.croowd.ui.member.client.project.input.IProjectInput;
 import com.croowd.ui.member.client.project.input.ProjectInputActivity;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
@@ -30,13 +26,13 @@ public class ProjectActivity extends Activity {
 	DateTimeFormat dtf = new DateTimeFormat(pattern, info) {
 	}; // <= trick here
 
-	ProjectPlace myPlace;
+	Project myPlace;
 	AppFactory appFactory;
 	ProjectInputActivity inputActivity;
 
 	AcceptsOneWidget panel;
 
-	public ProjectActivity(ProjectPlace myPlace, AppFactory appFactory) {
+	public ProjectActivity(Project myPlace, AppFactory appFactory) {
 		super();
 		setFactory(appFactory);
 		this.myPlace = myPlace;
@@ -45,7 +41,7 @@ public class ProjectActivity extends Activity {
 
 	ProjectInputActivity getInputActivity() {
 		if (inputActivity == null) {
-			inputActivity = new ProjectInputActivity(new ProjectPlace(""),
+			inputActivity = new ProjectInputActivity(new Project(""),
 					appFactory);
 		}
 		return inputActivity;
@@ -64,8 +60,7 @@ public class ProjectActivity extends Activity {
 	}
 
 	public void listProject(final IProject myform) {
-		String url = Window.Location.getProtocol() + "//"
-				+ Window.Location.getHost() + "/prospect/"
+		String url = "http://api.croowd.co.id/prospect/"
 				+ appFactory.getStatus().getSession() + "/listAll/";
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
@@ -78,12 +73,10 @@ public class ProjectActivity extends Activity {
 				public void onResponseReceived(Request request,
 						Response response) {
 					if (200 == response.getStatusCode()) {
-						JsArray<SimpleProjectJso> projects = JsonUtils
-								.<JsArray<SimpleProjectJso>> safeEval(response
+						JsArray<ProspectJso> projects = JsonUtils
+								.<JsArray<ProspectJso>> safeEval(response
 										.getText());
-						List<ProjectDv> list = generateListDv(projects);
-						Window.alert("size dv : " + list.size());
-						myform.setProjectData(list);
+						myform.setProjectData(projects);
 					} else {
 						Window.alert("Received HTTP status code other than 200 : "
 								+ response.getStatusText());
@@ -97,36 +90,12 @@ public class ProjectActivity extends Activity {
 	}
 
 	@Override
-	public void editProject(ProjectDv dv) {
+	public void editProject(ProspectJso dv) {
 		IProjectInput inputForm = appFactory.getProjectInput();
 		inputForm.setActivity(getInputActivity());
 		inputForm.setData(dv);
 		inputForm.viewer();
 		panel.setWidget(inputForm.getWidget());
-	}
-
-	public List<ProjectDv> generateListDv(JsArray<SimpleProjectJso> jso) {
-		List<ProjectDv> list = new ArrayList<ProjectDv>();
-		for (int i = 0; i < jso.length(); i++) {
-			ProjectDv dv = new ProjectDv();
-			dv.setId(jso.get(i).getId());
-			dv.setTitle(jso.get(i).getTitle());
-			dv.setUserName(jso.get(i).getUserName());
-			dv.setShortBlurb(jso.get(i).getShortBlurb());
-			dv.setLocation(jso.get(i).getLocation());
-			dv.setFunded(jso.get(i).getFunded());
-			dv.setPledged(jso.get(i).getPledged());
-			dv.setCategory(jso.get(i).getCategory());
-			dv.setSubCategory(jso.get(i).getSubCategory());
-			dv.setStrSubCategory(jso.get(i).getStrSubCategory());
-			dv.setDuration(dtf.parse(jso.get(i).getStrDuration()));
-			dv.setGoal(jso.get(i).getGoal());
-			dv.setStrCategory(jso.get(i).getStrCategory());
-			dv.setStrDuration(jso.get(i).getStrDuration());
-			dv.setStrLocation(jso.get(i).getStrLocation());
-			list.add(dv);
-		}
-		return list;
 	}
 
 }

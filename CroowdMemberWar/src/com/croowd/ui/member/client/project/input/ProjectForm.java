@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.ViewerEditorForm;
 
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.shared.CategoryDv;
 import com.croowd.ui.member.shared.LocationDv;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,7 +24,7 @@ public class ProjectForm extends Composite implements IProjectInput {
 	}
 
 	@UiField
-	ViewerEditorForm<ProjectDv> project;
+	ViewerEditorForm<ProspectJso> project;
 
 	ProjectFormViewer viewer;
 	ProjectFormEditor editor;
@@ -34,7 +34,7 @@ public class ProjectForm extends Composite implements IProjectInput {
 		viewer = new ProjectFormViewer();
 		editor = new ProjectFormEditor();
 		project.setViewerEditor(viewer, editor);
-		project.init(new ProjectDv());
+		// project.init(new ProjectDv());
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class ProjectForm extends Composite implements IProjectInput {
 	}
 
 	@Override
-	public void setData(ProjectDv dv) {
+	public void setData(ProspectJso dv) {
 		project.setData(dv);
 	}
 

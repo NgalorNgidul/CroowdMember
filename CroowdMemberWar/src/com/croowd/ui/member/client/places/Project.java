@@ -3,10 +3,10 @@ package com.croowd.ui.member.client.places;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class ProjectPlace extends Place {
+public class Project extends Place {
 	String token;
 
-	public ProjectPlace(String token) {
+	public Project(String token) {
 		super();
 		this.token = token;
 	}
@@ -15,15 +15,15 @@ public class ProjectPlace extends Place {
 		return token;
 	}
 
-	public static class Tokenizer implements PlaceTokenizer<ProjectPlace> {
+	public static class Tokenizer implements PlaceTokenizer<Project> {
 
 		@Override
-		public ProjectPlace getPlace(String token) {
-			return new ProjectPlace(token);
+		public Project getPlace(String token) {
+			return new Project(token);
 		}
 
 		@Override
-		public String getToken(ProjectPlace place) {
+		public String getToken(Project place) {
 			return place.getToken();
 		}
 

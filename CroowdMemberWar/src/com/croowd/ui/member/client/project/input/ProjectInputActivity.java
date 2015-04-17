@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.croowd.ui.member.client.AppFactory;
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.project.input.IProjectInput.Activity;
 import com.croowd.ui.member.shared.CategoryDv;
 import com.croowd.ui.member.shared.LocationDv;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.Window;
@@ -55,7 +55,7 @@ public class ProjectInputActivity extends Activity {
 	}
 
 	@Override
-	public void onEdit(ProjectDv dv) {
+	public void onEdit(ProspectJso dv) {
 		IProjectInput formEditor = appFactory.getProjectInput();
 		formEditor.editor();
 		formEditor.setListCategory(generateCategory());
@@ -86,8 +86,8 @@ public class ProjectInputActivity extends Activity {
 	}
 
 	@Override
-	public void onSave(ProjectDv dv) {
-		Window.alert("id category: " + dv.getCategory());
+	public void onSave(ProspectJso dv) {
+		//Window.alert("id category: " + dv.getCategory());
 
 	}
 

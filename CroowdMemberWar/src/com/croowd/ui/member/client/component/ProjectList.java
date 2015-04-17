@@ -1,7 +1,7 @@
 package com.croowd.ui.member.client.component;
 
+import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.project.IProject.Activity;
-import com.croowd.ui.member.shared.ProjectDv;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ProjectList extends Composite implements Editor<ProjectDv> {
+public class ProjectList extends Composite implements Editor<ProspectJso> {
 
 	private static ProjectListUiBinder uiBinder = GWT
 			.create(ProjectListUiBinder.class);
@@ -22,7 +22,7 @@ public class ProjectList extends Composite implements Editor<ProjectDv> {
 	interface ProjectListUiBinder extends UiBinder<Widget, ProjectList> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<ProjectDv, ProjectList> {
+	interface Driver extends SimpleBeanEditorDriver<ProspectJso, ProjectList> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
@@ -33,27 +33,23 @@ public class ProjectList extends Composite implements Editor<ProjectDv> {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		driver.initialize(this);
-		driver.edit(new ProjectDv());
+		//driver.edit(new ProspectJso());
 	}
 
 	@UiField
 	Label title;
 	@UiField
-	Label userName;
+	Label ownerName;
 	@UiField
-	Label shortBlurb;
+	Label description;
 	@UiField
-	Label strLocation;
-	@UiField
-	Label funded;
-	@UiField
-	Label pledged;
+	Label location;
 	@UiField
 	Button btnChange;
 
-	ProjectDv dv;
+	ProspectJso dv;
 
-	public void setData(ProjectDv data) {
+	public void setData(ProspectJso data) {
 		dv = data;
 		driver.edit(data);
 	}

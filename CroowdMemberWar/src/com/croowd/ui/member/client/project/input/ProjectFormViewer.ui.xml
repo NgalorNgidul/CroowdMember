@@ -19,29 +19,20 @@
 							<tr>
 								<td class="halfbox">
 									<div class="compositebox">
-										<div class="fieldtitle">Project Title</div>
+										<div class="fieldtitle">Judul</div>
 										<g:Label styleName="fieldlabel" ui:field="title"></g:Label>
 									</div>
 									<div class="compositebox">
-										<div class="fieldtitle">Short Blurb</div>
-										<g:Label styleName="fieldlabel" ui:field="shortBlurb"></g:Label>
+										<div class="fieldtitle">Keterangan</div>
+										<g:Label styleName="fieldlabel" ui:field="description"></g:Label>
 									</div>
 									<div class="compositebox">
-										<div class="fieldtitle">Category</div>
-										<g:Label styleName="fieldlabel" ui:field="strCategory"></g:Label>
-										<g:Label styleName="fieldlabel" ui:field="strSubCategory"></g:Label>
+										<div class="fieldtitle">Kategori</div>
+										<g:Label styleName="fieldlabel" ui:field="category"></g:Label>
 									</div>
 									<div class="compositebox">
-										<div class="fieldtitle">Project Location</div>
-										<g:Label styleName="fieldlabel" ui:field="strLocation"></g:Label>
-									</div>
-									<div class="compositebox">
-										<div class="fieldtitle">Funding Duration </div>
-										<g:Label styleName="fieldlabel" ui:field="strDuration"></g:Label>
-									</div>
-									<div class="compositebox">
-										<div class="fieldtitle">Funding Goal</div>
-										<g:Label styleName="fieldlabel" ui:field="goal"></g:Label>
+										<div class="fieldtitle">Lokasi</div>
+										<g:Label styleName="fieldlabel" ui:field="location"></g:Label>
 									</div>
 								</td>
 							</tr>
