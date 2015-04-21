@@ -1,5 +1,7 @@
 package com.croowd.ui.validation.client;
 
+import com.croowd.ui.validation.client.json.JsonServerResponse;
+import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.croowd.ui.validation.client.main.MainForm;
 import com.croowd.ui.validation.client.userform.UserEditor;
 import com.google.gwt.core.client.EntryPoint;
@@ -16,8 +18,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
  */
 public class CroowdValidation implements EntryPoint {
 
-	String validationResult = "";
 	MainForm mainForm;
+
 	/**
 	 * This is the entry point method.
 	 */
@@ -25,14 +27,11 @@ public class CroowdValidation implements EntryPoint {
 		// Ambil string hash
 		// Bentuknya #xxxxxxxxxxxxxxxxxxxxxxxx, ambil setelah tanda #
 		String hash = Window.Location.getHash().substring(1);
-		//validation(hash);
-		//
-		validationResult="0";
-		processResult();
+		validation(hash);
 	}
 
 	private void validation(String hash) {
-		String url = "http://api.croowd.co.id/registration/validate" + hash;
+		String url = "http://api.croowd.co.id/registration/validate/" + hash;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -44,8 +43,9 @@ public class CroowdValidation implements EntryPoint {
 				public void onResponseReceived(Request request,
 						Response response) {
 					if (200 == response.getStatusCode()) {
-						validationResult = response.getText();
-						processResult();
+						RegistrationJso jso = JsonServerResponse
+								.getRegistrationJso(response.getText());
+						processResult(jso);
 					} else {
 						Window.alert("Received HTTP status code other than 200 : "
 								+ response.getStatusText());
@@ -58,14 +58,16 @@ public class CroowdValidation implements EntryPoint {
 		}
 	}
 
-	private void processResult() {
+	private void processResult(RegistrationJso jso) {
 		mainForm = new MainForm();
-		mainForm.addAppPanel(new UserEditor());
-		RootLayoutPanel.get().add(mainForm);
-		if (validationResult.equalsIgnoreCase("0")) {
+		if (jso != null) {
+			UserEditor editor = new UserEditor();
+			editor.setData(jso);
+			mainForm.addAppPanel(editor);
 			// Go to profile
 		} else {
 
 		}
+		RootLayoutPanel.get().add(mainForm);
 	}
 }

@@ -1,6 +1,6 @@
 package com.croowd.ui.validation.client.userform;
 
-import com.croowd.ui.validation.shared.MemberDv;
+import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -10,18 +10,19 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class UserEditor extends Composite implements Editor<MemberDv> {
+public class UserEditor extends Composite implements Editor<RegistrationJso> {
 
 	interface ThisUiBinder extends UiBinder<Widget, UserEditor> {
 	}
 
 	private static ThisUiBinder uiBinder = GWT.create(ThisUiBinder.class);
 
-	interface Driver extends SimpleBeanEditorDriver<MemberDv, UserEditor> {
+	interface Driver extends SimpleBeanEditorDriver<RegistrationJso, UserEditor> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
@@ -32,6 +33,8 @@ public class UserEditor extends Composite implements Editor<MemberDv> {
 	Button btnCancel;
 	@UiField
 	TextBox name;
+	@UiField
+	Label email;
 	@UiField
 	TextBox address;
 	@UiField
@@ -51,9 +54,12 @@ public class UserEditor extends Composite implements Editor<MemberDv> {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
 		driver.initialize(this);
-		driver.edit(new MemberDv());
 	}
 
+	public void setData(RegistrationJso jso){
+		driver.edit(jso);
+	}
+	
 	@UiHandler("btnSave")
 	public void onSave(ClickEvent e) {
 
