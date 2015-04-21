@@ -13,6 +13,7 @@ public class AppEntryPoint extends SIMbiosisEntryPoint {
 	@Override
 	public void initialize() {
 		AppFactory appFactory = GWT.create(AppFactory.class);
+		appFactory.getMainForm().getLogoPanel().getElement().setInnerHTML("<em class=\"headerLogoBig\">Croowd</em>Member");
 		//
 		AppHistoryMapper historyMapper = GWT.create(AppHistoryMapper.class);
 		//
