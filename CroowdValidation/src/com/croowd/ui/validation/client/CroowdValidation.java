@@ -3,6 +3,7 @@ package com.croowd.ui.validation.client;
 import com.croowd.ui.validation.client.json.JsonServerResponse;
 import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.croowd.ui.validation.client.main.MainForm;
+import com.croowd.ui.validation.client.notvalidform.NotValidForm;
 import com.croowd.ui.validation.client.userform.UserEditor;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.http.client.Request;
@@ -66,7 +67,7 @@ public class CroowdValidation implements EntryPoint {
 			mainForm.addAppPanel(editor);
 			// Go to profile
 		} else {
-
+			mainForm.addAppPanel(new NotValidForm());
 		}
 		RootLayoutPanel.get().add(mainForm);
 	}

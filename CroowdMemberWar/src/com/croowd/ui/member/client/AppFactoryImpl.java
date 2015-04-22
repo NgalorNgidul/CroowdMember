@@ -15,13 +15,11 @@ public class AppFactoryImpl extends SIMbiosisClientFactoryImpl implements
 
 	@Override
 	public IProject getProject() {
-		// TODO Auto-generated method stub
 		return PROJECT;
 	}
 
 	@Override
 	public IProjectInput getProjectInput() {
-		// TODO Auto-generated method stub
 		return PROJECT_FORM;
 	}
 
