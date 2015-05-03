@@ -5,14 +5,22 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.http.client.Request;
+import com.google.gwt.http.client.RequestBuilder;
+import com.google.gwt.http.client.RequestCallback;
+import com.google.gwt.http.client.RequestException;
+import com.google.gwt.http.client.Response;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class UserEditor extends Composite implements Editor<RegistrationJso> {
@@ -22,15 +30,16 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 
 	private static ThisUiBinder uiBinder = GWT.create(ThisUiBinder.class);
 
-	interface Driver extends SimpleBeanEditorDriver<RegistrationJso, UserEditor> {
+	interface Driver extends
+			SimpleBeanEditorDriver<RegistrationJso, UserEditor> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
 
 	@UiField
-	Button btnSave;
+	VerticalPanel appPanel;
 	@UiField
-	Button btnCancel;
+	Button btnSave;
 	@UiField
 	TextBox name;
 	@UiField
@@ -56,18 +65,88 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 		driver.initialize(this);
 	}
 
-	public void setData(RegistrationJso jso){
+	public void setData(RegistrationJso jso) {
 		driver.edit(jso);
 	}
-	
+
 	@UiHandler("btnSave")
 	public void onSave(ClickEvent e) {
-
+		String checkData = isDataComplete();
+		if (!checkData.isEmpty()) {
+			Window.alert(checkData);
+		} else {
+			String checkPassword = isPasswordOk();
+			if (!checkPassword.isEmpty()) {
+				Window.alert(checkPassword);
+			} else {
+				confirmRegistration(driver.flush());
+			}
+		}
 	}
 
-	@UiHandler("btnCancel")
-	public void onCancel(ClickEvent e) {
-		// showViewForm();
+	private String isPasswordOk() {
+		String result = "";
+		if (password.getText().compareTo(passwordconf.getText()) != 0) {
+			result = "Kata kunci yang anda isikan tidak sama dengan konfirmasi";
+		} else if (password.getText().length() < 3) {
+			result = "Kata kunci harus terdiri dari 3 karakter atau lebih";
+		}
+		return result;
 	}
 
+	private String isDataComplete() {
+		String result = "";
+		if (name.getText().isEmpty()) {
+			result = "Nama harus diisi";
+		} else if (address.getText().isEmpty()) {
+			result = "Alamat harus diisi";
+		} else if (city.getText().isEmpty()) {
+			result = "Kota harus diisi";
+		} else if (zipCode.getText().isEmpty()) {
+			result = "Kode pos harus diisi";
+		} else if (province.getText().isEmpty()) {
+			result = "Propinsi harus diisi";
+		} else if (phone.getText().isEmpty()) {
+			result = "Nomer telpon harus diisi";
+		}
+		return result;
+	}
+
+	private void confirmRegistration(RegistrationJso data) {
+		String url = "http://api.croowd.co.id/registration/confirmmember";
+		//
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
+		try {
+			builder.setHeader("Content-Type", "application/json");
+			builder.sendRequest(new JSONObject(data).toString(),
+					new RequestCallback() {
+						public void onError(Request request, Throwable e) {
+							Window.alert(e.getMessage());
+						}
+
+						public void onResponseReceived(Request request,
+								Response response) {
+							if (200 == response.getStatusCode()) {
+								if (response.getText().isEmpty()){
+									registerSuccess();
+								}
+								// RegistrationJso jso = JsonServerResponse
+								// .getRegistrationJso(response.getText());
+								// processResult(jso);
+							} else {
+								Window.alert("Received HTTP status code other than 200 : "
+										+ response.getStatusText());
+							}
+						}
+					});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
+	}
+	
+	private void registerSuccess(){
+		appPanel.clear();
+		appPanel.add(new RegisterSuccess());
+	}
 }

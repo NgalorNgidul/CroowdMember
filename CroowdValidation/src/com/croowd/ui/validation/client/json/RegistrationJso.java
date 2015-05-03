@@ -70,12 +70,8 @@ public class RegistrationJso extends JavaScriptObject {
 		this.password = password;
 	}-*/;
 
-	public final native String getPasswordconf() /*-{
-		return this.passwordconf;
-	}-*/;
-
-	public final native void setPasswordconf(String passwordconf) /*-{
-		this.passwordconf = passwordconf;
-	}-*/;
+	public final String getPasswordconf() {
+		return "";
+	}
 
 }
