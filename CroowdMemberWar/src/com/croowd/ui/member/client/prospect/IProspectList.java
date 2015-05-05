@@ -1,0 +1,31 @@
+package com.croowd.ui.member.client.prospect;
+
+import org.simbiosis.ui.gwt.client.mvp.SIMbiosisActivity;
+
+import com.croowd.ui.member.client.json.ProspectJso;
+import com.google.gwt.user.client.ui.Widget;
+
+public interface IProspectList {
+
+	public void setActivity(Activity activity);
+
+	public Widget getWidget();
+
+	public void clearResultData();
+
+	public void addResultData(ProspectJso data);
+
+	public void noResultData();
+
+	public void reviewProspect(ProspectJso data);
+
+	public void backToList();
+
+	public abstract class Activity extends SIMbiosisActivity {
+		public abstract void onBack();
+
+		public abstract void onApprove();
+
+		public abstract void onReject();
+	}
+}

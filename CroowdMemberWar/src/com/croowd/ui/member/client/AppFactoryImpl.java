@@ -8,13 +8,13 @@ import com.croowd.ui.member.client.project.IProject;
 import com.croowd.ui.member.client.project.MainMenu;
 import com.croowd.ui.member.client.project.input.IProjectInput;
 import com.croowd.ui.member.client.project.input.ProjectForm;
-import com.croowd.ui.member.client.prospect.IProspect;
-import com.croowd.ui.member.client.prospect.ProspectForm;
+import com.croowd.ui.member.client.prospect.IProspectList;
+import com.croowd.ui.member.client.prospect.ProspectListForm;
 
 public class AppFactoryImpl extends SIMbiosisClientFactoryImpl implements
 		AppFactory {
 
-	static final ProspectForm PROSPECT_FORM = new ProspectForm();
+	static final ProspectListForm PROSPECT_FORM = new ProspectListForm();
 	static final MainMenu PROJECT = new MainMenu();
 	static final ProjectForm PROJECT_FORM = new ProjectForm();
 	static final ProfileForm PROFILE_FORM = new ProfileForm();
@@ -35,7 +35,7 @@ public class AppFactoryImpl extends SIMbiosisClientFactoryImpl implements
 	}
 
 	@Override
-	public IProspect getProspectForm() {
+	public IProspectList getProspectList() {
 		return PROSPECT_FORM;
 	}
 

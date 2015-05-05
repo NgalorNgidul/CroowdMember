@@ -34,4 +34,20 @@ public class ProspectJso extends JavaScriptObject {
 		return this.ownerName;
 	}-*/;
 
+	public final native String getPrincipal() /*-{
+		return this.principal.toString();
+	}-*/;
+
+	public final native void setPrincipal(String principal) /*-{
+		this.principal = principal;
+	}-*/;
+
+	public final native String getTenor() /*-{
+		return this.tenor.toString();
+	}-*/;
+
+	public final native void setTenor(String tenor) /*-{
+		this.tenor = tenor;
+	}-*/;
+
 }
