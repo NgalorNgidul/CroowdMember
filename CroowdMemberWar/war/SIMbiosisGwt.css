@@ -43,65 +43,108 @@
 	border: none !important;
 }
 
-.FlexTable {
- /*  border-top: thin solid #444444 !important;
-  border-left: thin solid #444444 !important;
-  border-right: thin solid #111111 !important;
-  border-bottom: thin solid #111111 !important; */
-  width: 969px; !important;
-  padding: 9px !important;
- 
+/**/
+/* 
+* Global widget style. 
+*/
+.gwt-DatePicker {
+	border: 1px solid #f1f1f1;
+	border-bottom: 2px solid #f1f1f1;
+	color: 6b6b6b;
+	cursor: default;
+	width: 7em;
 }
 
-
-.FlexTable-Header{
-	 background-color:  #4F4F4F !important;
-	
+.datePickerDay, .datePickerWeekdayLabel, .datePickerWeekendLabel {
+	font: 11pt "UbuntuRegular";
+	text-align: center;
+	padding: 4px;
+	outline: none;
+	cursor: default;
 }
 
-.FlexTable-OddRow {
-  background-color: #ECECEC; !important;
+.gwt-DatePicker td, .datePickerMonthSelector  td :focus {
+	outline: none
 }
 
-.FlexTable-EvenRow {
-  background-color:  #ffffff; !important;
+.gwt-DateBox input {
+	width: 8em;
 }
 
-
-.FlexTable-ColumnLabel {
-  color: white !important;
-  padding: 3px !important;
+/* 
+* Calendar styles 
+*/
+.datePickerDays {
+	background-color: white;
+	width: 100%;
 }
 
-.FlexTable-ColumnLabelCell {
-  border-width: 0 0 1px 0 !important;
-  border-style: solid !important;
-  border-color: white !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-align: center !important;
+.datePickerWeekdayLabel {
+	background: #dbe6de;
 }
 
-
-.FlexTable-Cell {
-  border-width: 0px 0px 0px 1px !important;
-  border-style: solid !important;
-  border-color: white !important;
-  padding: 5px !important;
+.datePickerWeekendLabel {
+	background: #dbe7ef;
 }
 
-
-.FlexTable-SelectedRow {
-background: #628cd5 !important;
-}
-.FlexTable-SelectedRowCell {
-border: none !important;
-}
-.FlexTable-Hover  {
-background: transparent !important;
-}
-.FlexTable-HoveredRowCell {
-border: none !important;
+.datePickerDay {
+	padding: 3px;
+	cursor: hand;
+	width: 1em;
 }
 
+.datePickerDayIsToday {
+	border: 1px solid black;
+	padding: 3px;
+}
 
+.datePickerDayIsWeekend {
+	background: #e1e1e1;
+}
+
+.datePickerDayIsFiller {
+	color: #bfbfbf;
+	padding: 2px;
+	cursor: hand;
+}
+
+.datePickerDayIsSelected {
+	background: #aaccee;
+}
+
+.datePickerDayIsDisabled {
+	color: graytext;
+}
+
+.datePickerDayIsHighlighted {
+	border: 1px solid #eeeeee;
+	padding: 2px;
+}
+
+.datePickerDayIsSelectedAndHighlighted {
+	background: #bbddff;
+}
+
+/* 
+* Month selector styles 
+*/
+.datePickerMonthSelector {
+	background: #dbe6de;
+	width: 100%;
+	text-align: center;
+}
+
+.datePickerMonth {
+	text-align: center;
+	vertical-align: center;
+	white-space: nowrap;
+	font: bold 11pt "UbuntuRegular";
+}
+
+.datePickerPreviousButton {
+	text-align: left;
+}
+
+.datePickerNextButton {
+	text-align: right;
+}

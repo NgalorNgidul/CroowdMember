@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -120,6 +121,11 @@ public class ProspectResultList extends Composite {
 		if (result != null) {
 			parentForm.reviewProspect(result);
 		}
+	}
+	
+	@UiHandler("btnNew")
+	public void onNewProspect(ClickEvent e){
+		parentForm.newData();
 	}
 
 }

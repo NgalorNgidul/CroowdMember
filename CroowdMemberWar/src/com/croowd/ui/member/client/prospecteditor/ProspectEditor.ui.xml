@@ -1,0 +1,52 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:VerticalPanel styleName="fullbox" height="100%"
+		width="100%">
+		<g:HTMLPanel styleName="header1">
+			<div>DATA PROSPEK</div>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="headerspacer">
+			<div></div>
+		</g:HTMLPanel>
+		<g:HorizontalPanel styleName="widgetbox">
+			<g:HTMLPanel styleName="fullbox">
+				<table class="fullbox">
+					<tr>
+						<td class="halfbox">
+							<div class="compositebox">
+								<div class="fieldtitle">Nama proyek</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="title" />
+							</div>
+							<div class="compositebox">
+								<div class="fieldtitle">Lokasi</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="location" />
+							</div>
+							<div class="compositebox">
+								<div class="fieldtitle">Kebutuhan</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="principal" />
+							</div>
+							<div class="compositebox">
+								<div class="fieldtitle">Tenor</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="tenor" />
+							</div>
+							<div class="compositebox">
+								<div class="fieldtitle">Keterangan</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="description" />
+							</div>
+						</td>
+					</tr>
+				</table>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+		<g:HTMLPanel styleName="widgetboxspacer">
+			<div></div>
+		</g:HTMLPanel>
+		<g:HorizontalPanel>
+			<g:Button styleName="fieldbigbutton" ui:field="btnSave" text="Simpan" />
+			<g:HTMLPanel styleName="widgetboxspacer">
+				<div class="fieldspacer"></div>
+			</g:HTMLPanel>
+       		<g:Button styleName="fieldbigbutton" ui:field="btnBack" text="Kembali" />
+		</g:HorizontalPanel>
+	</g:VerticalPanel></ui:UiBinder> 

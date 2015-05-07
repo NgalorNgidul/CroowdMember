@@ -1,6 +1,7 @@
 package com.croowd.ui.member.client.prospect;
 
 import com.croowd.ui.member.client.json.ProspectJso;
+import com.croowd.ui.member.client.prospecteditor.ProspectEditor;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -21,7 +22,7 @@ public class ProspectListForm extends Composite implements IProspectList {
 	VerticalPanel appPanel;
 
 	ProspectResultList resultList = new ProspectResultList();
-	ApprovalForm approvalForm = new ApprovalForm();
+	ProspectEditor editorForm = new ProspectEditor();
 
 	public ProspectListForm() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -34,7 +35,7 @@ public class ProspectListForm extends Composite implements IProspectList {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 		//
-		approvalForm.setActivity(activity);
+		editorForm.setActivity(activity);
 	}
 
 	@Override
@@ -45,8 +46,8 @@ public class ProspectListForm extends Composite implements IProspectList {
 	@Override
 	public void reviewProspect(ProspectJso data) {
 		appPanel.clear();
-		approvalForm.setData(data);
-		appPanel.add(approvalForm);
+		editorForm.setData(data);
+		appPanel.add(editorForm);
 	}
 
 	@Override
@@ -71,4 +72,9 @@ public class ProspectListForm extends Composite implements IProspectList {
 		resultList.noData();
 	}
 
+	public void newData(){
+		appPanel.clear();
+		//editorForm.setData(data);
+		appPanel.add(editorForm);
+	}
 }
