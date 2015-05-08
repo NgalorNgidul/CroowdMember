@@ -17,7 +17,7 @@ public interface IProspectList {
 
 	public void noResultData();
 
-	public void reviewProspect(ProspectJso data);
+	public void editProspect(ProspectJso data);
 
 	public void backToList();
 

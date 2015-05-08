@@ -45,7 +45,7 @@ public class ProspectListForm extends Composite implements IProspectList {
 	}
 
 	@Override
-	public void reviewProspect(ProspectJso data) {
+	public void editProspect(ProspectJso data) {
 		appPanel.clear();
 		editorForm.setData(data);
 		appPanel.add(editorForm);

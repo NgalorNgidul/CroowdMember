@@ -42,6 +42,8 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	TextBox strTenor;
 	@UiField
+	TextBox shortDescription;
+	@UiField
 	TextBox description;
 
 	@UiField

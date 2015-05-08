@@ -18,6 +18,14 @@ public class ProspectJso extends JavaScriptObject {
 		this.title = title;
 	}-*/;
 
+	public final native String getShortDescription() /*-{
+		return this.shortDescription;
+	}-*/;
+
+	public final native void setShortDescription(String shortDescription) /*-{
+		this.shortDescription = shortDescription;
+	}-*/;
+
 	public final native String getDescription() /*-{
 		return this.description;
 	}-*/;

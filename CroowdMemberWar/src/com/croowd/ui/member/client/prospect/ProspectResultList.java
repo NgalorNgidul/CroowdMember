@@ -119,7 +119,7 @@ public class ProspectResultList extends Composite {
 			i++;
 		}
 		if (result != null) {
-			parentForm.reviewProspect(result);
+			parentForm.editProspect(result);
 		}
 	}
 	

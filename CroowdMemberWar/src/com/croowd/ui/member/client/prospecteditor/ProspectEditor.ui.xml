@@ -31,6 +31,10 @@
 								<g:TextBox styleName="fieldtextbox" ui:field="strTenor" />
 							</div>
 							<div class="compositebox">
+								<div class="fieldtitle">Keterangan singkat</div>
+								<g:TextBox styleName="fieldtextbox" ui:field="shortDescription" />
+							</div>
+							<div class="compositebox">
 								<div class="fieldtitle">Keterangan</div>
 								<g:TextBox styleName="fieldtextbox" ui:field="description" />
 							</div>

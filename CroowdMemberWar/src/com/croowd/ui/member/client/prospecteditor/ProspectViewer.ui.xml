@@ -31,6 +31,10 @@
 								<g:Label styleName="fieldlabel" ui:field="strTenor" />
 							</div>
 							<div class="compositebox">
+								<div class="fieldtitle">Keterangan singkat</div>
+								<g:Label styleName="fieldlabel" ui:field="shortDescription" />
+							</div>
+							<div class="compositebox">
 								<div class="fieldtitle">Keterangan</div>
 								<g:Label styleName="fieldlabel" ui:field="description" />
 							</div>
@@ -43,6 +47,8 @@
 			<div></div>
 		</g:HTMLPanel>
 		<g:HorizontalPanel>
-       		<g:Button styleName="fieldbigbutton" ui:field="btnBack" text="Kembali" />
+			<g:Button styleName="fieldbigbutton" ui:field="btnBack"
+				text="Kembali" />
 		</g:HorizontalPanel>
-	</g:VerticalPanel></ui:UiBinder> 
+	</g:VerticalPanel>
+</ui:UiBinder> 

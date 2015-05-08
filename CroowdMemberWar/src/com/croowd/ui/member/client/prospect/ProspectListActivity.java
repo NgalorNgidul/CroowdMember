@@ -45,7 +45,7 @@ public class ProspectListActivity extends Activity {
 
 	private void loadProspect() {
 		String url = "http://api.croowd.co.id/prospect/" + getSession()
-				+ "/listAll/";
+				+ "/listAllByOwner/";
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -81,6 +81,13 @@ public class ProspectListActivity extends Activity {
 		}
 	}
 
+	private void reloadResultList(){
+		IProspectList myForm = appFactory.getProspectList();
+		myForm.backToList();
+		myForm.clearResultData();
+		loadProspect();
+	}
+	
 	@Override
 	public void onBack() {
 		IProspectList myForm = appFactory.getProspectList();
@@ -107,19 +114,7 @@ public class ProspectListActivity extends Activity {
 						public void onResponseReceived(Request request,
 								Response response) {
 							if (200 == response.getStatusCode()) {
-								IProspectList myForm = appFactory
-										.getProspectList();
-								JsArray<ProspectJso> projects = JsonUtils
-										.<JsArray<ProspectJso>> safeEval(response
-												.getText());
-								myForm.clearResultData();
-								if (projects.length() > 0) {
-									for (int i = 0; i < projects.length(); i++) {
-										myForm.addResultData(projects.get(i));
-									}
-								} else {
-									myForm.noResultData();
-								}
+								reloadResultList();
 							} else {
 								Window.alert("Received HTTP status code other than 200 : "
 										+ response.getStatusText());
