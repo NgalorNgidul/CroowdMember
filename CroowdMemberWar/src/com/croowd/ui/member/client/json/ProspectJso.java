@@ -14,8 +14,16 @@ public class ProspectJso extends JavaScriptObject {
 		return this.title;
 	}-*/;
 
+	public final native void setTitle(String title) /*-{
+		this.title = title;
+	}-*/;
+
 	public final native String getDescription() /*-{
 		return this.description;
+	}-*/;
+
+	public final native void setDescription(String description) /*-{
+		this.description = description;
 	}-*/;
 
 	public final native String getCategory() /*-{
@@ -26,6 +34,10 @@ public class ProspectJso extends JavaScriptObject {
 		return this.location;
 	}-*/;
 
+	public final native void setLocation(String location) /*-{
+		this.location = location;
+	}-*/;
+
 	public final native String getPledged() /*-{
 		return this.pledged;
 	}-*/;
@@ -34,20 +46,46 @@ public class ProspectJso extends JavaScriptObject {
 		return this.ownerName;
 	}-*/;
 
-	public final native String getPrincipal() /*-{
-		return this.principal.toString();
+	public final native double getPrincipal() /*-{
+		return this.principal;
 	}-*/;
 
-	public final native void setPrincipal(String principal) /*-{
+	public final native void setPrincipal(double principal) /*-{
 		this.principal = principal;
 	}-*/;
 
-	public final native String getTenor() /*-{
-		return this.tenor.toString();
+	public final String getStrPrincipal() {
+		return new Double(getPrincipal()).toString();
+	}
+
+	public final void setStrPrincipal(String principal) {
+		String value = principal.replace(",", "");
+		Double dValue = Double.parseDouble(value);
+		setPrincipal(dValue);
+	};
+
+	public final native int getTenor() /*-{
+		return this.tenor;
 	}-*/;
 
-	public final native void setTenor(String tenor) /*-{
+	public final native void setTenor(int tenor) /*-{
 		this.tenor = tenor;
+	}-*/;
+
+	public final String getStrTenor() {
+		return new Integer(getTenor()).toString();
+	}
+
+	public final void setStrTenor(String tenor) {
+		String value = tenor;
+		if (value.isEmpty()) {
+			value = "0";
+		}
+		setTenor(Integer.parseInt(value));
+	}
+
+	public final native void setSessionName(String sessionName) /*-{
+		this.sessionName = sessionName;
 	}-*/;
 
 }

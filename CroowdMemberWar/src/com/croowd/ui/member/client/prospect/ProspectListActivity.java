@@ -12,6 +12,7 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
@@ -87,15 +88,48 @@ public class ProspectListActivity extends Activity {
 	}
 
 	@Override
-	public void onApprove() {
-		// TODO Auto-generated method stub
+	public void onSave() {
+		String url = "http://api.croowd.co.id/prospect/" + getSession()
+				+ "/save/";
 
-	}
+		IProspectList myForm = appFactory.getProspectList();
+		ProspectJso jso = myForm.getData();
+		jso.setSessionName(getSession());
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
+		try {
+			builder.setHeader("Content-Type", "application/json");
+			builder.sendRequest(new JSONObject(jso).toString(),
+					new RequestCallback() {
+						public void onError(Request request, Throwable e) {
+							Window.alert(e.getMessage());
+						}
 
-	@Override
-	public void onReject() {
-		// TODO Auto-generated method stub
-
+						public void onResponseReceived(Request request,
+								Response response) {
+							if (200 == response.getStatusCode()) {
+								IProspectList myForm = appFactory
+										.getProspectList();
+								JsArray<ProspectJso> projects = JsonUtils
+										.<JsArray<ProspectJso>> safeEval(response
+												.getText());
+								myForm.clearResultData();
+								if (projects.length() > 0) {
+									for (int i = 0; i < projects.length(); i++) {
+										myForm.addResultData(projects.get(i));
+									}
+								} else {
+									myForm.noResultData();
+								}
+							} else {
+								Window.alert("Received HTTP status code other than 200 : "
+										+ response.getStatusText());
+							}
+						}
+					});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
 	}
 
 }

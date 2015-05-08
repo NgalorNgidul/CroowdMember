@@ -38,9 +38,9 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	TextBox location;
 	@UiField
-	TextBox principal;
+	TextBox strPrincipal;
 	@UiField
-	TextBox tenor;
+	TextBox strTenor;
 	@UiField
 	TextBox description;
 
@@ -61,6 +61,15 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 
 	public void setData(ProspectJso data) {
 		driver.edit(data);
+	}
+
+	public ProspectJso getData() {
+		return driver.flush();
+	}
+
+	@UiHandler("btnSave")
+	void onBtnSave(ClickEvent e) {
+		activity.onSave();
 	}
 
 	@UiHandler("btnBack")

@@ -1,5 +1,6 @@
 package com.croowd.ui.member.client.prospect;
 
+import com.croowd.ui.member.client.json.JsonServerResponse;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospecteditor.ProspectEditor;
 import com.google.gwt.core.client.GWT;
@@ -61,7 +62,6 @@ public class ProspectListForm extends Composite implements IProspectList {
 		resultList.clearData();
 	}
 
-
 	@Override
 	public void addResultData(ProspectJso data) {
 		resultList.addData(data);
@@ -72,9 +72,14 @@ public class ProspectListForm extends Composite implements IProspectList {
 		resultList.noData();
 	}
 
-	public void newData(){
+	public void newData() {
 		appPanel.clear();
-		//editorForm.setData(data);
+		editorForm.setData(JsonServerResponse.createProspectJso());
 		appPanel.add(editorForm);
+	}
+
+	@Override
+	public ProspectJso getData() {
+		return editorForm.getData();
 	}
 }

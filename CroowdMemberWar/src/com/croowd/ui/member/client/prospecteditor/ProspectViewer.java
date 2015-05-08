@@ -37,9 +37,9 @@ public class ProspectViewer extends Composite implements Editor<ProspectJso> {
 	@UiField
 	Label location;
 	@UiField
-	Label principal;
+	Label strPrincipal;
 	@UiField
-	Label tenor;
+	Label strTenor;
 	@UiField
 	Label description;
 

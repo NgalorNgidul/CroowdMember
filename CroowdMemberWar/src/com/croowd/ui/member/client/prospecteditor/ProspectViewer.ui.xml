@@ -24,11 +24,11 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Kebutuhan</div>
-								<g:Label styleName="fieldlabel" ui:field="principal" />
+								<g:Label styleName="fieldlabel" ui:field="strPrincipal" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Tenor</div>
-								<g:Label styleName="fieldlabel" ui:field="tenor" />
+								<g:Label styleName="fieldlabel" ui:field="strTenor" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan</div>

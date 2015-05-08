@@ -21,11 +21,12 @@ public interface IProspectList {
 
 	public void backToList();
 
+	public ProspectJso getData();
+
 	public abstract class Activity extends SIMbiosisActivity {
 		public abstract void onBack();
 
-		public abstract void onApprove();
+		public abstract void onSave();
 
-		public abstract void onReject();
 	}
 }
