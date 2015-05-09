@@ -1,9 +1,9 @@
 package com.croowd.ui.member.client.invest;
 
 import com.croowd.ui.member.client.AppFactory;
+import com.croowd.ui.member.client.invest.IInvestList.Activity;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.places.ProspectList;
-import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
@@ -35,7 +35,7 @@ public class InvestListActivity extends Activity {
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		IInvestList myForm = appFactory.getProspectList();
+		IInvestList myForm = appFactory.getInvestList();
 		myForm.setActivity(this);
 		//
 		loadProspect();
@@ -57,7 +57,7 @@ public class InvestListActivity extends Activity {
 				public void onResponseReceived(Request request,
 						Response response) {
 					if (200 == response.getStatusCode()) {
-						IInvestList myForm = appFactory.getProspectList();
+						IInvestList myForm = appFactory.getInvestList();
 						JsArray<ProspectJso> projects = JsonUtils
 								.<JsArray<ProspectJso>> safeEval(response
 										.getText());
@@ -82,7 +82,7 @@ public class InvestListActivity extends Activity {
 	}
 
 	private void reloadResultList(){
-		IInvestList myForm = appFactory.getProspectList();
+		IInvestList myForm = appFactory.getInvestList();
 		myForm.backToList();
 		myForm.clearResultData();
 		loadProspect();
@@ -90,7 +90,7 @@ public class InvestListActivity extends Activity {
 	
 	@Override
 	public void onBack() {
-		IInvestList myForm = appFactory.getProspectList();
+		IInvestList myForm = appFactory.getInvestList();
 		myForm.backToList();
 	}
 
@@ -99,7 +99,7 @@ public class InvestListActivity extends Activity {
 		String url = "http://api.croowd.co.id/prospect/" + getSession()
 				+ "/save/";
 
-		IInvestList myForm = appFactory.getProspectList();
+		IInvestList myForm = appFactory.getInvestList();
 		ProspectJso jso = myForm.getData();
 		jso.setSessionName(getSession());
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);

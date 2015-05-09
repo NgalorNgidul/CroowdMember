@@ -2,6 +2,8 @@ package com.croowd.ui.member.client;
 
 import org.simbiosis.ui.gwt.client.mvp.SIMbiosisClientFactoryImpl;
 
+import com.croowd.ui.member.client.invest.IInvestList;
+import com.croowd.ui.member.client.invest.InvestListForm;
 import com.croowd.ui.member.client.profile.IProfile;
 import com.croowd.ui.member.client.profile.ProfileForm;
 import com.croowd.ui.member.client.project.IProject;
@@ -18,6 +20,7 @@ public class AppFactoryImpl extends SIMbiosisClientFactoryImpl implements
 	static final MainMenu PROJECT = new MainMenu();
 	static final ProjectForm PROJECT_FORM = new ProjectForm();
 	static final ProfileForm PROFILE_FORM = new ProfileForm();
+	static final InvestListForm INVEST_FORM = new InvestListForm();
 
 	@Override
 	public IProject getProject() {
@@ -37,6 +40,11 @@ public class AppFactoryImpl extends SIMbiosisClientFactoryImpl implements
 	@Override
 	public IProspectList getProspectList() {
 		return PROSPECT_FORM;
+	}
+
+	@Override
+	public IInvestList getInvestList() {
+		return INVEST_FORM;
 	}
 
 }

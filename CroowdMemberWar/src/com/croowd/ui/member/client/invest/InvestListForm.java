@@ -36,7 +36,7 @@ public class InvestListForm extends Composite implements IInvestList {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 		//
-		editorForm.setActivity(activity);
+		//editorForm.setActivity(activity);
 	}
 
 	@Override
