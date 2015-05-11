@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ProspectResultList extends Composite {
+public class InvestResultList extends Composite {
 
 	InvestListForm parentForm;
 
@@ -24,7 +24,7 @@ public class ProspectResultList extends Composite {
 			.create(ProspectResultListUiBinder.class);
 
 	interface ProspectResultListUiBinder extends
-			UiBinder<Widget, ProspectResultList> {
+			UiBinder<Widget, InvestResultList> {
 	}
 
 	public class Mapper {
@@ -61,7 +61,7 @@ public class ProspectResultList extends Composite {
 	@UiField
 	Button btnNew;
 
-	public ProspectResultList() {
+	public InvestResultList() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 

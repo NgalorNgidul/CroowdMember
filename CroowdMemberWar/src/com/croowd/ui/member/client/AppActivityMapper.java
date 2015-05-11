@@ -2,6 +2,8 @@ package com.croowd.ui.member.client;
 
 import org.simbiosis.ui.gwt.client.mvp.SIMbiosisActivityMapper;
 
+import com.croowd.ui.member.client.invest.InvestListActivity;
+import com.croowd.ui.member.client.places.InvestList;
 import com.croowd.ui.member.client.places.Profile;
 import com.croowd.ui.member.client.places.Project;
 import com.croowd.ui.member.client.places.ProspectList;
@@ -27,6 +29,8 @@ public class AppActivityMapper extends SIMbiosisActivityMapper {
 			return new ProfileActivity((Profile) place, appFactory);
 		} else if (place instanceof ProspectList) {
 			return new ProspectListActivity((ProspectList) place, appFactory);
+		} else if (place instanceof InvestList) {
+			return new InvestListActivity((InvestList) place, appFactory);
 		}
 
 		return null;

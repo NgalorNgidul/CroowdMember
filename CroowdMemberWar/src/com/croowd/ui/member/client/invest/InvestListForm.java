@@ -22,8 +22,8 @@ public class InvestListForm extends Composite implements IInvestList {
 	@UiField
 	VerticalPanel appPanel;
 
-	ProspectResultList resultList = new ProspectResultList();
-	ProspectEditor editorForm = new ProspectEditor();
+	InvestResultList resultList = new InvestResultList();
+	//ProspectEditor editorForm = new ProspectEditor();
 
 	public InvestListForm() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -47,8 +47,8 @@ public class InvestListForm extends Composite implements IInvestList {
 	@Override
 	public void editProspect(ProspectJso data) {
 		appPanel.clear();
-		editorForm.setData(data);
-		appPanel.add(editorForm);
+//		editorForm.setData(data);
+//		appPanel.add(editorForm);
 	}
 
 	@Override
@@ -73,13 +73,13 @@ public class InvestListForm extends Composite implements IInvestList {
 	}
 
 	public void newData() {
-		appPanel.clear();
-		editorForm.setData(JsonServerResponse.createProspectJso());
-		appPanel.add(editorForm);
+//		appPanel.clear();
+//		editorForm.setData(JsonServerResponse.createProspectJso());
+//		appPanel.add(editorForm);
 	}
 
-	@Override
-	public ProspectJso getData() {
-		return editorForm.getData();
-	}
+//	@Override
+//	public ProspectJso getData() {
+//		return editorForm.getData();
+//	}
 }

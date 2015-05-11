@@ -21,7 +21,7 @@ public interface IInvestList {
 
 	public void backToList();
 
-	public ProspectJso getData();
+	//public ProspectJso getData();
 
 	public abstract class Activity extends SIMbiosisActivity {
 		public abstract void onBack();
