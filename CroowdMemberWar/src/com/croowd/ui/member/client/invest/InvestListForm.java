@@ -1,8 +1,7 @@
 package com.croowd.ui.member.client.invest;
 
-import com.croowd.ui.member.client.json.JsonServerResponse;
+import com.croowd.ui.member.client.json.InvestPlanJso;
 import com.croowd.ui.member.client.json.ProspectJso;
-import com.croowd.ui.member.client.prospecteditor.ProspectEditor;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -23,12 +22,14 @@ public class InvestListForm extends Composite implements IInvestList {
 	VerticalPanel appPanel;
 
 	InvestResultList resultList = new InvestResultList();
-	//ProspectEditor editorForm = new ProspectEditor();
+	InvestEditorForm editorForm = new InvestEditorForm();
 
 	public InvestListForm() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
 		resultList.setParent(this);
+		editorForm.setParent(this);
+		//
 		appPanel.add(resultList);
 	}
 
@@ -36,7 +37,7 @@ public class InvestListForm extends Composite implements IInvestList {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 		//
-		//editorForm.setActivity(activity);
+		editorForm.setActivity(activity);
 	}
 
 	@Override
@@ -47,8 +48,12 @@ public class InvestListForm extends Composite implements IInvestList {
 	@Override
 	public void editProspect(ProspectJso data) {
 		appPanel.clear();
-//		editorForm.setData(data);
-//		appPanel.add(editorForm);
+		// editorForm.setData(data);
+		// appPanel.add(editorForm);
+	}
+
+	public void selectProspect(ProspectJso data) {
+		editorForm.setProspect(data);
 	}
 
 	@Override
@@ -63,7 +68,7 @@ public class InvestListForm extends Composite implements IInvestList {
 	}
 
 	@Override
-	public void addResultData(ProspectJso data) {
+	public void addResultData(InvestPlanJso data) {
 		resultList.addData(data);
 	}
 
@@ -73,13 +78,18 @@ public class InvestListForm extends Composite implements IInvestList {
 	}
 
 	public void newData() {
-//		appPanel.clear();
-//		editorForm.setData(JsonServerResponse.createProspectJso());
-//		appPanel.add(editorForm);
+		appPanel.clear();
+		// editorForm.setData(JsonServerResponse.createProspectJso());
+		appPanel.add(editorForm);
 	}
 
-//	@Override
-//	public ProspectJso getData() {
-//		return editorForm.getData();
-//	}
+	@Override
+	public ProspectJso getProspect() {
+		return editorForm.getData();
+	}
+
+	@Override
+	public String getValue() {
+		return editorForm.getValue();
+	}
 }
