@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g1="urn:import:com.google.gwt.user.datepicker.client"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g1="urn:import:com.google.gwt.user.datepicker.client" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:e="urn:import:com.croowd.ui.member.client.component">
 	<g:ScrollPanel styleName="scrollpanel" height="100%"
 		width="100%">
 		<g:VerticalPanel styleName="apppanel" ui:field="appPanel"
@@ -25,12 +25,14 @@
 									<div class="compositebox">
 										<div class="fieldtitle">Tempat dan tanggal lahir</div>
 										<g:TextBox styleName="fieldtextbox" ui:field="pob" />
-										<g1:DateBox styleName="fieldtextbox" ui:field="dob" />
+										<g1:DateBox styleName="fieldtextbox" ui:field="dob"
+											width="90px" />
 									</div>
 									<div class="compositebox">
-										<div class="fieldtitle">Tanda pengenal</div>
-										<g:TextBox styleName="fieldtextbox" ui:field="idtype" />
-										<g:TextBox styleName="fieldtextbox" ui:field="idcode" />
+										<div class="fieldtitle">Identitas</div>
+										<e:IdTypeComboBox styleName="fieldtextbox"
+											ui:field="idType" />
+										<g:TextBox styleName="fieldtextbox" ui:field="idCode" />
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Nama ibu kandung</div>
@@ -76,7 +78,10 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Nomer telpon</div>
-										<g:TextBox styleName="fieldtextbox" ui:field="phone" />
+										<div>
+											<g:TextBox styleName="fieldtextbox" ui:field="fixPhone" />
+											<g:TextBox styleName="fieldtextbox" ui:field="cellPhone" />
+										</div>
 									</div>
 								</td>
 							</tr>

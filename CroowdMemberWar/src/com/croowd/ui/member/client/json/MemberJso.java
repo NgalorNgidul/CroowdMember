@@ -3,10 +3,15 @@ package com.croowd.ui.member.client.json;
 import java.util.Date;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsDate;
 
 public class MemberJso extends JavaScriptObject {
 	protected MemberJso() {
 	}
+
+	public final native void setSession(String session) /*-{
+		this.session = session;
+	}-*/;
 
 	public final native Long getId() /*-{
 		return this.id;
@@ -36,19 +41,27 @@ public class MemberJso extends JavaScriptObject {
 		this.pob = pob;
 	}-*/;
 
-	public final native Date getDob() /*-{
+	public final Date getDob() {
+		return new Date((long) JsDate.parse(getNativeDob()));
+	}
+
+	public final void setDob(Date date) {
+		setNativeDob(JsDate.create((double) date.getTime()));
+	}
+
+	public final native String getNativeDob() /*-{
 		return this.dob;
 	}-*/;
 
-	public final native void setDob(Date dob) /*-{
+	public final native void setNativeDob(JsDate dob) /*-{
 		this.dob = dob;
 	}-*/;
 
-	public final native String getIdType() /*-{
+	public final native int getIdType() /*-{
 		return this.idType;
 	}-*/;
 
-	public final native void setIdType(String idType) /*-{
+	public final native void setIdType(int idType) /*-{
 		this.idType = idType;
 	}-*/;
 
@@ -100,12 +113,20 @@ public class MemberJso extends JavaScriptObject {
 		this.province = province;
 	}-*/;
 
-	public final native String getPhone() /*-{
-		return this.phone;
+	public final native String getFixPhone() /*-{
+		return this.fixPhone;
 	}-*/;
 
-	public final native void setPhone(String phone) /*-{
-		this.phone = phone;
+	public final native void setFixPhone(String fixPhone) /*-{
+		this.fixPhone = fixPhone;
+	}-*/;
+
+	public final native String getCellPhone() /*-{
+		return this.cellPhone;
+	}-*/;
+
+	public final native void setCellPhone(String cellPhone) /*-{
+		this.cellPhone = cellPhone;
 	}-*/;
 
 }

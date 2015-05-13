@@ -11,7 +11,10 @@ public interface IProfile {
 	public Widget getWidget();
 	
 	public void setData(MemberJso member);
+	
+	public MemberJso getData();
 
 	public abstract class Activity extends SIMbiosisActivity {
+		abstract void saveProfile();
 	}
 }
