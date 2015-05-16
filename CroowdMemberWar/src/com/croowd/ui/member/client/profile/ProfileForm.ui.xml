@@ -23,6 +23,11 @@
 										<g:TextBox styleName="fieldtextbox" ui:field="name" />
 									</div>
 									<div class="compositebox">
+										<div class="fieldtitle">Jenis kelamin</div>
+										<e:SexComboBox styleName="fieldtextbox"
+											ui:field="sex" />
+									</div>
+									<div class="compositebox">
 										<div class="fieldtitle">Tempat dan tanggal lahir</div>
 										<g:TextBox styleName="fieldtextbox" ui:field="pob" />
 										<g1:DateBox styleName="fieldtextbox" ui:field="dob"

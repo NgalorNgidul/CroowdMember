@@ -40,7 +40,10 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Nomer telpon</div>
-										<g:TextBox styleName="fieldtextbox" ui:field="phone" />
+										<div>
+											<g:TextBox styleName="fieldtextbox" ui:field="fixPhone" />
+											<g:TextBox styleName="fieldtextbox" ui:field="cellPhone" />
+										</div>
 									</div>
 								</td>
 							</tr>

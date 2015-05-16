@@ -15,7 +15,6 @@
 }
 
 .fullbox {
-	vertical-align: top;
 	width: 100%;
 }
 
@@ -35,6 +34,11 @@
 	color: #555555;
 	background: #ffffff;
 	padding: 10px;
+	vertical-align: middle;
+}
+
+.haswidget {
+	height: 25px;
 }
 
 .headerspacer {
@@ -119,7 +123,6 @@
 	text-align: center;
 	font: 700 12px "UbuntuRegular";
 	height: 25px;
-	display: block;
 	margin-bottom: 10px;
 	border: 0px;
 	color: #fff;
@@ -168,7 +171,6 @@
 	text-align: center;
 	font: 700 14px "UbuntuRegular";
 	height: 35px;
-	display: block;
 	margin-bottom: 10px;
 	border: 0px;
 	color: #fff;

@@ -1,11 +1,9 @@
-package com.croowd.ui.member.client.project;
+package com.croowd.ui.member.client.projectold;
 
 import com.croowd.ui.member.client.AppFactory;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.places.Project;
-import com.croowd.ui.member.client.project.IProject.Activity;
-import com.croowd.ui.member.client.project.input.IProjectInput;
-import com.croowd.ui.member.client.project.input.ProjectInputActivity;
+import com.croowd.ui.member.client.projectold.IProject.Activity;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
@@ -28,7 +26,7 @@ public class ProjectActivity extends Activity {
 
 	Project myPlace;
 	AppFactory appFactory;
-	ProjectInputActivity inputActivity;
+	// ProjectInputActivity inputActivity;
 
 	AcceptsOneWidget panel;
 
@@ -39,13 +37,13 @@ public class ProjectActivity extends Activity {
 		this.appFactory = appFactory;
 	}
 
-	ProjectInputActivity getInputActivity() {
-		if (inputActivity == null) {
-			inputActivity = new ProjectInputActivity(new Project(""),
-					appFactory);
-		}
-		return inputActivity;
-	}
+	// ProjectInputActivity getInputActivity() {
+	// if (inputActivity == null) {
+	// inputActivity = new ProjectInputActivity(new Project(""),
+	// appFactory);
+	// }
+	// return inputActivity;
+	// }
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
@@ -91,11 +89,11 @@ public class ProjectActivity extends Activity {
 
 	@Override
 	public void editProject(ProspectJso dv) {
-		IProjectInput inputForm = appFactory.getProjectInput();
-		inputForm.setActivity(getInputActivity());
-		inputForm.setData(dv);
-		inputForm.viewer();
-		panel.setWidget(inputForm.getWidget());
+		// IProjectInput inputForm = appFactory.getProjectInput();
+		// inputForm.setActivity(getInputActivity());
+		// inputForm.setData(dv);
+		// inputForm.viewer();
+		// panel.setWidget(inputForm.getWidget());
 	}
 
 }

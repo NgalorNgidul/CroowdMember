@@ -25,6 +25,14 @@ public class MemberJso extends JavaScriptObject {
 		this.name = name;
 	}-*/;
 
+	public final native int getSex() /*-{
+		return this.sex;
+	}-*/;
+
+	public final native void setSex(int sex) /*-{
+		this.sex = sex;
+	}-*/;
+
 	public final native String getMotherName() /*-{
 		return this.motherName;
 	}-*/;

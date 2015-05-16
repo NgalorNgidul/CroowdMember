@@ -12,6 +12,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.NumberLabel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ProspectViewer extends Composite implements Editor<ProspectJso> {
@@ -23,7 +24,8 @@ public class ProspectViewer extends Composite implements Editor<ProspectJso> {
 	interface ThisUiBinder extends UiBinder<Widget, ProspectViewer> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<ProspectJso, ProspectViewer> {
+	interface Driver extends
+			SimpleBeanEditorDriver<ProspectJso, ProspectViewer> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
@@ -37,9 +39,9 @@ public class ProspectViewer extends Composite implements Editor<ProspectJso> {
 	@UiField
 	Label location;
 	@UiField
-	Label strPrincipal;
+	NumberLabel<Double> principal;
 	@UiField
-	Label strTenor;
+	NumberLabel<Integer> tenor;
 	@UiField
 	Label shortDescription;
 	@UiField

@@ -1,4 +1,4 @@
-package com.croowd.ui.member.client.project;
+package com.croowd.ui.member.client.projectold;
 
 import org.simbiosis.ui.gwt.client.mvp.SIMbiosisActivity;
 

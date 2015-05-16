@@ -1,7 +1,7 @@
 package com.croowd.ui.member.client.component;
 
 import com.croowd.ui.member.client.json.ProspectJso;
-import com.croowd.ui.member.client.project.IProject.Activity;
+import com.croowd.ui.member.client.projectold.IProject.Activity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;

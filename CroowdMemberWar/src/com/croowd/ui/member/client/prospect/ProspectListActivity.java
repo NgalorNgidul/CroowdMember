@@ -101,7 +101,7 @@ public class ProspectListActivity extends Activity {
 
 		IProspectList myForm = appFactory.getProspectList();
 		ProspectJso jso = myForm.getData();
-		jso.setSessionName(getSession());
+		jso.setSession(getSession());
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 		try {
 			builder.setHeader("Content-Type", "application/json");

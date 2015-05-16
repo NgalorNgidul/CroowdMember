@@ -53,7 +53,9 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 	@UiField
 	TextBox province;
 	@UiField
-	TextBox phone;
+	TextBox fixPhone;
+	@UiField
+	TextBox cellPhone;
 	@UiField
 	PasswordTextBox password;
 	@UiField
@@ -61,6 +63,14 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 
 	public UserEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
+		//
+		name.getElement().setPropertyString("placeholder", "Nama lengkap");
+		address.getElement().setPropertyString("placeholder", "Alamat lengkap");
+		city.getElement().setPropertyString("placeholder", "Kota");
+		zipCode.getElement().setPropertyString("placeholder", "Kode pos");
+		province.getElement().setPropertyString("placeholder", "Propinsi");
+		fixPhone.getElement().setPropertyString("placeholder", "No telpon rumah");
+		cellPhone.getElement().setPropertyString("placeholder", "No telpon seluler");
 		//
 		driver.initialize(this);
 	}
@@ -106,7 +116,7 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 			result = "Kode pos harus diisi";
 		} else if (province.getText().isEmpty()) {
 			result = "Propinsi harus diisi";
-		} else if (phone.getText().isEmpty()) {
+		} else if (fixPhone.getText().isEmpty() && cellPhone.getText().isEmpty()) {
 			result = "Nomer telpon harus diisi";
 		}
 		return result;
@@ -130,9 +140,6 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 								if (response.getText().isEmpty()){
 									registerSuccess();
 								}
-								// RegistrationJso jso = JsonServerResponse
-								// .getRegistrationJso(response.getText());
-								// processResult(jso);
 							} else {
 								Window.alert("Received HTTP status code other than 200 : "
 										+ response.getStatusText());

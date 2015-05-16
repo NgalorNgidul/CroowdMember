@@ -54,12 +54,20 @@ public class RegistrationJso extends JavaScriptObject {
 		this.province = province;
 	}-*/;
 
-	public final native String getPhone() /*-{
-		return this.phone;
+	public final native String getFixPhone() /*-{
+		return this.fixPhone;
 	}-*/;
 
-	public final native void setPhone(String phone) /*-{
-		this.phone = phone;
+	public final native void setFixPhone(String fixPhone) /*-{
+		this.fixPhone = fixPhone;
+	}-*/;
+
+	public final native String getCellPhone() /*-{
+		return this.cellPhone;
+	}-*/;
+
+	public final native void setCellPhone(String cellPhone) /*-{
+		this.cellPhone = cellPhone;
 	}-*/;
 
 	public final native String getPassword() /*-{

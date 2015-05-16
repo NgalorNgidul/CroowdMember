@@ -1,5 +1,8 @@
 package com.croowd.ui.member.client.prospecteditor;
 
+import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
+import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
+
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.GWT;
@@ -11,6 +14,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -38,13 +42,13 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	TextBox location;
 	@UiField
-	TextBox strPrincipal;
+	DoubleTextBox principal;
 	@UiField
-	TextBox strTenor;
+	IntegerTextBox tenor;
 	@UiField
-	TextBox shortDescription;
+	TextArea shortDescription;
 	@UiField
-	TextBox description;
+	TextArea description;
 
 	@UiField
 	Button btnSave;

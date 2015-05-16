@@ -3,8 +3,14 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<g:VerticalPanel styleName="fullbox" height="100%"
 		width="100%">
-		<g:HTMLPanel styleName="header1">
-			<div>LIST PROSPEK ANDA</div>
+		<g:HTMLPanel styleName="header1 haswidget">
+			<div style="display:table-cell;width:200px;float:left;padding-top:5px;">LIST PROSPEK ANDA</div>
+			<div style="display:table-cell;width:100%"></div>
+			<div style="display:table-cell;width:250px;text-align:right;float:right;">
+				<i class="fa fa-filter fa-fw" />
+				<g:ListBox styleName="fieldcombobox" ui:field="filter" />
+				<g:Button styleName="fieldbutton" ui:field="btnRefresh"><i class="fa fa-refresh fa-fw" /></g:Button>
+			</div>
 		</g:HTMLPanel>
 		<g:HTMLPanel styleName="headerspacer">
 			<div></div>
@@ -16,7 +22,8 @@
 			<div></div>
 		</g:HTMLPanel>
 		<g:HorizontalPanel>
-			<g:Button styleName="fieldbigbutton" ui:field="btnNew">Buat prospek baru</g:Button>
+			<g:Button styleName="fieldbigbutton" ui:field="btnNew">Buat prospek
+				baru</g:Button>
 		</g:HorizontalPanel>
 	</g:VerticalPanel>
 </ui:UiBinder> 

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.croowd.ui.member.client.component.IdTypeComboBox;
 import com.croowd.ui.member.client.component.IdTypeDv;
+import com.croowd.ui.member.client.component.SexComboBox;
+import com.croowd.ui.member.client.component.SexDv;
 import com.croowd.ui.member.client.json.MemberJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -41,6 +43,10 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	TextBox name;
 	@UiField
+	SexComboBox sex;
+	@UiField
+	TextBox motherName;
+	@UiField
 	IdTypeComboBox idType;
 	@UiField
 	TextBox idCode;
@@ -67,15 +73,22 @@ public class ProfileForm extends Composite implements IProfile,
 		initWidget(uiBinder.createAndBindUi(this));
 		//
 		List<IdTypeDv> idTypes = new ArrayList<IdTypeDv>();
-		idTypes.add(new IdTypeDv(1,"KTP"));
-		idTypes.add(new IdTypeDv(2,"PASPOR"));
+		idTypes.add(new IdTypeDv(1, "KTP"));
+		idTypes.add(new IdTypeDv(2, "PASPOR"));
 		idType.setList(idTypes);
+		//
+		List<SexDv> sexTypes = new ArrayList<SexDv>();
+		sexTypes.add(new SexDv(1, "PRIA"));
+		sexTypes.add(new SexDv(2, "WANITA"));
+		sex.setList(sexTypes);
 		//
 		dob.setFormat(new DateBox.DefaultFormat(DateTimeFormat
 				.getFormat("dd-MM-yyyy")));
 		//
-		fixPhone.getElement().setPropertyString("placeholder", "No telpon rumah");
-		cellPhone.getElement().setPropertyString("placeholder", "No telpon seluler");
+		fixPhone.getElement().setPropertyString("placeholder",
+				"No telpon rumah");
+		cellPhone.getElement().setPropertyString("placeholder",
+				"No telpon seluler");
 		//
 		driver.initialize(this);
 	}

@@ -1,5 +1,7 @@
 package com.croowd.ui.member.client.invest;
 
+import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
+
 import com.croowd.ui.member.client.invest.IInvestList.Activity;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospectdlg.ProspectDlg;
@@ -12,7 +14,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 public class InvestEditorForm extends Composite {
@@ -30,7 +31,7 @@ public class InvestEditorForm extends Composite {
 	@UiField
 	HorizontalPanel prospectWidget;
 	@UiField
-	TextBox value;
+	DoubleTextBox value;
 
 	ProspectJso prospect = null;
 

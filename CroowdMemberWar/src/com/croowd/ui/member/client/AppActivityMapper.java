@@ -8,7 +8,7 @@ import com.croowd.ui.member.client.places.Profile;
 import com.croowd.ui.member.client.places.Project;
 import com.croowd.ui.member.client.places.ProspectList;
 import com.croowd.ui.member.client.profile.ProfileActivity;
-import com.croowd.ui.member.client.project.ProjectActivity;
+import com.croowd.ui.member.client.projectold.ProjectActivity;
 import com.croowd.ui.member.client.prospect.ProspectListActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.place.shared.Place;

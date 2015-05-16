@@ -1,6 +1,8 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:s="urn:import:org.simbiosis.ui.gwt.client.editor"
+	>
 	<g:VerticalPanel styleName="fullbox" height="100%"
 		width="100%">
 		<g:HTMLPanel styleName="header1">
@@ -24,19 +26,46 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Kebutuhan</div>
-								<g:TextBox styleName="fieldtextbox" ui:field="strPrincipal" />
+								<s:DoubleTextBox styleName="fieldtextbox" ui:field="principal" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Tenor</div>
-								<g:TextBox styleName="fieldtextbox" ui:field="strTenor" />
+								<s:IntegerTextBox styleName="fieldtextbox" ui:field="tenor" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan singkat</div>
-								<g:TextBox styleName="fieldtextbox" ui:field="shortDescription" />
+								<g:TextArea styleName="fieldtextbox" ui:field="shortDescription" characterWidth="80" visibleLines="5"/>
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan</div>
-								<g:TextBox styleName="fieldtextbox" ui:field="description" />
+								<g:TextArea styleName="fieldtextbox" ui:field="description"  characterWidth="80" visibleLines="10"/>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+		<g:HTMLPanel styleName="widgetboxspacer">
+			<div></div>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="header1">
+			<div>DATA PROMOSI</div>
+		</g:HTMLPanel>
+		<g:HTMLPanel styleName="headerspacer">
+			<div></div>
+		</g:HTMLPanel>
+		<g:HorizontalPanel styleName="widgetbox">
+			<g:HTMLPanel styleName="fullbox">
+				<table class="fullbox">
+					<tr>
+						<td class="halfbox">
+							<div class="compositebox">
+								<div class="fieldtitle">Lama promosi</div>
+								<s:IntegerTextBox styleName="fieldtextbox" ui:field="campaignPeriod" />
+							</div>
+							<div class="compositebox">
+								<div class="fieldtitle">Foto</div>
+								<g:Button styleName="fieldbutton" ui:field="uploadFoto">Upload foto</g:Button>
 							</div>
 						</td>
 					</tr>

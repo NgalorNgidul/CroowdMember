@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.NumberLabel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ProspectViewerWidget extends Composite implements
@@ -28,9 +29,9 @@ public class ProspectViewerWidget extends Composite implements
 	@UiField
 	Label location;
 	@UiField
-	Label strPrincipal;
+	NumberLabel<Double> principal;
 	@UiField
-	Label strTenor;
+	NumberLabel<Integer> tenor;
 	@UiField
 	Label shortDescription;
 	@UiField

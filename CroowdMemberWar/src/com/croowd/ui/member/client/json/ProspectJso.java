@@ -62,16 +62,6 @@ public class ProspectJso extends JavaScriptObject {
 		this.principal = principal;
 	}-*/;
 
-	public final String getStrPrincipal() {
-		return new Double(getPrincipal()).toString();
-	}
-
-	public final void setStrPrincipal(String principal) {
-		String value = principal.replace(",", "");
-		Double dValue = Double.parseDouble(value);
-		setPrincipal(dValue);
-	};
-
 	public final native int getTenor() /*-{
 		return this.tenor;
 	}-*/;
@@ -80,20 +70,8 @@ public class ProspectJso extends JavaScriptObject {
 		this.tenor = tenor;
 	}-*/;
 
-	public final String getStrTenor() {
-		return new Integer(getTenor()).toString();
-	}
-
-	public final void setStrTenor(String tenor) {
-		String value = tenor;
-		if (value.isEmpty()) {
-			value = "0";
-		}
-		setTenor(Integer.parseInt(value));
-	}
-
-	public final native void setSessionName(String sessionName) /*-{
-		this.sessionName = sessionName;
+	public final native void setSession(String session) /*-{
+		this.session = session;
 	}-*/;
 
 }
