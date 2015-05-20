@@ -3,6 +3,7 @@ package com.croowd.ui.member.client.invest;
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 
 import com.croowd.ui.member.client.invest.IInvestList.Activity;
+import com.croowd.ui.member.client.json.InvestPlanJso;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospectdlg.ProspectDlg;
 import com.google.gwt.core.client.GWT;
@@ -68,6 +69,11 @@ public class InvestEditorForm extends Composite {
 		prospectWidget.add(pvw);
 	}
 
+	public void setData(InvestPlanJso invest) {
+		value.setValue(invest.getValue());
+		setProspect(invest.getProspect());
+	}
+
 	@UiHandler("btnBack")
 	void onBtnBack(ClickEvent e) {
 		activity.onBack();
@@ -82,7 +88,7 @@ public class InvestEditorForm extends Composite {
 		return prospect;
 	}
 
-	public String getValue() {
-		return value.getText();
+	public Double getValue() {
+		return value.getValue();
 	}
 }

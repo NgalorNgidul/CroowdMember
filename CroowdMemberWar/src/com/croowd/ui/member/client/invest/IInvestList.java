@@ -11,6 +11,8 @@ public interface IInvestList {
 	public void setActivity(Activity activity);
 
 	public Widget getWidget();
+	
+	public int getFilter();
 
 	public void clearResultData();
 
@@ -18,15 +20,17 @@ public interface IInvestList {
 
 	public void noResultData();
 
-	public void editProspect(ProspectJso data);
+	public void editInvest(InvestPlanJso data);
 
 	public void backToList();
 
 	public ProspectJso getProspect();
 
-	public String getValue();
+	public Double getValue();
 
 	public abstract class Activity extends SIMbiosisActivity {
+		public abstract void refreshResult();
+		
 		public abstract void onBack();
 
 		public abstract void onSave();

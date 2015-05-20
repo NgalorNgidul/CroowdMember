@@ -20,11 +20,6 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class InvestListActivity extends Activity {
 
-	// String pattern = "dd-MM-yyyy"; /* your pattern here */
-	// DefaultDateTimeFormatInfo info = new DefaultDateTimeFormatInfo();
-	// DateTimeFormat dtf = new DateTimeFormat(pattern, info) {
-	// }; // <= trick here
-
 	InvestList myPlace;
 	AppFactory appFactory;
 
@@ -40,14 +35,14 @@ public class InvestListActivity extends Activity {
 		IInvestList myForm = appFactory.getInvestList();
 		myForm.setActivity(this);
 		//
-		loadInvest();
+		loadInvest(0);
 		//
 		panel.setWidget(myForm.getWidget());
 	}
 
-	private void loadInvest() {
+	private void loadInvest(int status) {
 		String url = "http://api.croowd.co.id/invest/" + getSession()
-				+ "/listAllPlanByOwner/";
+				+ "/listAllPlanByOwner/" + status;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -87,7 +82,7 @@ public class InvestListActivity extends Activity {
 		IInvestList myForm = appFactory.getInvestList();
 		myForm.backToList();
 		myForm.clearResultData();
-		loadInvest();
+		loadInvest(0);
 	}
 
 	@Override
@@ -102,10 +97,9 @@ public class InvestListActivity extends Activity {
 		//
 		IInvestList myForm = appFactory.getInvestList();
 		ProspectJso prospect = myForm.getProspect();
-		String value = myForm.getValue();
 		InvestPlanJso plan = JsonServerResponse.createInvestPlanJso();
 		plan.setProspectId(prospect.getId());
-		plan.setStrValue(value);
+		plan.setValue(myForm.getValue());
 		plan.setSession(getSession());
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 		try {
@@ -130,6 +124,12 @@ public class InvestListActivity extends Activity {
 			// Couldn't connect to server
 			Window.alert(e.getMessage());
 		}
+	}
+
+	@Override
+	public void refreshResult() {
+		IInvestList myForm = appFactory.getInvestList();
+		loadInvest(myForm.getFilter());
 	}
 
 }

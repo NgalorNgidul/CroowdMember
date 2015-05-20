@@ -2,6 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:s="urn:import:org.simbiosis.ui.gwt.client.editor"
+	xmlns:e="urn:import:com.croowd.ui.member.client.component"
 	>
 	<g:VerticalPanel styleName="fullbox" height="100%"
 		width="100%">
@@ -30,7 +31,7 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Tenor</div>
-								<s:IntegerTextBox styleName="fieldtextbox" ui:field="tenor" />
+								<e:TenorComboBox styleName="fieldtextbox" ui:field="tenor" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan singkat</div>
@@ -65,6 +66,7 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Foto</div>
+								<g:HTMLPanel ui:field="smallPicture"/>
 								<g:Button styleName="fieldbutton" ui:field="uploadFoto">Upload foto</g:Button>
 							</div>
 						</td>

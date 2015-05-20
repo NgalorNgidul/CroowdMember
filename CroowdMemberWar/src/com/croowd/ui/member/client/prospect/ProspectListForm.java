@@ -82,4 +82,13 @@ public class ProspectListForm extends Composite implements IProspectList {
 	public ProspectJso getData() {
 		return editorForm.getData();
 	}
+	
+	public void refreshResult(){
+		activity.refreshResult();
+	}
+	
+	@Override
+	public int getFilter() {
+		return resultList.getFilter();
+	}
 }

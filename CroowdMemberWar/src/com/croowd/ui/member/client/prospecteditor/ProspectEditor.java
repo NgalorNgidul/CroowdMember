@@ -1,8 +1,13 @@
 package com.croowd.ui.member.client.prospecteditor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
 
+import com.croowd.ui.member.client.component.TenorComboBox;
+import com.croowd.ui.member.client.component.TenorDv;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.GWT;
@@ -14,6 +19,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -44,11 +51,15 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	DoubleTextBox principal;
 	@UiField
-	IntegerTextBox tenor;
+	TenorComboBox tenor;
 	@UiField
 	TextArea shortDescription;
 	@UiField
 	TextArea description;
+	@UiField
+	IntegerTextBox campaignPeriod;
+	@UiField
+	HTMLPanel smallPicture;
 
 	@UiField
 	Button btnSave;
@@ -58,6 +69,13 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	public ProspectEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
+		List<TenorDv> tenors = new ArrayList<TenorDv>();
+		tenors.add(new TenorDv(6, "6 BULAN"));
+		tenors.add(new TenorDv(12, "1 TAHUN"));
+		tenors.add(new TenorDv(24, "2 TAHUN"));
+		tenors.add(new TenorDv(36, "3 TAHUN"));
+		tenor.setList(tenors);
+		//
 		driver.initialize(this);
 	}
 
@@ -66,7 +84,13 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	}
 
 	public void setData(ProspectJso data) {
+		smallPicture.clear();
 		driver.edit(data);
+		Image picture = new Image(
+				"http://app.croowd.co.id/resources/getProspectImage?type=small&id="
+						+ data.getId());
+		picture.setWidth("300px");
+		smallPicture.add(picture);
 	}
 
 	public ProspectJso getData() {

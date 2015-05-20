@@ -18,11 +18,6 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 public class ProspectListActivity extends Activity {
 
-	// String pattern = "dd-MM-yyyy"; /* your pattern here */
-	// DefaultDateTimeFormatInfo info = new DefaultDateTimeFormatInfo();
-	// DateTimeFormat dtf = new DateTimeFormat(pattern, info) {
-	// }; // <= trick here
-
 	ProspectList myPlace;
 	AppFactory appFactory;
 
@@ -38,14 +33,14 @@ public class ProspectListActivity extends Activity {
 		IProspectList myForm = appFactory.getProspectList();
 		myForm.setActivity(this);
 		//
-		loadProspect();
+		loadProspect(0);
 		//
 		panel.setWidget(myForm.getWidget());
 	}
 
-	private void loadProspect() {
+	private void loadProspect(int status) {
 		String url = "http://api.croowd.co.id/prospect/" + getSession()
-				+ "/listAllByOwner/";
+				+ "/listAllByOwner/" + status;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -81,17 +76,23 @@ public class ProspectListActivity extends Activity {
 		}
 	}
 
-	private void reloadResultList(){
+	private void reloadResultList() {
 		IProspectList myForm = appFactory.getProspectList();
 		myForm.backToList();
 		myForm.clearResultData();
-		loadProspect();
+		loadProspect(0);
 	}
-	
+
 	@Override
 	public void onBack() {
 		IProspectList myForm = appFactory.getProspectList();
 		myForm.backToList();
+	}
+
+	@Override
+	public void refreshResult() {
+		IProspectList myForm = appFactory.getProspectList();
+		loadProspect(myForm.getFilter());
 	}
 
 	@Override

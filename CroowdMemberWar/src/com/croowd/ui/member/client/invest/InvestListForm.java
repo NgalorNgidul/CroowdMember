@@ -46,10 +46,10 @@ public class InvestListForm extends Composite implements IInvestList {
 	}
 
 	@Override
-	public void editProspect(ProspectJso data) {
+	public void editInvest(InvestPlanJso data) {
 		appPanel.clear();
-		// editorForm.setData(data);
-		// appPanel.add(editorForm);
+		editorForm.setData(data);
+		appPanel.add(editorForm);
 	}
 
 	public void selectProspect(ProspectJso data) {
@@ -83,13 +83,22 @@ public class InvestListForm extends Composite implements IInvestList {
 		appPanel.add(editorForm);
 	}
 
+	public void refreshResult(){
+		activity.refreshResult();
+	}
+	
 	@Override
 	public ProspectJso getProspect() {
 		return editorForm.getData();
 	}
 
 	@Override
-	public String getValue() {
+	public Double getValue() {
 		return editorForm.getValue();
+	}
+
+	@Override
+	public int getFilter() {
+		return resultList.getFilter();
 	}
 }

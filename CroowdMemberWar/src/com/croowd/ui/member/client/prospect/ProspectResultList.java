@@ -1,8 +1,5 @@
 package com.croowd.ui.member.client.prospect;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -24,6 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ProspectResultList extends Composite {
 
 	ProspectListForm parentForm;
+	NumberFormat nf = NumberFormat.getFormat("#,##0.00");
 
 	private static ProspectResultListUiBinder uiBinder = GWT
 			.create(ProspectResultListUiBinder.class);
@@ -32,50 +30,33 @@ public class ProspectResultList extends Composite {
 			UiBinder<Widget, ProspectResultList> {
 	}
 
-	public class Mapper {
-		Button button;
-		ProspectJso jso;
+	public abstract class ProspectClickHandler implements ClickHandler {
+		ProspectJso prospect = null;
 
-		public Mapper(Button button, ProspectJso jso) {
-			this.button = button;
-			this.jso = jso;
+		public ProspectClickHandler(ProspectJso prospect) {
+			this.prospect = prospect;
 		}
 
-		public Button getButton() {
-			return button;
+		public ProspectJso getProspect() {
+			return prospect;
 		}
-
-		public void setButton(Button button) {
-			this.button = button;
-		}
-
-		public ProspectJso getJso() {
-			return jso;
-		}
-
-		public void setJso(ProspectJso jso) {
-			this.jso = jso;
-		}
-
 	}
-
-	List<Mapper> buttons = new ArrayList<Mapper>();
 
 	@UiField
 	VerticalPanel prospectList;
 	@UiField
 	ListBox filter;
-	@UiField
-	Button btnRefresh;
-	@UiField
-	Button btnNew;
+	//@UiField
+	//Button btnRefresh;
+	//@UiField
+	//Button btnNew;
 
 	public ProspectResultList() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
 		filter.addItem("Semua");
 		filter.addItem("Belum validasi");
-		filter.addItem("Masa promosi");
+		filter.addItem("Sudah validasi/Promosi");
 		filter.addItem("Sudah eksekusi");
 		//
 	}
@@ -86,16 +67,14 @@ public class ProspectResultList extends Composite {
 
 	public void clearData() {
 		prospectList.clear();
-		buttons.clear();
 	}
 
 	public void addData(ProspectJso data) {
-		NumberFormat nf = NumberFormat.getFormat("#,##0.00");
 		VerticalPanel vp = new VerticalPanel();
 		vp.setStyleName("fullbox");
 		HTMLPanel panel = null;
 		//
-		if (buttons.size() > 0) {
+		if (prospectList.getWidgetCount() > 0) {
 			panel = new HTMLPanel("<div></div>");
 			panel.setStyleName("itemlinespacer");
 			vp.add(panel);
@@ -111,7 +90,7 @@ public class ProspectResultList extends Composite {
 		image.setWidth("300px");
 		wrapper.add(image);
 		wrapper.add(new HTMLPanel("<div width=\"20px\"></div>"));
-		VerticalPanel contentWrapper = new VerticalPanel(); 
+		VerticalPanel contentWrapper = new VerticalPanel();
 		panel = new HTMLPanel("<b>" + data.getTitle() + "</b><br/>oleh <b>"
 				+ data.getOwnerName() + "</b><br/>Kebutuhan : Rp "
 				+ nf.format(data.getPrincipal()) + ",-, Tenor : "
@@ -121,17 +100,15 @@ public class ProspectResultList extends Composite {
 		contentWrapper.add(panel);
 		Button btnReview = new Button("Lihat detail");
 		btnReview.setStyleName("fieldbutton");
-		buttons.add(new Mapper(btnReview, data));
-		btnReview.addClickHandler(new ClickHandler() {
+		btnReview.addClickHandler(new ProspectClickHandler(data) {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				onClickHandler((Button) event.getSource());
+				parentForm.editProspect(getProspect());
 			}
 		});
 		contentWrapper.add(btnReview);
 		wrapper.add(contentWrapper);
-		//wrapper.setCellVerticalAlignment(contentWrapper, HasVerticalAlignment.ALIGN_TOP);
 		vp.add(wrapper);
 		prospectList.add(vp);
 	}
@@ -146,23 +123,18 @@ public class ProspectResultList extends Composite {
 		prospectList.add(vp);
 	}
 
-	private void onClickHandler(Button button) {
-		ProspectJso result = null;
-		int i = 0;
-		while (i < buttons.size() && result == null) {
-			if (buttons.get(i).getButton() == button) {
-				result = buttons.get(i).getJso();
-			}
-			i++;
-		}
-		if (result != null) {
-			parentForm.editProspect(result);
-		}
-	}
-
 	@UiHandler("btnNew")
 	public void onNewProspect(ClickEvent e) {
 		parentForm.newData();
+	}
+
+	@UiHandler("btnRefresh")
+	public void onRefresh(ClickEvent e) {
+		parentForm.refreshResult();
+	}
+
+	public int getFilter(){
+		return filter.getSelectedIndex();
 	}
 
 }

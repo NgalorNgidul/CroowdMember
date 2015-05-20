@@ -23,10 +23,14 @@ public interface IProspectList {
 
 	public ProspectJso getData();
 
+	public int getFilter();
+
 	public abstract class Activity extends SIMbiosisActivity {
 		public abstract void onBack();
 
 		public abstract void onSave();
+
+		public abstract void refreshResult();
 
 	}
 }

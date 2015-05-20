@@ -39,14 +39,4 @@ public class InvestPlanJso extends JavaScriptObject {
 		this.value = value;
 	}-*/;
 
-	public final String getStrValue() {
-		return new Double(getValue()).toString();
-	}
-
-	public final void setStrValue(String strValue) {
-		String value = strValue.replace(",", "");
-		Double dValue = Double.parseDouble(value);
-		setValue(dValue);
-	};
-
 }

@@ -70,6 +70,14 @@ public class ProspectJso extends JavaScriptObject {
 		this.tenor = tenor;
 	}-*/;
 
+	public final native int getCampaignPeriod() /*-{
+		return this.campaignPeriod;
+	}-*/;
+
+	public final native void setCampaignPeriod(int campaignPeriod) /*-{
+		this.campaignPeriod = campaignPeriod;
+	}-*/;
+
 	public final native void setSession(String session) /*-{
 		this.session = session;
 	}-*/;
