@@ -100,6 +100,51 @@
 				<g:HTMLPanel styleName="widgetboxspacer">
 					<div></div>
 				</g:HTMLPanel>
+				<g:HTMLPanel styleName="header1">
+					<div>UNTUK PENCARI DANA</div>
+				</g:HTMLPanel>
+				<g:HTMLPanel styleName="headerspacer">
+					<div></div>
+				</g:HTMLPanel>
+				<g:HorizontalPanel styleName="widgetbox">
+					<g:HTMLPanel styleName="fullbox">
+						<table class="fullbox">
+							<tr>
+								<td class="halfbox">
+									<div class="compositebox">
+										<div class="fieldtitle">Email</div>
+										<g:Label styleName="fieldlabel" ui:field="email" />
+									</div>
+									<div class="compositebox">
+										<div class="fieldtitle">Jalan</div>
+										<g:TextBox styleName="fieldtextbox" ui:field="address" />
+									</div>
+									<div class="compositebox">
+										<div class="fieldtitle">Kota, kode pos</div>
+										<div>
+											<g:TextBox styleName="fieldtextbox" ui:field="city" />
+											<g:TextBox styleName="fieldtextbox" ui:field="zipCode" />
+										</div>
+									</div>
+									<div class="compositebox">
+										<div class="fieldtitle">Propinsi</div>
+										<g:TextBox styleName="fieldtextbox" ui:field="province" />
+									</div>
+									<div class="compositebox">
+										<div class="fieldtitle">Nomer telpon</div>
+										<div>
+											<g:TextBox styleName="fieldtextbox" ui:field="fixPhone" />
+											<g:TextBox styleName="fieldtextbox" ui:field="cellPhone" />
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</g:HTMLPanel>
+				</g:HorizontalPanel>
+				<g:HTMLPanel styleName="widgetboxspacer">
+					<div></div>
+				</g:HTMLPanel>
 				<g:HorizontalPanel>
 					<g:Button styleName="fieldbigbutton" ui:field="btnSave">Simpan</g:Button>
 				</g:HorizontalPanel>
