@@ -43,6 +43,10 @@
 										<div class="fieldtitle">Nama ibu kandung</div>
 										<g:TextBox styleName="fieldtextbox" ui:field="motherName" />
 									</div>
+									<div class="compositebox">
+										<div class="fieldtitle">NPWP</div>
+										<g:TextBox styleName="fieldtextbox" ui:field="taxcode" />
+									</div>
 								</td>
 							</tr>
 						</table>
