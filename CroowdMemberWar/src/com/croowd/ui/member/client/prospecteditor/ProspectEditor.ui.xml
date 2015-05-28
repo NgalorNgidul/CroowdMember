@@ -34,6 +34,10 @@
 								<e:TenorComboBox styleName="fieldtextbox" ui:field="tenor" />
 							</div>
 							<div class="compositebox">
+								<div class="fieldtitle">Kategori</div>
+ 								<e:CategoryComboBox styleName="fieldtextbox" ui:field="category" />
+							</div>
+							<div class="compositebox">
 								<div class="fieldtitle">Keterangan singkat</div>
 								<g:TextArea styleName="fieldtextbox" ui:field="shortDescription" characterWidth="80" visibleLines="5"/>
 							</div>

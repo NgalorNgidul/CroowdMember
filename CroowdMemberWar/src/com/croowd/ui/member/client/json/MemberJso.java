@@ -137,4 +137,84 @@ public class MemberJso extends JavaScriptObject {
 		this.cellPhone = cellPhone;
 	}-*/;
 
+	public final native int getMainIncomeType() /*-{
+		return this.mainIncomeType;
+	}-*/;
+
+	public final native void setMainIncomeType(int mainIncomeType) /*-{
+		this.mainIncomeType = mainIncomeType;
+	}-*/;
+
+	public final native double getMainIncome() /*-{
+		return this.mainIncome;
+	}-*/;
+
+	public final native void setMainIncome(double mainIncome) /*-{
+		this.mainIncome = mainIncome;
+	}-*/;
+
+	public final native int getSideIncomeType() /*-{
+		return this.sideIncomeType;
+	}-*/;
+
+	public final native void setSideIncomeType(int sideIncomeType) /*-{
+		this.sideIncomeType = sideIncomeType;
+	}-*/;
+
+	public final native double getSideIncome() /*-{
+		return this.sideIncome;
+	}-*/;
+
+	public final native void setSideIncome(double sideIncome) /*-{
+		this.sideIncome = sideIncome;
+	}-*/;
+
+	public final native int getHome() /*-{
+		return this.home;
+	}-*/;
+
+	public final native void setHome(int home) /*-{
+		this.home = home;
+	}-*/;
+
+	public final native int getHomeStayDur() /*-{
+		return this.homeStayDur;
+	}-*/;
+
+	public final native void setHomeStayDur(int homeStayDur) /*-{
+		this.homeStayDur = homeStayDur;
+	}-*/;
+
+	public final native int getVehicle() /*-{
+		return this.vehicle;
+	}-*/;
+
+	public final native void setVehicle(int vehicle) /*-{
+		this.vehicle = vehicle;
+	}-*/;
+
+	public final native int getVehicleProduction() /*-{
+		return this.vehicleProduction;
+	}-*/;
+
+	public final native void setVehicleProduction(int vehicleProduction) /*-{
+		this.vehicleProduction = vehicleProduction;
+	}-*/;
+
+	public final native double getExpense() /*-{
+		return this.expense;
+	}-*/;
+
+	public final native void setExpense(double expense) /*-{
+		this.expense = expense;
+	}-*/;
+
+	public final native double getOtherExpense() /*-{
+		return this.otherExpense;
+	}-*/;
+
+	public final native void setOtherExpense(double otherExpense) /*-{
+		this.otherExpense = otherExpense;
+	}-*/;
+
 }

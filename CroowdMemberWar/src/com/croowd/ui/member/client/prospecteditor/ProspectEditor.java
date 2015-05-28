@@ -6,6 +6,8 @@ import java.util.List;
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
 
+import com.croowd.ui.member.client.component.CategoryComboBox;
+import com.croowd.ui.member.client.component.CategoryDv;
 import com.croowd.ui.member.client.component.TenorComboBox;
 import com.croowd.ui.member.client.component.TenorDv;
 import com.croowd.ui.member.client.json.ProspectJso;
@@ -51,6 +53,8 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	DoubleTextBox principal;
 	@UiField
+	CategoryComboBox category;
+	@UiField
 	TenorComboBox tenor;
 	@UiField
 	TextArea shortDescription;
@@ -74,7 +78,17 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		tenors.add(new TenorDv(12, "1 TAHUN"));
 		tenors.add(new TenorDv(24, "2 TAHUN"));
 		tenors.add(new TenorDv(36, "3 TAHUN"));
+		tenors.add(new TenorDv(48, "4 TAHUN"));
 		tenor.setList(tenors);
+		//
+		List<CategoryDv> categories = new ArrayList<CategoryDv>();
+		categories.add(new CategoryDv(1,"Kendaraan"));
+		categories.add(new CategoryDv(2,"Rumah baru"));
+		categories.add(new CategoryDv(3,"Renovasi"));
+		categories.add(new CategoryDv(4,"Biaya sekolah"));
+		categories.add(new CategoryDv(5,"Biaya pengobatan"));
+		categories.add(new CategoryDv(6,"Bayar kartu kredit"));
+		category.setList(categories);
 		//
 		driver.initialize(this);
 	}

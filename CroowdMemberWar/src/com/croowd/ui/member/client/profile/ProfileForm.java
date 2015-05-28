@@ -3,8 +3,12 @@ package com.croowd.ui.member.client.profile;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
+
 import com.croowd.ui.member.client.component.IdTypeComboBox;
 import com.croowd.ui.member.client.component.IdTypeDv;
+import com.croowd.ui.member.client.component.IntegerTypeComboBox;
+import com.croowd.ui.member.client.component.IntegerTypeDv;
 import com.croowd.ui.member.client.component.SexComboBox;
 import com.croowd.ui.member.client.component.SexDv;
 import com.croowd.ui.member.client.json.MemberJso;
@@ -68,6 +72,22 @@ public class ProfileForm extends Composite implements IProfile,
 	TextBox fixPhone;
 	@UiField
 	TextBox cellPhone;
+	@UiField
+	IntegerTypeComboBox sideIncomeType;
+	@UiField
+	IntegerTypeComboBox mainIncomeType;
+	@UiField
+	DoubleTextBox mainIncome;
+	@UiField
+	DoubleTextBox sideIncome;
+	@UiField
+	DoubleTextBox expense;
+	@UiField
+	DoubleTextBox otherExpense;
+	@UiField
+	IntegerTypeComboBox home;
+	@UiField
+	IntegerTypeComboBox vehicle;
 
 	public ProfileForm() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -81,6 +101,30 @@ public class ProfileForm extends Composite implements IProfile,
 		sexTypes.add(new SexDv(1, "PRIA"));
 		sexTypes.add(new SexDv(2, "WANITA"));
 		sex.setList(sexTypes);
+		//
+		List<IntegerTypeDv> incomeTypes = new ArrayList<IntegerTypeDv>();
+		incomeTypes.add(new IntegerTypeDv(1, "PNS"));
+		incomeTypes.add(new IntegerTypeDv(2, "Wirausaha"));
+		incomeTypes.add(new IntegerTypeDv(3, "Polisi/TNI"));
+		incomeTypes.add(new IntegerTypeDv(4, "Sektor informal"));
+		mainIncomeType.setList(incomeTypes);
+		//
+		incomeTypes = new ArrayList<IntegerTypeDv>();
+		incomeTypes.add(new IntegerTypeDv(1,
+				"Bekerja paruh waktu di tempat lain"));
+		incomeTypes.add(new IntegerTypeDv(2, "Wirausaha"));
+		incomeTypes.add(new IntegerTypeDv(3, "Investasi"));
+		sideIncomeType.setList(incomeTypes);
+		//
+		List<IntegerTypeDv> homes = new ArrayList<IntegerTypeDv>();
+		homes.add(new IntegerTypeDv(1, "Rumah sendiri"));
+		homes.add(new IntegerTypeDv(2, "Kontrak"));
+		home.setList(homes);
+		//
+		List<IntegerTypeDv> vehicles = new ArrayList<IntegerTypeDv>();
+		vehicles.add(new IntegerTypeDv(1, "Motor"));
+		vehicles.add(new IntegerTypeDv(2, "Mobil"));
+		vehicle.setList(vehicles);
 		//
 		dob.setFormat(new DateBox.DefaultFormat(DateTimeFormat
 				.getFormat("dd-MM-yyyy")));
