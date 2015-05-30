@@ -26,7 +26,7 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Jenis kelamin</div>
-										<e:SexComboBox styleName="fieldtextbox"
+										<e:IntegerTypeComboBox styleName="fieldtextbox"
 											ui:field="sex" />
 									</div>
 									<div class="compositebox">
@@ -37,7 +37,7 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Identitas</div>
-										<e:IdTypeComboBox styleName="fieldtextbox"
+										<e:IntegerTypeComboBox styleName="fieldtextbox"
 											ui:field="idType" />
 										<g:TextBox styleName="fieldtextbox" ui:field="idCode" />
 									</div>
@@ -80,7 +80,7 @@
 										<div class="fieldtitle">Kota, kode pos</div>
 										<div>
 											<g:TextBox styleName="fieldtextbox" ui:field="city" />
-											<g:TextBox styleName="fieldtextbox" ui:field="zipCode" />
+											<s:IntegerTextBox styleName="fieldtextbox" ui:field="zipCode" maxLength="5" visibleLength="5"/>
 										</div>
 									</div>
 									<div class="compositebox">

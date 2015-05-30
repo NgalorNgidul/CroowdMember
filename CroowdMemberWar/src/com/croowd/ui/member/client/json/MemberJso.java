@@ -105,11 +105,19 @@ public class MemberJso extends JavaScriptObject {
 		this.city = city;
 	}-*/;
 
-	public final native String getZipCode() /*-{
+	public final Integer getZipCode() {
+		return Integer.parseInt(getNativeZipCode());
+	}
+
+	public final void setZipCode(Integer zipCode) {
+		setNativeZipCode(zipCode.toString());
+	}
+
+	public final native String getNativeZipCode() /*-{
 		return this.zipCode;
 	}-*/;
 
-	public final native void setZipCode(String zipCode) /*-{
+	public final native void setNativeZipCode(String zipCode) /*-{
 		this.zipCode = zipCode;
 	}-*/;
 

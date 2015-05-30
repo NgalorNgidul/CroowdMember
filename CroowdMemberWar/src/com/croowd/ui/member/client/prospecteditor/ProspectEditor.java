@@ -5,11 +5,10 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
+import org.simbiosis.ui.gwt.client.editor.StringListComboBox;
 
-import com.croowd.ui.member.client.component.CategoryComboBox;
-import com.croowd.ui.member.client.component.CategoryDv;
-import com.croowd.ui.member.client.component.TenorComboBox;
-import com.croowd.ui.member.client.component.TenorDv;
+import com.croowd.ui.member.client.component.IntegerTypeComboBox;
+import com.croowd.ui.member.client.component.IntegerTypeDv;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.GWT;
@@ -53,9 +52,9 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	DoubleTextBox principal;
 	@UiField
-	CategoryComboBox category;
+	StringListComboBox category;
 	@UiField
-	TenorComboBox tenor;
+	IntegerTypeComboBox tenor;
 	@UiField
 	TextArea shortDescription;
 	@UiField
@@ -73,21 +72,21 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	public ProspectEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
-		List<TenorDv> tenors = new ArrayList<TenorDv>();
-		tenors.add(new TenorDv(6, "6 BULAN"));
-		tenors.add(new TenorDv(12, "1 TAHUN"));
-		tenors.add(new TenorDv(24, "2 TAHUN"));
-		tenors.add(new TenorDv(36, "3 TAHUN"));
-		tenors.add(new TenorDv(48, "4 TAHUN"));
+		List<IntegerTypeDv> tenors = new ArrayList<IntegerTypeDv>();
+		tenors.add(new IntegerTypeDv(6, "6 BULAN"));
+		tenors.add(new IntegerTypeDv(12, "1 TAHUN"));
+		tenors.add(new IntegerTypeDv(24, "2 TAHUN"));
+		tenors.add(new IntegerTypeDv(36, "3 TAHUN"));
+		tenors.add(new IntegerTypeDv(48, "4 TAHUN"));
 		tenor.setList(tenors);
 		//
-		List<CategoryDv> categories = new ArrayList<CategoryDv>();
-		categories.add(new CategoryDv(1,"Kendaraan"));
-		categories.add(new CategoryDv(2,"Rumah baru"));
-		categories.add(new CategoryDv(3,"Renovasi"));
-		categories.add(new CategoryDv(4,"Biaya sekolah"));
-		categories.add(new CategoryDv(5,"Biaya pengobatan"));
-		categories.add(new CategoryDv(6,"Bayar kartu kredit"));
+		List<String> categories = new ArrayList<String>();
+		categories.add("Kendaraan");
+		categories.add("Rumah baru");
+		categories.add("Renovasi");
+		categories.add("Biaya sekolah");
+		categories.add("Biaya pengobatan");
+		categories.add("Bayar kartu kredit");
 		category.setList(categories);
 		//
 		driver.initialize(this);

@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
+import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
 
-import com.croowd.ui.member.client.component.IdTypeComboBox;
-import com.croowd.ui.member.client.component.IdTypeDv;
 import com.croowd.ui.member.client.component.IntegerTypeComboBox;
 import com.croowd.ui.member.client.component.IntegerTypeDv;
-import com.croowd.ui.member.client.component.SexComboBox;
-import com.croowd.ui.member.client.component.SexDv;
 import com.croowd.ui.member.client.json.MemberJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -47,11 +44,11 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	TextBox name;
 	@UiField
-	SexComboBox sex;
+	IntegerTypeComboBox sex;
 	@UiField
 	TextBox motherName;
 	@UiField
-	IdTypeComboBox idType;
+	IntegerTypeComboBox idType;
 	@UiField
 	TextBox idCode;
 	@UiField
@@ -65,7 +62,7 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	TextBox city;
 	@UiField
-	TextBox zipCode;
+	IntegerTextBox zipCode;
 	@UiField
 	TextBox province;
 	@UiField
@@ -92,14 +89,14 @@ public class ProfileForm extends Composite implements IProfile,
 	public ProfileForm() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
-		List<IdTypeDv> idTypes = new ArrayList<IdTypeDv>();
-		idTypes.add(new IdTypeDv(1, "KTP"));
-		idTypes.add(new IdTypeDv(2, "PASPOR"));
+		List<IntegerTypeDv> idTypes = new ArrayList<IntegerTypeDv>();
+		idTypes.add(new IntegerTypeDv(1, "KTP"));
+		idTypes.add(new IntegerTypeDv(2, "PASPOR"));
 		idType.setList(idTypes);
 		//
-		List<SexDv> sexTypes = new ArrayList<SexDv>();
-		sexTypes.add(new SexDv(1, "PRIA"));
-		sexTypes.add(new SexDv(2, "WANITA"));
+		List<IntegerTypeDv> sexTypes = new ArrayList<IntegerTypeDv>();
+		sexTypes.add(new IntegerTypeDv(1, "PRIA"));
+		sexTypes.add(new IntegerTypeDv(2, "WANITA"));
 		sex.setList(sexTypes);
 		//
 		List<IntegerTypeDv> incomeTypes = new ArrayList<IntegerTypeDv>();

@@ -31,11 +31,11 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Tenor</div>
-								<e:TenorComboBox styleName="fieldtextbox" ui:field="tenor" />
+								<e:IntegerTypeComboBox styleName="fieldtextbox" ui:field="tenor" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Kategori</div>
- 								<e:CategoryComboBox styleName="fieldtextbox" ui:field="category" />
+ 								<s:StringListComboBox styleName="fieldtextbox" ui:field="category" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan singkat</div>
