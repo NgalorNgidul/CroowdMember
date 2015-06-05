@@ -6,6 +6,7 @@ import java.util.List;
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
 
+import com.croowd.ui.member.client.component.DateSelectorBox;
 import com.croowd.ui.member.client.component.IntegerTypeComboBox;
 import com.croowd.ui.member.client.component.IntegerTypeDv;
 import com.croowd.ui.member.client.json.MemberJso;
@@ -13,7 +14,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -22,7 +22,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.datepicker.client.DateBox;
 
 public class ProfileForm extends Composite implements IProfile,
 		Editor<MemberJso> {
@@ -50,11 +49,15 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	IntegerTypeComboBox idType;
 	@UiField
-	TextBox idCode;
+	IntegerTextBox idCode;
 	@UiField
 	TextBox pob;
 	@UiField
-	DateBox dob;
+	DateSelectorBox dob;
+	@UiField
+	IntegerTextBox taxNr;
+	@UiField
+	IntegerTypeComboBox education;
 	@UiField
 	Label email;
 	@UiField
@@ -99,6 +102,15 @@ public class ProfileForm extends Composite implements IProfile,
 		sexTypes.add(new IntegerTypeDv(2, "WANITA"));
 		sex.setList(sexTypes);
 		//
+		List<IntegerTypeDv> educations = new ArrayList<IntegerTypeDv>();
+		educations.add(new IntegerTypeDv(1, "SD sederajad"));
+		educations.add(new IntegerTypeDv(2, "SMP sederajad"));
+		educations.add(new IntegerTypeDv(3, "SMA sederajad"));
+		educations.add(new IntegerTypeDv(4, "S1"));
+		educations.add(new IntegerTypeDv(5, "S2"));
+		educations.add(new IntegerTypeDv(6, "S3"));
+		education.setList(educations);
+		//
 		List<IntegerTypeDv> incomeTypes = new ArrayList<IntegerTypeDv>();
 		incomeTypes.add(new IntegerTypeDv(1, "PNS"));
 		incomeTypes.add(new IntegerTypeDv(2, "Wirausaha"));
@@ -122,9 +134,6 @@ public class ProfileForm extends Composite implements IProfile,
 		vehicles.add(new IntegerTypeDv(1, "Motor"));
 		vehicles.add(new IntegerTypeDv(2, "Mobil"));
 		vehicle.setList(vehicles);
-		//
-		dob.setFormat(new DateBox.DefaultFormat(DateTimeFormat
-				.getFormat("dd-MM-yyyy")));
 		//
 		fixPhone.getElement().setPropertyString("placeholder",
 				"No telpon rumah");

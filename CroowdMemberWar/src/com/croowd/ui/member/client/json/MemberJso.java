@@ -6,6 +6,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsDate;
 
 public class MemberJso extends JavaScriptObject {
+
 	protected MemberJso() {
 	}
 
@@ -73,11 +74,19 @@ public class MemberJso extends JavaScriptObject {
 		this.idType = idType;
 	}-*/;
 
-	public final native String getIdCode() /*-{
+	public final Integer getIdCode() {
+		return Integer.parseInt(getNativeIdCode());
+	}
+
+	public final void setIdCode(Integer idCode) {
+		setNativeIdCode(idCode.toString());
+	}
+
+	public final native String getNativeIdCode() /*-{
 		return this.idCode;
 	}-*/;
 
-	public final native void setIdCode(String idCode) /*-{
+	public final native void setNativeIdCode(String idCode) /*-{
 		this.idCode = idCode;
 	}-*/;
 
@@ -223,6 +232,30 @@ public class MemberJso extends JavaScriptObject {
 
 	public final native void setOtherExpense(double otherExpense) /*-{
 		this.otherExpense = otherExpense;
+	}-*/;
+
+	public final int getTaxNr() {
+		return Integer.parseInt(getNativeTaxNr());
+	}
+
+	public final void setTaxNr(int taxNr) {
+		setNativeTaxNr(String.valueOf(taxNr));
+	}
+
+	public final native String getNativeTaxNr() /*-{
+		return this.taxNr;
+	}-*/;
+
+	public final native void setNativeTaxNr(String taxNr) /*-{
+		this.taxNr = taxNr;
+	}-*/;
+
+	public final native int getEducation() /*-{
+		return this.education;
+	}-*/;
+
+	public final native void setEducation(int education) /*-{
+		this.education = education;
 	}-*/;
 
 }
