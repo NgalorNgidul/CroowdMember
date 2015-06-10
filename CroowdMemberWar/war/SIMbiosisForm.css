@@ -63,12 +63,12 @@
 
 .compositetablebox {
 	padding-bottom: 8px;
-	display : table;
+	display: table;
 }
 
 .compositecellbox {
 	padding-right: 10px;
-	display : table-cell;
+	display: table-cell;
 }
 
 .fieldspacer {
@@ -114,6 +114,17 @@
 	border: 1px solid #b9b9b9;
 }
 
+.fieldtextbox:hover {
+	border: 1px solid #b9b9b9;
+}
+
+.fieldtextbox:focus {
+	-moz-box-shadow: 0 0 5px #51cbee;
+	-webkit-box-shadow: 0 0 5px #51cbee;
+	box-shadow: 0 0 5px #51cbee;
+	border: 1px solid #51cbee;
+}
+
 .fieldcombobox {
 	height: 25px;
 	font: 12px "UbuntuRegular";
@@ -127,6 +138,13 @@
 
 .fieldcombobox:hover {
 	border: 1px solid #b9b9b9;
+}
+
+.fieldcombobox:focus {
+	-moz-box-shadow: 0 0 5px #51cbee;
+	-webkit-box-shadow: 0 0 5px #51cbee;
+	box-shadow: 0 0 5px #51cbee;
+	border: 1px solid #51cbee;
 }
 
 .fieldbutton {
