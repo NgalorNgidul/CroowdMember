@@ -1,11 +1,11 @@
 package com.croowd.ui.member.client.prospect;
 
 import com.croowd.ui.member.client.AppFactory;
+import com.croowd.ui.member.client.json.JsonServerResponse;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.places.ProspectList;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -31,7 +31,7 @@ public class ProspectListActivity extends Activity {
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		IProspectList myForm = appFactory.getProspectList();
-		myForm.setActivity(this);
+		myForm.setActivity(this, appFactory.getStatus());
 		//
 		loadProspect(0);
 		//
@@ -39,8 +39,8 @@ public class ProspectListActivity extends Activity {
 	}
 
 	private void loadProspect(int status) {
-		String url = "http://api.croowd.co.id/prospect/" + getSession()
-				+ "/listAllByOwner/" + status;
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/prospect/" + getSession() + "/listAllByOwner/" + status;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -53,9 +53,8 @@ public class ProspectListActivity extends Activity {
 						Response response) {
 					if (200 == response.getStatusCode()) {
 						IProspectList myForm = appFactory.getProspectList();
-						JsArray<ProspectJso> projects = JsonUtils
-								.<JsArray<ProspectJso>> safeEval(response
-										.getText());
+						JsArray<ProspectJso> projects = JsonServerResponse
+								.listProspectJso(response.getText());
 						myForm.clearResultData();
 						if (projects.length() > 0) {
 							for (int i = 0; i < projects.length(); i++) {
@@ -97,8 +96,8 @@ public class ProspectListActivity extends Activity {
 
 	@Override
 	public void onSave() {
-		String url = "http://api.croowd.co.id/prospect/" + getSession()
-				+ "/save/";
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/prospect/" + getSession() + "/save/";
 
 		IProspectList myForm = appFactory.getProspectList();
 		ProspectJso jso = myForm.getData();

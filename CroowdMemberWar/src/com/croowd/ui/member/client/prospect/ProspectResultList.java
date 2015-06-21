@@ -1,5 +1,7 @@
 package com.croowd.ui.member.client.prospect;
 
+import org.simbiosis.ui.gwt.client.SIMbiosisStatus;
+
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -21,6 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ProspectResultList extends Composite {
 
 	ProspectListForm parentForm;
+	SIMbiosisStatus status;
 	NumberFormat nf = NumberFormat.getFormat("#,##0.00");
 
 	private static ProspectResultListUiBinder uiBinder = GWT
@@ -46,10 +49,6 @@ public class ProspectResultList extends Composite {
 	VerticalPanel prospectList;
 	@UiField
 	ListBox filter;
-	//@UiField
-	//Button btnRefresh;
-	//@UiField
-	//Button btnNew;
 
 	public ProspectResultList() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -61,8 +60,9 @@ public class ProspectResultList extends Composite {
 		//
 	}
 
-	public void setParent(ProspectListForm parentForm) {
+	public void setParent(ProspectListForm parentForm, SIMbiosisStatus status) {
 		this.parentForm = parentForm;
+		this.status = status;
 	}
 
 	public void clearData() {
@@ -84,16 +84,15 @@ public class ProspectResultList extends Composite {
 		wrapper.setSpacing(10);
 		wrapper.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 
-		Image image = new Image(
-				"http://app.croowd.co.id/resources/getProspectImage?type=small&id="
-						+ data.getId());
+		Image image = new Image("http://" + status.getSimbiosisApi()
+				+ "/resources/getProspectImage?type=small&id=" + data.getId());
 		image.setWidth("300px");
 		wrapper.add(image);
 		wrapper.add(new HTMLPanel("<div width=\"20px\"></div>"));
 		VerticalPanel contentWrapper = new VerticalPanel();
 		panel = new HTMLPanel("<b>" + data.getTitle() + "</b><br/>oleh <b>"
 				+ data.getOwnerName() + "</b><br/>Kebutuhan : Rp "
-				+ nf.format(data.getPrincipal()) + ",-, Tenor : "
+				+ nf.format(data.getPrincipal()) + ", Tenor : "
 				+ data.getTenor() + " bulan<br/>" + data.getDescription()
 				+ "<br/><br/>");
 		panel.setStyleName("itemline");
@@ -133,7 +132,7 @@ public class ProspectResultList extends Composite {
 		parentForm.refreshResult();
 	}
 
-	public int getFilter(){
+	public int getFilter() {
 		return filter.getSelectedIndex();
 	}
 

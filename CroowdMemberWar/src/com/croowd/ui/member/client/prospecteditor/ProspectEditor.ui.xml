@@ -31,19 +31,19 @@
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Tenor</div>
-								<e:IntegerTypeComboBox styleName="fieldtextbox" ui:field="tenor" />
+								<e:IntegerTypeComboBox styleName="fieldcombobox" ui:field="tenor" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Kategori</div>
- 								<s:StringListComboBox styleName="fieldtextbox" ui:field="category" />
+ 								<s:StringListComboBox styleName="fieldcombobox" ui:field="category" />
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan singkat</div>
-								<g:TextArea styleName="fieldtextbox" ui:field="shortDescription" characterWidth="80" visibleLines="5"/>
+								<g:TextArea styleName="fieldareabox" ui:field="shortDescription" characterWidth="80" visibleLines="5"/>
 							</div>
 							<div class="compositebox">
 								<div class="fieldtitle">Keterangan</div>
-								<g:TextArea styleName="fieldtextbox" ui:field="description"  characterWidth="80" visibleLines="10"/>
+								<g:TextArea styleName="fieldareabox" ui:field="description"  characterWidth="80" visibleLines="10"/>
 							</div>
 						</td>
 					</tr>
@@ -71,7 +71,7 @@
 							<div class="compositebox">
 								<div class="fieldtitle">Foto</div>
 								<g:HTMLPanel ui:field="smallPicture"/>
-								<g:Button styleName="fieldbutton" ui:field="uploadFoto">Upload foto</g:Button>
+								<g:Button styleName="fieldbutton" ui:field="btnUploadFoto">Upload foto</g:Button>
 							</div>
 						</td>
 					</tr>

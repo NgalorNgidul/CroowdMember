@@ -6,8 +6,22 @@ public class ProspectJso extends JavaScriptObject {
 	protected ProspectJso() {
 	}
 
-	public final native Long getId() /*-{
+	public final Long getId() {
+		long lValue = getNativeId();
+		return lValue;
+	}
+
+	public final void setId(Long id){
+		int iValue = id.intValue();
+		setNativeId(iValue);
+	}
+	
+	public final native int getNativeId() /*-{
 		return this.id;
+	}-*/;
+
+	public final native void setNativeId(int id) /*-{
+		this.id = id;
 	}-*/;
 
 	public final native String getTitle() /*-{

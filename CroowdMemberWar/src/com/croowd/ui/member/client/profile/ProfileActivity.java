@@ -39,8 +39,8 @@ public class ProfileActivity extends Activity {
 	}
 
 	private void loadMember() {
-		String url = "http://api.croowd.co.id/member/getBySession/"
-				+ getSession();
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/member/getBySession/" + getSession();
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -70,7 +70,8 @@ public class ProfileActivity extends Activity {
 
 	@Override
 	void saveProfile() {
-		String url = "http://api.croowd.co.id/member/save";
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/member/save";
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 		try {

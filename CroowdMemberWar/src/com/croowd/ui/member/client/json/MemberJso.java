@@ -51,6 +51,9 @@ public class MemberJso extends JavaScriptObject {
 	}-*/;
 
 	public final Date getDob() {
+		if (getNativeDob() == null) {
+			return new Date();
+		}
 		return new Date((long) JsDate.parse(getNativeDob()));
 	}
 
@@ -75,6 +78,9 @@ public class MemberJso extends JavaScriptObject {
 	}-*/;
 
 	public final Integer getIdCode() {
+		if (getNativeIdCode() == null) {
+			return 0;
+		}
 		return Integer.parseInt(getNativeIdCode());
 	}
 
@@ -115,6 +121,9 @@ public class MemberJso extends JavaScriptObject {
 	}-*/;
 
 	public final Integer getZipCode() {
+		if (getNativeZipCode() == null) {
+			return 0;
+		}
 		return Integer.parseInt(getNativeZipCode());
 	}
 
@@ -235,6 +244,9 @@ public class MemberJso extends JavaScriptObject {
 	}-*/;
 
 	public final int getTaxNr() {
+		if (getNativeTaxNr() == null) {
+			return 0;
+		}
 		return Integer.parseInt(getNativeTaxNr());
 	}
 

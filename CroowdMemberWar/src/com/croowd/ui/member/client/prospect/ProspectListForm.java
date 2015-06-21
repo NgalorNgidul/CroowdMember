@@ -1,5 +1,7 @@
 package com.croowd.ui.member.client.prospect;
 
+import org.simbiosis.ui.gwt.client.SIMbiosisStatus;
+
 import com.croowd.ui.member.client.json.JsonServerResponse;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospecteditor.ProspectEditor;
@@ -13,6 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class ProspectListForm extends Composite implements IProspectList {
 
 	Activity activity;
+	SIMbiosisStatus status;
 
 	private static ThisUiBinder uiBinder = GWT.create(ThisUiBinder.class);
 
@@ -28,15 +31,16 @@ public class ProspectListForm extends Composite implements IProspectList {
 	public ProspectListForm() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
-		resultList.setParent(this);
-		appPanel.add(resultList);
 	}
 
 	@Override
-	public void setActivity(Activity activity) {
+	public void setActivity(Activity activity, SIMbiosisStatus status) {
 		this.activity = activity;
+		this.status = status;
 		//
 		editorForm.setActivity(activity);
+		resultList.setParent(this, status);
+		appPanel.add(resultList);
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class ProspectListForm extends Composite implements IProspectList {
 	@Override
 	public void editProspect(ProspectJso data) {
 		appPanel.clear();
-		editorForm.setData(data);
+		editorForm.setData(status.getSimbiosisApi(), data);
 		appPanel.add(editorForm);
 	}
 
@@ -74,7 +78,8 @@ public class ProspectListForm extends Composite implements IProspectList {
 
 	public void newData() {
 		appPanel.clear();
-		editorForm.setData(JsonServerResponse.createProspectJso());
+		editorForm.setData(status.getSimbiosisApi(),
+				JsonServerResponse.createProspectJso());
 		appPanel.add(editorForm);
 	}
 
@@ -82,11 +87,11 @@ public class ProspectListForm extends Composite implements IProspectList {
 	public ProspectJso getData() {
 		return editorForm.getData();
 	}
-	
-	public void refreshResult(){
+
+	public void refreshResult() {
 		activity.refreshResult();
 	}
-	
+
 	@Override
 	public int getFilter() {
 		return resultList.getFilter();

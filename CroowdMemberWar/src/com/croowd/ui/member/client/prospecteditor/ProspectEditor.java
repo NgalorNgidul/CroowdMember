@@ -11,6 +11,8 @@ import com.croowd.ui.member.client.component.IntegerTypeComboBox;
 import com.croowd.ui.member.client.component.IntegerTypeDv;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
+import com.croowd.ui.member.client.uploaddlg.UploadImageDlg;
+import com.croowd.ui.member.client.uploaddlg.UploadImageDlgHandler;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -63,11 +65,13 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	IntegerTextBox campaignPeriod;
 	@UiField
 	HTMLPanel smallPicture;
+	@UiField
+	Button btnUploadFoto;
 
-	@UiField
-	Button btnSave;
-	@UiField
-	Button btnBack;
+	String pictureUrl = "";
+	int pictureCounter = 1;
+
+	Long id = 0L;
 
 	public ProspectEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -90,20 +94,35 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		category.setList(categories);
 		//
 		driver.initialize(this);
+		//
+		smallPicture.setVisible(false);
+		btnUploadFoto.setVisible(false);
 	}
 
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
 
-	public void setData(ProspectJso data) {
+	public void setData(String resourceUrl, ProspectJso data) {
+		if (data.getId() != 0) {
+			id = data.getId();
+			smallPicture.setVisible(true);
+			btnUploadFoto.setVisible(true);
+		} else {
+			id = 0L;
+			smallPicture.setVisible(false);
+			btnUploadFoto.setVisible(false);
+		}
 		smallPicture.clear();
 		driver.edit(data);
-		Image picture = new Image(
-				"http://app.croowd.co.id/resources/getProspectImage?type=small&id="
-						+ data.getId());
-		picture.setWidth("300px");
-		smallPicture.add(picture);
+		if (data.getId() != 0) {
+			pictureUrl = "http://" + resourceUrl
+					+ "/resources/getProspectImage?type=small&id="
+					+ data.getId().toString();
+			Image picture = new Image(pictureUrl);
+			picture.setWidth("300px");
+			smallPicture.add(picture);
+		}
 	}
 
 	public ProspectJso getData() {
@@ -119,4 +138,23 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	void onBtnBack(ClickEvent e) {
 		activity.onBack();
 	}
+
+	@UiHandler("btnUploadFoto")
+	void onBtnUploadFoto(ClickEvent e) {
+		UploadImageDlg uploadDlg = new UploadImageDlg(id,
+				new UploadImageDlgHandler() {
+
+					@Override
+					public void onComplete() {
+						smallPicture.clear();
+						Image picture = new Image(pictureUrl + "&counter="
+								+ pictureCounter++);
+						picture.setWidth("300px");
+						smallPicture.add(picture);
+					}
+				});
+
+		uploadDlg.center();
+	}
+
 }
