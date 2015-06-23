@@ -2,6 +2,7 @@ package com.croowd.ui.member.client.json;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayString;
 
 public class JsonServerResponse {
 
@@ -32,6 +33,14 @@ public class JsonServerResponse {
 		// (like the one from json.org)
 		return eval('(' + responseString + ')');
 	}-*/;
+
+	public static final native JsArrayString listCategories(
+			String responseString)/*-{
+		// You should be able to use a safe parser here
+		// (like the one from json.org)
+		return eval('(' + responseString + ')');
+	}-*/;
+
 
 	public static final native MemberJso getMemberJso(String responseString) /*-{
 		// You should be able to use a safe parser here

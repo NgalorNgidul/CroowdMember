@@ -14,6 +14,7 @@ import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.croowd.ui.member.client.uploaddlg.UploadImageDlg;
 import com.croowd.ui.member.client.uploaddlg.UploadImageDlgHandler;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -84,15 +85,6 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		tenors.add(new IntegerTypeDv(48, "4 TAHUN"));
 		tenor.setList(tenors);
 		//
-		List<String> categories = new ArrayList<String>();
-		categories.add("Kendaraan");
-		categories.add("Rumah baru");
-		categories.add("Renovasi");
-		categories.add("Biaya sekolah");
-		categories.add("Biaya pengobatan");
-		categories.add("Bayar kartu kredit");
-		category.setList(categories);
-		//
 		driver.initialize(this);
 		//
 		smallPicture.setVisible(false);
@@ -103,6 +95,14 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		this.activity = activity;
 	}
 
+	public void setCategories(JsArrayString categories){
+		List<String> mycat = new ArrayList<String>();
+		for (int i=0;i<categories.length();i++){
+			mycat.add(categories.get(i));
+		}
+		category.setList(mycat);
+	}
+	
 	public void setData(String resourceUrl, ProspectJso data) {
 		if (data.getId() != 0) {
 			id = data.getId();

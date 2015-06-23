@@ -6,6 +6,7 @@ import com.croowd.ui.member.client.json.JsonServerResponse;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.prospecteditor.ProspectEditor;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -95,5 +96,10 @@ public class ProspectListForm extends Composite implements IProspectList {
 	@Override
 	public int getFilter() {
 		return resultList.getFilter();
+	}
+
+	@Override
+	public void setCategories(JsArrayString categories) {
+		editorForm.setCategories(categories);
 	}
 }

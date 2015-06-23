@@ -6,6 +6,7 @@ import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.places.ProspectList;
 import com.croowd.ui.member.client.prospect.IProspectList.Activity;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -33,9 +34,41 @@ public class ProspectListActivity extends Activity {
 		IProspectList myForm = appFactory.getProspectList();
 		myForm.setActivity(this, appFactory.getStatus());
 		//
-		loadProspect(0);
+		loadCategories();
 		//
 		panel.setWidget(myForm.getWidget());
+	}
+
+	private void loadCategories() {
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/prospect/categories";
+
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		try {
+			builder.sendRequest(null, new RequestCallback() {
+				public void onError(Request request, Throwable e) {
+					Window.alert(e.getMessage());
+				}
+
+				public void onResponseReceived(Request request,
+						Response response) {
+					if (200 == response.getStatusCode()) {
+						IProspectList myForm = appFactory.getProspectList();
+						JsArrayString categories = JsonServerResponse
+								.listCategories(response.getText());
+						myForm.setCategories(categories);
+						//
+						loadProspect(0);
+					} else {
+						Window.alert("Received HTTP status code other than 200 : "
+								+ response.getStatusText());
+					}
+				}
+			});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
 	}
 
 	private void loadProspect(int status) {

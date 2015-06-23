@@ -4,6 +4,7 @@ import org.simbiosis.ui.gwt.client.SIMbiosisStatus;
 import org.simbiosis.ui.gwt.client.mvp.SIMbiosisActivity;
 
 import com.croowd.ui.member.client.json.ProspectJso;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.user.client.ui.Widget;
 
 public interface IProspectList {
@@ -26,6 +27,8 @@ public interface IProspectList {
 
 	public int getFilter();
 
+	public void setCategories(JsArrayString categories);
+	
 	public abstract class Activity extends SIMbiosisActivity {
 		public abstract void onBack();
 
