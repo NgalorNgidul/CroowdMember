@@ -27,10 +27,13 @@
 										<div class="fieldtitle">Alamat</div>
 										<g:TextBox styleName="fieldtextbox" ui:field="address" />
 									</div>
-									<div class="compositebox">
-										<div class="fieldtitle">Kota, kode pos</div>
-										<div>
+									<div class="compositetablebox">
+										<div class="compositecellbox">
+											<div class="fieldtitle">Kota</div>
 											<g:TextBox styleName="fieldtextbox" ui:field="city" />
+										</div>
+										<div class="compositecellbox">
+											<div class="fieldtitle">Kode pos</div>
 											<g:TextBox styleName="fieldtextbox" ui:field="zipCode" />
 										</div>
 									</div>
