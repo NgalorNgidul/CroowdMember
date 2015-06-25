@@ -1,5 +1,7 @@
 package com.croowd.ui.validation.client;
 
+import org.simbiosis.ui.gwt.client.json.ConfigJso;
+
 import com.croowd.ui.validation.client.json.JsonServerResponse;
 import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.croowd.ui.validation.client.main.MainForm;
@@ -25,14 +27,50 @@ public class CroowdValidation implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		// Ambil string hash
-		// Bentuknya #xxxxxxxxxxxxxxxxxxxxxxxx, ambil setelah tanda #
-		String hash = Window.Location.getHash().substring(1);
-		validation(hash);
+		// Load configuration
+		loadConfiguration();
 	}
 
-	private void validation(String hash) {
-		String url = "http://api.croowd.co.id/registration/validate/" + hash;
+	private void loadConfiguration() {
+		String function = "/systemuiapi/config/";
+		String url = Window.Location.getProtocol() + "//"
+				+ Window.Location.getHost() + function;
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		try {
+			builder.sendRequest(null, new RequestCallback() {
+				public void onError(Request request, Throwable e) {
+					Window.alert(e.getMessage());
+				}
+
+				public void onResponseReceived(Request request,
+						Response response) {
+					if (200 == response.getStatusCode()) {
+						if (!response.getText().isEmpty()) {
+							ConfigJso config = JsonServerResponse
+									.getConfigJso(response.getText());
+							// Ambil string hash
+							// Bentuknya #xxxxxxxxxxxxxxxxxxxxxxxx, ambil
+							// setelah tanda #
+							String hash = Window.Location.getHash()
+									.substring(1);
+							validation(hash, config.getAppApi());
+						}
+					} else {
+						Window.alert("Received HTTP status code other than 200 : "
+								+ response.getStatusText());
+					}
+				}
+			});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
+	}
+
+	private void validation(String hash, final String urlApi) {
+		String function = "/registration/validate/";
+		String url = Window.Location.getProtocol() + "//" + urlApi + function
+				+ hash;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -46,7 +84,7 @@ public class CroowdValidation implements EntryPoint {
 					if (200 == response.getStatusCode()) {
 						RegistrationJso jso = JsonServerResponse
 								.getRegistrationJso(response.getText());
-						processResult(jso);
+						processResult(jso, urlApi);
 					} else {
 						Window.alert("Received HTTP status code other than 200 : "
 								+ response.getStatusText());
@@ -59,10 +97,11 @@ public class CroowdValidation implements EntryPoint {
 		}
 	}
 
-	private void processResult(RegistrationJso jso) {
+	private void processResult(RegistrationJso jso, String urlApi) {
 		mainForm = new MainForm();
 		if (jso != null) {
 			UserEditor editor = new UserEditor();
+			editor.setUrlApi(urlApi);
 			editor.setData(jso);
 			mainForm.addAppPanel(editor);
 			// Go to profile

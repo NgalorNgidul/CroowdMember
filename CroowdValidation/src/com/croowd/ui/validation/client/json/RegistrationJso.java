@@ -38,11 +38,22 @@ public class RegistrationJso extends JavaScriptObject {
 		this.city = city;
 	}-*/;
 
-	public final native String getZipCode() /*-{
+	public final int getZipCode() {
+		if (getNativeZipCode() == null) {
+			return 0;
+		}
+		return Integer.parseInt(getNativeZipCode());
+	}
+
+	public final void setZipCode(int zipCode) {
+		setNativeZipCode(String.valueOf(zipCode));
+	}
+
+	public final native String getNativeZipCode() /*-{
 		return this.zipCode;
 	}-*/;
 
-	public final native void setZipCode(String zipCode) /*-{
+	public final native void setNativeZipCode(String zipCode) /*-{
 		this.zipCode = zipCode;
 	}-*/;
 

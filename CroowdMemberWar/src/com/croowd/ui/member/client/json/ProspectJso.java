@@ -11,11 +11,11 @@ public class ProspectJso extends JavaScriptObject {
 		return lValue;
 	}
 
-	public final void setId(Long id){
+	public final void setId(Long id) {
 		int iValue = id.intValue();
 		setNativeId(iValue);
 	}
-	
+
 	public final native int getNativeId() /*-{
 		return this.id;
 	}-*/;
@@ -94,6 +94,10 @@ public class ProspectJso extends JavaScriptObject {
 
 	public final native void setSession(String session) /*-{
 		this.session = session;
+	}-*/;
+
+	public final native int getStatus() /*-{
+		return this.status;
 	}-*/;
 
 }

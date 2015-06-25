@@ -77,15 +77,15 @@ public class MemberJso extends JavaScriptObject {
 		this.idType = idType;
 	}-*/;
 
-	public final Integer getIdCode() {
+	public final int getIdCode() {
 		if (getNativeIdCode() == null) {
 			return 0;
 		}
 		return Integer.parseInt(getNativeIdCode());
 	}
 
-	public final void setIdCode(Integer idCode) {
-		setNativeIdCode(idCode.toString());
+	public final void setIdCode(int idCode) {
+		setNativeIdCode(String.valueOf(idCode));
 	}
 
 	public final native String getNativeIdCode() /*-{

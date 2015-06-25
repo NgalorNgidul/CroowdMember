@@ -16,5 +16,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/validation"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SIMbiosisUiGwt"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

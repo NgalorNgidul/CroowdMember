@@ -1,5 +1,7 @@
 package com.croowd.ui.validation.client.userform;
 
+import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
+
 import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -36,6 +38,8 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 
 	Driver driver = GWT.create(Driver.class);
 
+	String urlApi = "";
+
 	@UiField
 	VerticalPanel appPanel;
 	@UiField
@@ -49,7 +53,7 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 	@UiField
 	TextBox city;
 	@UiField
-	TextBox zipCode;
+	IntegerTextBox zipCode;
 	@UiField
 	TextBox province;
 	@UiField
@@ -69,10 +73,16 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 		city.getElement().setPropertyString("placeholder", "Kota");
 		zipCode.getElement().setPropertyString("placeholder", "Kode pos");
 		province.getElement().setPropertyString("placeholder", "Propinsi");
-		fixPhone.getElement().setPropertyString("placeholder", "No telpon rumah");
-		cellPhone.getElement().setPropertyString("placeholder", "No telpon seluler");
+		fixPhone.getElement().setPropertyString("placeholder",
+				"No telpon rumah");
+		cellPhone.getElement().setPropertyString("placeholder",
+				"No telpon seluler");
 		//
 		driver.initialize(this);
+	}
+
+	public void setUrlApi(String urlApi) {
+		this.urlApi = urlApi;
 	}
 
 	public void setData(RegistrationJso jso) {
@@ -116,14 +126,16 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 			result = "Kode pos harus diisi";
 		} else if (province.getText().isEmpty()) {
 			result = "Propinsi harus diisi";
-		} else if (fixPhone.getText().isEmpty() && cellPhone.getText().isEmpty()) {
+		} else if (fixPhone.getText().isEmpty()
+				&& cellPhone.getText().isEmpty()) {
 			result = "Nomer telpon harus diisi";
 		}
 		return result;
 	}
 
 	private void confirmRegistration(RegistrationJso data) {
-		String url = "http://api.croowd.co.id/registration/confirmmember";
+		String function = "/registration/confirmmember";
+		String url = Window.Location.getProtocol() + "//" + urlApi + function;
 		//
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 		try {
@@ -137,7 +149,7 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 						public void onResponseReceived(Request request,
 								Response response) {
 							if (200 == response.getStatusCode()) {
-								if (response.getText().isEmpty()){
+								if (response.getText().isEmpty()) {
 									registerSuccess();
 								}
 							} else {
@@ -151,8 +163,8 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 			Window.alert(e.getMessage());
 		}
 	}
-	
-	private void registerSuccess(){
+
+	private void registerSuccess() {
 		appPanel.clear();
 		appPanel.add(new RegisterSuccess());
 	}
