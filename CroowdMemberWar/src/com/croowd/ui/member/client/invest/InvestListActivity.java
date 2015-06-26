@@ -7,7 +7,6 @@ import com.croowd.ui.member.client.json.JsonServerResponse;
 import com.croowd.ui.member.client.json.ProspectJso;
 import com.croowd.ui.member.client.places.InvestList;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -35,14 +34,47 @@ public class InvestListActivity extends Activity {
 		IInvestList myForm = appFactory.getInvestList();
 		myForm.setActivity(this);
 		//
-		loadInvest(0);
+		if (myPlace.getToken().isEmpty()) {
+			loadInvest(0);
+		} else {
+			loadProspectToInvest(myPlace.getToken());
+		}
 		//
 		panel.setWidget(myForm.getWidget());
 	}
 
+	private void loadProspectToInvest(String prospectId) {
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/prospect/" + prospectId;
+		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
+		try {
+			builder.sendRequest(null, new RequestCallback() {
+				public void onError(Request request, Throwable e) {
+					Window.alert(e.getMessage());
+				}
+
+				public void onResponseReceived(Request request,
+						Response response) {
+					if (200 == response.getStatusCode()) {
+						IInvestList myForm = appFactory.getInvestList();
+						ProspectJso prospect = JsonServerResponse
+								.getProjectJso(response.getText());
+						myForm.newData(prospect);
+					} else {
+						Window.alert("Received HTTP status code other than 200 : "
+								+ response.getStatusText());
+					}
+				}
+			});
+		} catch (RequestException e) {
+			// Couldn't connect to server
+			Window.alert(e.getMessage());
+		}
+	}
+
 	private void loadInvest(int status) {
-		String url = "http://api.croowd.co.id/invest/" + getSession()
-				+ "/listAllPlanByOwner/" + status;
+		String url = "http://" + appFactory.getStatus().getAppApi()
+				+ "/invest/" + getSession() + "/listAllPlanByOwner/" + status;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
@@ -55,9 +87,8 @@ public class InvestListActivity extends Activity {
 						Response response) {
 					if (200 == response.getStatusCode()) {
 						IInvestList myForm = appFactory.getInvestList();
-						JsArray<InvestPlanJso> projects = JsonUtils
-								.<JsArray<InvestPlanJso>> safeEval(response
-										.getText());
+						JsArray<InvestPlanJso> projects = JsonServerResponse
+								.listInvestPlanJso(response.getText());
 						myForm.clearResultData();
 						if (projects.length() > 0) {
 							for (int i = 0; i < projects.length(); i++) {
@@ -93,7 +124,8 @@ public class InvestListActivity extends Activity {
 
 	@Override
 	public void onSave() {
-		String url = "http://api.croowd.co.id/invest/save";
+		String function = "/invest/save";
+		String url = "http://" + appFactory.getStatus().getAppApi() + function;
 		//
 		IInvestList myForm = appFactory.getInvestList();
 		ProspectJso prospect = myForm.getProspect();

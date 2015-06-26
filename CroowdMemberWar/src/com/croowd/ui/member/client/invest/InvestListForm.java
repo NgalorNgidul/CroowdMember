@@ -83,6 +83,14 @@ public class InvestListForm extends Composite implements IInvestList {
 		appPanel.add(editorForm);
 	}
 
+	public void newData(ProspectJso prospect) {
+		appPanel.clear();
+		editorForm.setProspect(prospect);
+		// editorForm.setData(JsonServerResponse.createProspectJso());
+		appPanel.add(editorForm);
+	}
+
+
 	public void refreshResult(){
 		activity.refreshResult();
 	}

@@ -19,6 +19,8 @@ public interface IInvestList {
 	public void addResultData(InvestPlanJso data);
 
 	public void noResultData();
+	
+	public void newData(ProspectJso prospect);
 
 	public void editInvest(InvestPlanJso data);
 

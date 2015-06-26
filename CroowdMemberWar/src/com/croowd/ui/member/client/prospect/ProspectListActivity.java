@@ -40,8 +40,8 @@ public class ProspectListActivity extends Activity {
 	}
 
 	private void loadCategories() {
-		String url = "http://" + appFactory.getStatus().getAppApi()
-				+ "/prospect/categories";
+		String function = "/prospect/categories";
+		String url = "http://" + appFactory.getStatus().getAppApi() + function;
 
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, url);
 		try {
