@@ -41,7 +41,7 @@ public class ProspectListForm extends Composite implements IProspectList {
 		//
 		editorForm.setActivity(activity);
 		resultList.setParent(this, status);
-		appPanel.add(resultList);
+		backToList();
 	}
 
 	@Override
