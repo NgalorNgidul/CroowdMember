@@ -78,6 +78,13 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	public ProspectEditor() {
 		initWidget(uiBinder.createAndBindUi(this));
 		//
+		title.getElement().setPropertyString("placeholder", "Nama proyek");
+		location.getElement().setPropertyString("placeholder", "Lokasi proyek");
+		shortDescription.getElement().setPropertyString("placeholder",
+				"Keterangan singkat");
+		description.getElement().setPropertyString("placeholder",
+				"Keterangan lengkap");
+		//
 		List<IntegerTypeDv> tenors = new ArrayList<IntegerTypeDv>();
 		tenors.add(new IntegerTypeDv(6, "6 BULAN"));
 		tenors.add(new IntegerTypeDv(12, "1 TAHUN"));
@@ -96,14 +103,14 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		this.activity = activity;
 	}
 
-	public void setCategories(JsArrayString categories){
+	public void setCategories(JsArrayString categories) {
 		List<String> mycat = new ArrayList<String>();
-		for (int i=0;i<categories.length();i++){
+		for (int i = 0; i < categories.length(); i++) {
 			mycat.add(categories.get(i));
 		}
 		category.setList(mycat);
 	}
-	
+
 	public void setData(String resourceUrl, ProspectJso data) {
 		if (data.getId() != 0) {
 			id = data.getId();
@@ -132,8 +139,12 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 
 	@UiHandler("btnSave")
 	void onBtnSave(ClickEvent e) {
-		if (campaignPeriod.getValue()<1){
+		if (campaignPeriod.getValue() < 1) {
 			Window.alert("Masa promosi harus lebih dari 0");
+		} else if (principal.getValue() < 1000000) {
+			Window.alert("Nilai kebutuhan harus lebih dari 1.000.000 Rupiah");
+		} else if (shortDescription.getText().isEmpty() || description.getText().isEmpty()) {
+			Window.alert("Keterangan singkat dan lengkap harus diisi");
 		} else {
 			activity.onSave();
 		}

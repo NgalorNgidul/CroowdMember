@@ -17,6 +17,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
@@ -112,6 +113,7 @@ public class ProfileForm extends Composite implements IProfile,
 		education.setList(educations);
 		//
 		List<IntegerTypeDv> incomeTypes = new ArrayList<IntegerTypeDv>();
+		incomeTypes.add(new IntegerTypeDv(0, "Tidak ada"));
 		incomeTypes.add(new IntegerTypeDv(1, "PNS"));
 		incomeTypes.add(new IntegerTypeDv(2, "Wirausaha"));
 		incomeTypes.add(new IntegerTypeDv(3, "Polisi/TNI"));
@@ -119,6 +121,7 @@ public class ProfileForm extends Composite implements IProfile,
 		mainIncomeType.setList(incomeTypes);
 		//
 		incomeTypes = new ArrayList<IntegerTypeDv>();
+		incomeTypes.add(new IntegerTypeDv(0, "Tidak ada"));
 		incomeTypes.add(new IntegerTypeDv(1,
 				"Bekerja paruh waktu di tempat lain"));
 		incomeTypes.add(new IntegerTypeDv(2, "Wirausaha"));
@@ -165,6 +168,87 @@ public class ProfileForm extends Composite implements IProfile,
 
 	@UiHandler("btnSave")
 	public void onSave(ClickEvent e) {
-		activity.saveProfile();
+		if (name.getText().isEmpty()) {
+			Window.alert("Nama harus diisi");
+		} else if (motherName.getText().isEmpty()) {
+			Window.alert("Nama ibu harus diisi");
+		} else if (motherName.getText().isEmpty()) {
+			Window.alert("Nama ibu harus diisi");
+		} else if (idCode.getText().length() < 16) {
+			Window.alert("Nomer ktp yang diberikan tidak benar");
+		} else if (idCode.getText().length() >= 16 && !validasiKtp()) {
+		} else if (taxNr.getText().length() < 15) {
+			Window.alert("Nomer NPWP yang diberikan tidak benar");
+		} else if (taxNr.getText().length() >= 15 && !validasiNpwp()) {
+			Window.alert("Nomer NPWP yang diberikan tidak benar");
+		} else if (address.getText().isEmpty() || city.getText().isEmpty()
+				|| zipCode.getText().isEmpty() || province.getText().isEmpty()) {
+			Window.alert("Keterangan alamat, kota, kode pos, propinsi harus diisi");
+		} else if (cellPhone.getText().isEmpty()
+				&& fixPhone.getText().isEmpty()) {
+			Window.alert("Salah satu nomor telpon (telpon rumah atau telpon seluler) harus diisi");
+		} else {
+			activity.saveProfile();
+		}
 	}
+
+	private boolean validasiKtp() {
+		String hh = idCode.getText().substring(6, 8);
+		int nr = Integer.parseInt(hh);
+		if (nr > 40 || nr < 32) {
+			if (!validasiKtpLagi(nr)) {
+				Window.alert("Nomer ktp tidak sesuai dengan data jenis kelamin");
+				return false;
+			}
+		} else {
+			Window.alert("Nomer ktp yang diberikan tidak benar");
+			return false;
+		}
+		return true;
+	}
+
+	private boolean validasiKtpLagi(int nr) {
+		if (nr > 40 && sex.getValue() == 1) {
+			return false;
+		} else if (nr < 32 && sex.getValue() == 2) {
+			return false;
+		}
+		return true;
+	}
+
+	private boolean validasiNpwp() {
+		String str18 = taxNr.getText().substring(0, 8);
+		String str9 = taxNr.getText().substring(8, 9);
+		int jumlah18 = 0;
+		for (int i = 0; i < str18.length(); i++) {
+			if (i % 2 == 0) {
+				jumlah18 += Integer.parseInt(str18.substring(i, i + 1));
+			} else {
+				jumlah18 += (Integer.parseInt(str18.substring(i, i + 1)) * 2);
+			}
+		}
+		//
+		int jumlahPuluh = 10;
+		if (jumlah18 > 10 && jumlah18 <= 20) {
+			jumlahPuluh = 20;
+		} else if (jumlah18 > 20 && jumlah18 <= 30) {
+			jumlahPuluh = 30;
+		} else if (jumlah18 > 30 && jumlah18 <= 40) {
+			jumlahPuluh = 40;
+		} else if (jumlah18 > 40 && jumlah18 <= 50) {
+			jumlahPuluh = 50;
+		} else if (jumlah18 > 50 && jumlah18 <= 60) {
+			jumlahPuluh = 60;
+		} else if (jumlah18 > 60 && jumlah18 <= 70) {
+			jumlahPuluh = 70;
+		} else if (jumlah18 > 70 && jumlah18 <= 80) {
+			jumlahPuluh = 80;
+		}
+		int digit9 = jumlahPuluh - jumlah18;
+		if (Integer.parseInt(str9) == digit9) {
+			return true;
+		}
+		return false;
+	}
+
 }
