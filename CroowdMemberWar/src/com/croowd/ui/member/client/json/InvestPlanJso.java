@@ -19,11 +19,21 @@ public class InvestPlanJso extends JavaScriptObject {
 		return this.id;
 	}-*/;
 
-	public final native Long getProspectId() /*-{
+	public final Long getProspectId() {
+		long lValue = getNativeProspectId();
+		return lValue;
+	}
+
+	public final void setProspectId(Long prospectId) {
+		int iValue = prospectId.intValue();
+		setNativeProspectId(iValue);
+	}
+
+	public final native int getNativeProspectId() /*-{
 		return this.prospectId;
 	}-*/;
 
-	public final native void setProspectId(Long prospectId) /*-{
+	public final native void setNativeProspectId(int prospectId) /*-{
 		this.prospectId = prospectId;
 	}-*/;
 

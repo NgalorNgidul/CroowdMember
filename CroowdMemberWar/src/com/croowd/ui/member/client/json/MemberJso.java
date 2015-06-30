@@ -77,14 +77,14 @@ public class MemberJso extends JavaScriptObject {
 		this.idType = idType;
 	}-*/;
 
-	public final int getIdCode() {
+	public final long getIdCode() {
 		if (getNativeIdCode() == null) {
 			return 0;
 		}
-		return Integer.parseInt(getNativeIdCode());
+		return Long.parseLong(getNativeIdCode());
 	}
 
-	public final void setIdCode(int idCode) {
+	public final void setIdCode(long idCode) {
 		setNativeIdCode(String.valueOf(idCode));
 	}
 
@@ -243,14 +243,14 @@ public class MemberJso extends JavaScriptObject {
 		this.otherExpense = otherExpense;
 	}-*/;
 
-	public final int getTaxNr() {
+	public final long getTaxNr() {
 		if (getNativeTaxNr() == null) {
 			return 0;
 		}
-		return Integer.parseInt(getNativeTaxNr());
+		return Long.parseLong(getNativeTaxNr());
 	}
 
-	public final void setTaxNr(int taxNr) {
+	public final void setTaxNr(long taxNr) {
 		setNativeTaxNr(String.valueOf(taxNr));
 	}
 

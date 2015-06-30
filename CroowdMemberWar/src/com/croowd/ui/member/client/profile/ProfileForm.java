@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
+import org.simbiosis.ui.gwt.client.editor.LongTextBox;
 
 import com.croowd.ui.member.client.component.DateSelectorBox;
 import com.croowd.ui.member.client.component.IntegerTypeComboBox;
@@ -50,13 +51,13 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	IntegerTypeComboBox idType;
 	@UiField
-	IntegerTextBox idCode;
+	LongTextBox idCode;
 	@UiField
 	TextBox pob;
 	@UiField
 	DateSelectorBox dob;
 	@UiField
-	IntegerTextBox taxNr;
+	LongTextBox taxNr;
 	@UiField
 	IntegerTypeComboBox education;
 	@UiField

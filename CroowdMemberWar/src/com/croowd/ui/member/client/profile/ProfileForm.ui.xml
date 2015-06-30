@@ -45,7 +45,7 @@
 										</div>
 										<div class="compositecellbox">
 											<div class="fieldtitle">Nomor identitas</div>
-											<s:IntegerTextBox styleName="fieldtextbox"
+											<s:LongTextBox styleName="fieldtextbox"
 												ui:field="idCode" maxLength="16" visibleLength="16" />
 										</div>
 									</div>
@@ -60,7 +60,7 @@
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">NPWP</div>
-										<s:IntegerTextBox styleName="fieldtextbox"
+										<s:LongTextBox styleName="fieldtextbox"
 											ui:field="taxNr" maxLength="15" visibleLength="15" />
 									</div>
 								</td>
