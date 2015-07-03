@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
-import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
 import org.simbiosis.ui.gwt.client.editor.StringListComboBox;
 
 import com.croowd.ui.member.client.component.IntegerTypeComboBox;
@@ -64,7 +63,7 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 	@UiField
 	TextArea description;
 	@UiField
-	IntegerTextBox campaignPeriod;
+	IntegerTypeComboBox campaignPeriod;
 	@UiField
 	HTMLPanel smallPicture;
 	@UiField
@@ -92,6 +91,14 @@ public class ProspectEditor extends Composite implements Editor<ProspectJso> {
 		tenors.add(new IntegerTypeDv(36, "3 TAHUN"));
 		tenors.add(new IntegerTypeDv(48, "4 TAHUN"));
 		tenor.setList(tenors);
+		//
+		List<IntegerTypeDv> campaignPeriods = new ArrayList<IntegerTypeDv>();
+		campaignPeriods.add(new IntegerTypeDv(10, "10 HARI"));
+		campaignPeriods.add(new IntegerTypeDv(20, "20 HARI"));
+		campaignPeriods.add(new IntegerTypeDv(30, "30 HARI"));
+		campaignPeriods.add(new IntegerTypeDv(40, "40 HARI"));
+		campaignPeriods.add(new IntegerTypeDv(50, "50 HARI"));
+		campaignPeriod.setList(campaignPeriods);
 		//
 		driver.initialize(this);
 		//

@@ -145,6 +145,7 @@ public class InvestListActivity extends Activity {
 						public void onResponseReceived(Request request,
 								Response response) {
 							if (200 == response.getStatusCode()) {
+								Window.alert("Data investasi sudah tersimpan");
 								reloadResultList();
 							} else {
 								Window.alert("Received HTTP status code other than 200 : "

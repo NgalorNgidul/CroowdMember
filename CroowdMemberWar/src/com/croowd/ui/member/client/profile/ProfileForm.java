@@ -89,7 +89,11 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	IntegerTypeComboBox home;
 	@UiField
+	IntegerTypeComboBox homeStayDur;
+	@UiField
 	IntegerTypeComboBox vehicle;
+	@UiField
+	IntegerTypeComboBox vehicleProduction;
 
 	public ProfileForm() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -130,14 +134,34 @@ public class ProfileForm extends Composite implements IProfile,
 		sideIncomeType.setList(incomeTypes);
 		//
 		List<IntegerTypeDv> homes = new ArrayList<IntegerTypeDv>();
-		homes.add(new IntegerTypeDv(1, "Rumah sendiri"));
-		homes.add(new IntegerTypeDv(2, "Kontrak"));
+		homes.add(new IntegerTypeDv(0, "Menumpang"));
+		homes.add(new IntegerTypeDv(1, "Kontrak"));
+		homes.add(new IntegerTypeDv(2, "Rumah sendiri"));
 		home.setList(homes);
 		//
+		List<IntegerTypeDv> homeStayDurs = new ArrayList<IntegerTypeDv>();
+		homeStayDurs.add(new IntegerTypeDv(1, "1 tahun"));
+		homeStayDurs.add(new IntegerTypeDv(2, "2 tahun"));
+		homeStayDurs.add(new IntegerTypeDv(3, "3 tahun"));
+		homeStayDurs.add(new IntegerTypeDv(4, "4 tahun"));
+		homeStayDurs.add(new IntegerTypeDv(5, "5 tahun"));
+		homeStayDur.setList(homeStayDurs);
+		//
 		List<IntegerTypeDv> vehicles = new ArrayList<IntegerTypeDv>();
+		vehicles.add(new IntegerTypeDv(0, "Tidak ada"));
 		vehicles.add(new IntegerTypeDv(1, "Motor"));
 		vehicles.add(new IntegerTypeDv(2, "Mobil"));
 		vehicle.setList(vehicles);
+		//
+		List<IntegerTypeDv> vehicleProductions = new ArrayList<IntegerTypeDv>();
+		vehicleProductions.add(new IntegerTypeDv(2009, "2009"));
+		vehicleProductions.add(new IntegerTypeDv(2010, "2010"));
+		vehicleProductions.add(new IntegerTypeDv(2011, "2011"));
+		vehicleProductions.add(new IntegerTypeDv(2012, "2012"));
+		vehicleProductions.add(new IntegerTypeDv(2013, "2013"));
+		vehicleProductions.add(new IntegerTypeDv(2014, "2014"));
+		vehicleProductions.add(new IntegerTypeDv(2015, "2015"));
+		vehicleProduction.setList(vehicleProductions);
 		//
 		fixPhone.getElement().setPropertyString("placeholder",
 				"No telpon rumah");

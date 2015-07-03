@@ -184,15 +184,15 @@
 										<div class="fieldtitle">Status tempat tinggal, lama tinggal</div>
 										<e:IntegerTypeComboBox styleName="fieldcombobox"
 											ui:field="home" />
-										<s:IntegerTextBox styleName="fieldtextbox"
-											ui:field="homeStayDur" width="50px" />
+										<e:IntegerTypeComboBox styleName="fieldcombobox"
+											ui:field="homeStayDur" />
 									</div>
 									<div class="compositebox">
 										<div class="fieldtitle">Kepemilikan kendaraan, tahun pembuatan</div>
 										<e:IntegerTypeComboBox styleName="fieldcombobox"
 											ui:field="vehicle" />
-										<s:IntegerTextBox styleName="fieldtextbox"
-											ui:field="vehicleProduction" width="50px" />
+										<e:IntegerTypeComboBox styleName="fieldcombobox"
+											ui:field="vehicleProduction" />
 									</div>
 								</td>
 							</tr>

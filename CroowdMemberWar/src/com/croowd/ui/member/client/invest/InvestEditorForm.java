@@ -12,6 +12,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -38,6 +39,8 @@ public class InvestEditorForm extends Composite {
 
 	public InvestEditorForm() {
 		initWidget(uiBinder.createAndBindUi(this));
+		//
+		value.setValue(0D);
 		//
 		Button button = new Button("Cari Prospek");
 		button.setStyleName("fieldbutton");
@@ -81,7 +84,11 @@ public class InvestEditorForm extends Composite {
 
 	@UiHandler("btnSave")
 	void onBtnSave(ClickEvent e) {
-		activity.onSave();
+		if (value.getValue()<=0D){
+			Window.alert("Anda harus mengisi nilai investasi");
+		}else{
+			activity.onSave();
+		}
 	}
 
 	public ProspectJso getData() {
