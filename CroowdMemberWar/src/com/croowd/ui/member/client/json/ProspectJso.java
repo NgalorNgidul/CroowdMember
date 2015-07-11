@@ -52,6 +52,10 @@ public class ProspectJso extends JavaScriptObject {
 		return this.category;
 	}-*/;
 
+	public final native void setCategory(String category) /*-{
+		this.category = category;
+	}-*/;
+
 	public final native String getLocation() /*-{
 		return this.location;
 	}-*/;
