@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.simbiosis.ui.gwt.client.editor.DoubleTextBox;
 import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
-import org.simbiosis.ui.gwt.client.editor.LongTextBox;
+import org.simbiosis.ui.gwt.client.editor.NumericTextBox;
 
 import com.croowd.ui.member.client.component.DateSelectorBox;
 import com.croowd.ui.member.client.component.IntegerTypeComboBox;
@@ -51,13 +51,13 @@ public class ProfileForm extends Composite implements IProfile,
 	@UiField
 	IntegerTypeComboBox idType;
 	@UiField
-	LongTextBox idCode;
+	NumericTextBox idCode;
 	@UiField
 	TextBox pob;
 	@UiField
 	DateSelectorBox dob;
 	@UiField
-	LongTextBox taxNr;
+	NumericTextBox taxNr;
 	@UiField
 	IntegerTypeComboBox education;
 	@UiField
@@ -100,7 +100,7 @@ public class ProfileForm extends Composite implements IProfile,
 		//
 		List<IntegerTypeDv> idTypes = new ArrayList<IntegerTypeDv>();
 		idTypes.add(new IntegerTypeDv(1, "KTP"));
-		idTypes.add(new IntegerTypeDv(2, "PASPOR"));
+		// idTypes.add(new IntegerTypeDv(2, "PASPOR"));
 		idType.setList(idTypes);
 		//
 		List<IntegerTypeDv> sexTypes = new ArrayList<IntegerTypeDv>();
@@ -140,11 +140,9 @@ public class ProfileForm extends Composite implements IProfile,
 		home.setList(homes);
 		//
 		List<IntegerTypeDv> homeStayDurs = new ArrayList<IntegerTypeDv>();
-		homeStayDurs.add(new IntegerTypeDv(1, "1 tahun"));
-		homeStayDurs.add(new IntegerTypeDv(2, "2 tahun"));
-		homeStayDurs.add(new IntegerTypeDv(3, "3 tahun"));
-		homeStayDurs.add(new IntegerTypeDv(4, "4 tahun"));
-		homeStayDurs.add(new IntegerTypeDv(5, "5 tahun"));
+		for (int i = 1; i < 6; i++) {
+			homeStayDurs.add(new IntegerTypeDv(i, i + " tahun"));
+		}
 		homeStayDur.setList(homeStayDurs);
 		//
 		List<IntegerTypeDv> vehicles = new ArrayList<IntegerTypeDv>();
@@ -154,13 +152,9 @@ public class ProfileForm extends Composite implements IProfile,
 		vehicle.setList(vehicles);
 		//
 		List<IntegerTypeDv> vehicleProductions = new ArrayList<IntegerTypeDv>();
-		vehicleProductions.add(new IntegerTypeDv(2009, "2009"));
-		vehicleProductions.add(new IntegerTypeDv(2010, "2010"));
-		vehicleProductions.add(new IntegerTypeDv(2011, "2011"));
-		vehicleProductions.add(new IntegerTypeDv(2012, "2012"));
-		vehicleProductions.add(new IntegerTypeDv(2013, "2013"));
-		vehicleProductions.add(new IntegerTypeDv(2014, "2014"));
-		vehicleProductions.add(new IntegerTypeDv(2015, "2015"));
+		for (int i = 2005; i < 2016; i++) {
+			vehicleProductions.add(new IntegerTypeDv(i, "Tahun " + i));
+		}
 		vehicleProduction.setList(vehicleProductions);
 		//
 		fixPhone.getElement().setPropertyString("placeholder",
@@ -202,9 +196,8 @@ public class ProfileForm extends Composite implements IProfile,
 		} else if (idCode.getText().length() < 16) {
 			Window.alert("Nomer ktp yang diberikan tidak benar");
 		} else if (idCode.getText().length() >= 16 && !validasiKtp()) {
-		} else if (taxNr.getText().length() < 15) {
-			Window.alert("Nomer NPWP yang diberikan tidak benar");
-		} else if (taxNr.getText().length() >= 15 && !validasiNpwp()) {
+		} else if (taxNr.getText().length() < 15
+				|| (taxNr.getText().length() >= 15 && !validasiNpwp())) {
 			Window.alert("Nomer NPWP yang diberikan tidak benar");
 		} else if (address.getText().isEmpty() || city.getText().isEmpty()
 				|| zipCode.getText().isEmpty() || province.getText().isEmpty()) {
@@ -221,7 +214,7 @@ public class ProfileForm extends Composite implements IProfile,
 		String hh = idCode.getText().substring(6, 8);
 		int nr = Integer.parseInt(hh);
 		if (nr > 40 || nr < 32) {
-			if (!validasiKtpLagi(nr)) {
+			if (!validasiKtpJenisKelamin(nr)) {
 				Window.alert("Nomer ktp tidak sesuai dengan data jenis kelamin");
 				return false;
 			}
@@ -232,7 +225,7 @@ public class ProfileForm extends Composite implements IProfile,
 		return true;
 	}
 
-	private boolean validasiKtpLagi(int nr) {
+	private boolean validasiKtpJenisKelamin(int nr) {
 		if (nr > 40 && sex.getValue() == 1) {
 			return false;
 		} else if (nr < 32 && sex.getValue() == 2) {
@@ -268,6 +261,8 @@ public class ProfileForm extends Composite implements IProfile,
 			jumlahPuluh = 70;
 		} else if (jumlah18 > 70 && jumlah18 <= 80) {
 			jumlahPuluh = 80;
+		} else if (jumlah18 > 80 && jumlah18 <= 90) {
+			jumlahPuluh = 90;
 		}
 		int digit9 = jumlahPuluh - jumlah18;
 		if (Integer.parseInt(str9) == digit9) {
