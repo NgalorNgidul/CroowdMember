@@ -1,7 +1,9 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:s="urn:import:org.simbiosis.ui.gwt.client.editor" >
+	xmlns:s="urn:import:org.simbiosis.ui.gwt.client.editor"
+	xmlns:e="urn:import:com.croowd.ui.validation.client.userform"
+	>
 	<g:ScrollPanel>
 		<g:VerticalPanel styleName="apppanel" ui:field="appPanel">
 			<g:VerticalPanel styleName="fullbox">
@@ -21,6 +23,23 @@
 										<g:TextBox styleName="fieldtextbox" ui:field="name" />
 									</div>
 									<div class="compositebox">
+										<div class="fieldtitle">Jenis kelamin</div>
+										<e:IntegerTypeComboBox styleName="fieldtextbox"
+											ui:field="sex" />
+									</div>
+									<div class="compositetablebox">
+										<div class="compositecellbox">
+											<div class="fieldtitle">Jenis identitas</div>
+											<e:IntegerTypeComboBox styleName="fieldcombobox"
+												ui:field="idType" />
+										</div>
+										<div class="compositecellbox">
+											<div class="fieldtitle">Nomor identitas</div>
+											<s:NumericTextBox styleName="fieldtextbox"
+												ui:field="idCode" maxLength="16" visibleLength="16" />
+										</div>
+									</div>
+									<div class="compositebox">
 										<div class="fieldtitle">Email</div>
 										<g:Label styleName="fieldlabel" ui:field="email" />
 									</div>
@@ -35,7 +54,7 @@
 										</div>
 										<div class="compositecellbox">
 											<div class="fieldtitle">Kode pos</div>
-											<s:IntegerTextBox styleName="fieldtextbox"
+											<s:NumericTextBox styleName="fieldtextbox"
 												ui:field="zipCode" maxLength="5" visibleLength="5" />
 										</div>
 									</div>

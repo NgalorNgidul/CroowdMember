@@ -1,6 +1,9 @@
 package com.croowd.ui.validation.client.userform;
 
-import org.simbiosis.ui.gwt.client.editor.IntegerTextBox;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.simbiosis.ui.gwt.client.editor.NumericTextBox;
 
 import com.croowd.ui.validation.client.json.RegistrationJso;
 import com.google.gwt.core.client.GWT;
@@ -47,13 +50,19 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 	@UiField
 	TextBox name;
 	@UiField
+	IntegerTypeComboBox sex;
+	@UiField
+	IntegerTypeComboBox idType;
+	@UiField
+	NumericTextBox idCode;
+	@UiField
 	Label email;
 	@UiField
 	TextBox address;
 	@UiField
 	TextBox city;
 	@UiField
-	IntegerTextBox zipCode;
+	NumericTextBox zipCode;
 	@UiField
 	TextBox province;
 	@UiField
@@ -70,6 +79,8 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 		//
 		name.getElement().setPropertyString("placeholder", "Nama lengkap");
 		address.getElement().setPropertyString("placeholder", "Alamat lengkap");
+		idCode.getElement().setPropertyString("placeholder",
+				"Nomor tanda pengenal");
 		city.getElement().setPropertyString("placeholder", "Kota");
 		zipCode.getElement().setPropertyString("placeholder", "Kode pos");
 		province.getElement().setPropertyString("placeholder", "Propinsi");
@@ -77,6 +88,17 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 				"No telpon rumah");
 		cellPhone.getElement().setPropertyString("placeholder",
 				"No telpon seluler");
+		//
+		List<IntegerTypeDv> idTypes = new ArrayList<IntegerTypeDv>();
+		idTypes.add(new IntegerTypeDv(1, "KTP"));
+		// idTypes.add(new IntegerTypeDv(2, "PASPOR"));
+		idType.setList(idTypes);
+		//
+		List<IntegerTypeDv> sexTypes = new ArrayList<IntegerTypeDv>();
+		sexTypes.add(new IntegerTypeDv(1, "PRIA"));
+		sexTypes.add(new IntegerTypeDv(2, "WANITA"));
+		sex.setList(sexTypes);
+		//
 		//
 		driver.initialize(this);
 	}
@@ -92,9 +114,13 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 	@UiHandler("btnSave")
 	public void onSave(ClickEvent e) {
 		String checkData = isDataComplete();
+		String checkKtp = validasiKtp();
 		if (!checkData.isEmpty()) {
 			Window.alert(checkData);
+		} else if (!checkKtp.isEmpty()) {
+			Window.alert(checkKtp);
 		} else {
+
 			String checkPassword = isPasswordOk();
 			if (!checkPassword.isEmpty()) {
 				Window.alert(checkPassword);
@@ -118,6 +144,8 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 		String result = "";
 		if (name.getText().isEmpty()) {
 			result = "Nama harus diisi";
+		} else if (idCode.getText().length() < 16) {
+			result = "Nomer tanda pengenal harus diisi dengan benar";
 		} else if (address.getText().isEmpty()) {
 			result = "Alamat harus diisi";
 		} else if (city.getText().isEmpty()) {
@@ -131,6 +159,28 @@ public class UserEditor extends Composite implements Editor<RegistrationJso> {
 			result = "Nomer telpon harus diisi";
 		}
 		return result;
+	}
+
+	private String validasiKtp() {
+		String hh = idCode.getText().substring(6, 8);
+		int nr = Integer.parseInt(hh);
+		if (nr > 40 || nr < 32) {
+			if (!validasiKtpJenisKelamin(nr)) {
+				return "Nomer ktp tidak sesuai dengan data jenis kelamin";
+			}
+		} else {
+			return "Nomer ktp yang diberikan tidak benar";
+		}
+		return "";
+	}
+
+	private boolean validasiKtpJenisKelamin(int nr) {
+		if (nr > 40 && sex.getValue() == 1) {
+			return false;
+		} else if (nr < 32 && sex.getValue() == 2) {
+			return false;
+		}
+		return true;
 	}
 
 	private void confirmRegistration(RegistrationJso data) {

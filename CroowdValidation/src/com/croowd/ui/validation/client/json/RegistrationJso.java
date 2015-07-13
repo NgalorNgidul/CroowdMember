@@ -14,6 +14,30 @@ public class RegistrationJso extends JavaScriptObject {
 		this.name = name;
 	}-*/;
 
+	public final native int getSex() /*-{
+		return this.sex;
+	}-*/;
+
+	public final native void setSex(int sex) /*-{
+		this.sex = sex;
+	}-*/;
+
+	public final native int getIdType() /*-{
+		return this.idType;
+	}-*/;
+
+	public final native void setIdType(int idType) /*-{
+		this.idType = idType;
+	}-*/;
+
+	public final native String getIdCode() /*-{
+		return this.idCode;
+	}-*/;
+
+	public final native void setIdCode(String idCode) /*-{
+		this.idCode = idCode;
+	}-*/;
+
 	public final native String getEmail() /*-{
 		return this.email;
 	}-*/;
@@ -38,22 +62,11 @@ public class RegistrationJso extends JavaScriptObject {
 		this.city = city;
 	}-*/;
 
-	public final int getZipCode() {
-		if (getNativeZipCode() == null) {
-			return 0;
-		}
-		return Integer.parseInt(getNativeZipCode());
-	}
-
-	public final void setZipCode(int zipCode) {
-		setNativeZipCode(String.valueOf(zipCode));
-	}
-
-	public final native String getNativeZipCode() /*-{
+	public final native String getZipCode() /*-{
 		return this.zipCode;
 	}-*/;
 
-	public final native void setNativeZipCode(String zipCode) /*-{
+	public final native void setZipCode(String zipCode) /*-{
 		this.zipCode = zipCode;
 	}-*/;
 
